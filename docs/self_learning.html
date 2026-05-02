@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Learning Results - String Art Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .gallery-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .quality-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .quality-good {
+            background: #10b981;
+            color: white;
+        }
+        
+        .quality-medium {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .quality-poor {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .timestamp {
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+        
+        .description {
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .improvements {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .improvements h4 {
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+        
+        .improvements ul {
+            margin-left: 20px;
+            color: #6b7280;
+            font-size: 0.85em;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: background 0.3s;
+        }
+        
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Main</a>
+        
+        <h1>🤖 Self-Learning Results</h1>
+        <p class="subtitle">Autonomous improvements generated during idle time</p>
+        
+        <div class="card">
+            <h2>About Self-Learning</h2>
+            <p style="line-height: 1.8; color: #374151;">
+                The string art generator has an autonomous learning system that runs during idle time. 
+                It researches improvements, implements them, validates visual quality, and uploads results here.
+            </p>
+            <p style="margin-top: 15px; line-height: 1.8; color: #374151;">
+                <strong>Validation Process:</strong> Every improvement must pass syntax validation, execution test, 
+                visual quality check, and comparison to baseline before being published.
+            </p>
+        </div>
+        
+        <div class="card">
+            <h2>Learning Results Gallery</h2>
+            <div class="gallery" id="gallery">
+                <!-- Gallery items will be loaded here -->
+                <div class="no-results">
+                    <p style="font-size: 1.2em; margin-bottom: 10px;">📭 No self-learning results yet</p>
+                    <p>Results will appear here as the system learns and improves during idle time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-discover self-learning results
+        // Files should be named: self_learning_YYYYMMDD_HHMMSS.png
+        // This is a placeholder - in production, you'd fetch from a JSON index
+        
+        // Example gallery items (will be populated by actual results)
+        const results = [
+            // {
+            //     timestamp: "2026-05-03 03:00",
+            //     quality: 8,
+            //     image: "self_learning_20260503_030000.png",
+            //     svg: "self_learning_20260503_030000.svg",
+            //     description: "Improved edge detection with Gaussian blur preprocessing",
+            //     improvements: [
+            //         "Better feature recognition",
+            //         "Clearer facial features",
+            //         "Reduced noise in background"
+            //     ]
+            // }
+        ];
+        
+        function loadGallery() {
+            const gallery = document.getElementById('gallery');
+            
+            if (results.length === 0) {
+                // Keep "no results" message
+                return;
+            }
+            
+            gallery.innerHTML = '';
+            
+            results.forEach(result => {
+                const qualityClass = result.quality >= 7 ? 'quality-good' : 
+                                   result.quality >= 5 ? 'quality-medium' : 'quality-poor';
+                
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `
+                    <a href="${result.svg}" target="_blank">
+                        <img src="${result.image}" alt="Self-learning result ${result.timestamp}">
+                    </a>
+                    <div class="gallery-meta">
+                        <span class="quality-badge ${qualityClass}">${result.quality}/10</span>
+                        <span class="timestamp">${result.timestamp}</span>
+                    </div>
+                    <div class="description">${result.description}</div>
+                    ${result.improvements ? `
+                        <div class="improvements">
+                            <h4>Improvements:</h4>
+                            <ul>
+                                ${result.improvements.map(imp => `<li>${imp}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                `;
+                gallery.appendChild(item);
+            });
+        }
+        
+        loadGallery();
+    </script>
+</body>
+</html>
