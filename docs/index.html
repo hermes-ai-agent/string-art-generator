@@ -212,10 +212,10 @@
             <h2>Example: Cat Portrait (v3.1.0 - Go with Research Improvements)</h2>
             <p style="color: #666; margin-bottom: 20px;">
                 Generated with <strong>Go v3.1.0</strong> - includes research-based improvements from self-learning system:<br>
-                • <strong>Opacity 0.3</strong> for finer details (Demoussel et al., 2022)<br>
                 • <strong>Adaptive stopping</strong> for quality plateau detection<br>
                 • <strong>Progress tracking</strong> with real-time score reporting<br>
-                Generation time: <strong>2.5 seconds</strong> (66x faster than Python, same quality).
+                • <strong>Optional features</strong>: opacity, look-ahead, random sampling<br>
+                Generation time: <strong>2.2 seconds</strong> (66x faster than Python, same quality).
             </p>
             
             <div class="gallery">
@@ -230,8 +230,8 @@
                 <div class="image-card">
                     <img src="cat_go_v3.1_render.png" alt="String Art Render v3.1 Go">
                     <div class="caption">
-                        <h3>PNG Preview (v3.1 - Go + Opacity)</h3>
-                        <p>2000 lines, opacity 0.3, 2.5s</p>
+                        <h3>PNG Preview (v3.1 - Go)</h3>
+                        <p>2000 lines, 2.2 seconds</p>
                     </div>
                 </div>
                 
@@ -241,7 +241,7 @@
                     </object>
                     <div class="caption">
                         <h3>SVG Output v3.1 (Zoomable)</h3>
-                        <p>With research improvements</p>
+                        <p>With adaptive stopping</p>
                     </div>
                 </div>
                 
@@ -278,10 +278,11 @@
             </ol>
             <p style="margin-top: 20px; padding: 15px; background: #f0f8ff; border-left: 4px solid #667eea; color: #555;">
                 <strong>🚀 New in v3.1.0:</strong> Ported research improvements from self-learning system to Go:<br>
-                • <strong>Non-opaque strings</strong> (--opacity 0.3) for finer details<br>
-                • <strong>Adaptive stopping</strong> (--adaptive-stop) detects quality plateau<br>
-                • <strong>Look-ahead optimization</strong> (--look-ahead) for better line selection<br>
-                • <strong>Random sampling</strong> (--random-sampling) for faster generation<br>
+                • <strong>Adaptive stopping</strong> (--adaptive-stop) detects quality plateau and stops early<br>
+                • <strong>Progress tracking</strong> with real-time score reporting every 100 lines<br>
+                • <strong>Optional: Non-opaque strings</strong> (--opacity 0.3-0.7) for subtle shading effects<br>
+                • <strong>Optional: Look-ahead</strong> (--look-ahead) evaluates future moves for better paths<br>
+                • <strong>Optional: Random sampling</strong> (--random-sampling) trades exhaustive search for speed<br>
                 All improvements maintain 66x speed advantage over Python!
             </p>
         </div>
