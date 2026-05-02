@@ -191,6 +191,9 @@
         <header>
             <h1>🎨 String Art Generator</h1>
             <p class="subtitle">Convert images to string art sequences with precision SVG output</p>
+            <p style="color: #764ba2; font-weight: bold; margin-top: 10px;">
+                ✨ Version 2.0.0 - Now with edge detection and feature-aware optimization!
+            </p>
         </header>
         
         <div class="specs">
@@ -206,10 +209,11 @@
         </div>
         
         <div class="example">
-            <h2>Example: Cat Portrait</h2>
+            <h2>Example: Cat Portrait (v2.0.0)</h2>
             <p style="color: #666; margin-bottom: 20px;">
-                Generated with 200 pins and 3000 strings. The algorithm selects the optimal line at each step 
-                to best match the target image darkness.
+                Generated with <strong>edge detection</strong> and <strong>feature-aware optimization</strong>. 
+                200 pins, 2000 strings (reduced from 3000 for better clarity). 
+                The algorithm now prioritizes edges and high-contrast areas for sharper results.
             </p>
             
             <div class="gallery">
@@ -222,16 +226,16 @@
                 </div>
                 
                 <div class="image-card">
-                    <img src="examples/cat_photo_render_20260502_141824.png" alt="String Art Render">
+                    <img src="examples/cat_photo_render_20260502_143518.png" alt="String Art Render v2.0">
                     <div class="caption">
-                        <h3>PNG Preview</h3>
-                        <p>Raster preview (3000 lines, 200 pins)</p>
+                        <h3>PNG Preview (v2.0)</h3>
+                        <p>Edge-aware (2000 lines, 200 pins)</p>
                     </div>
                 </div>
                 
                 <div class="image-card">
-                    <object data="examples/cat_photo_stringart_20260502_141824.svg" type="image/svg+xml" style="width: 100%; height: 400px; background: white;">
-                        <img src="examples/cat_photo_render_20260502_141824.png" alt="SVG fallback">
+                    <object data="examples/cat_photo_stringart_20260502_143518.svg" type="image/svg+xml" style="width: 100%; height: 400px; background: white;">
+                        <img src="examples/cat_photo_render_20260502_143518.png" alt="SVG fallback">
                     </object>
                     <div class="caption">
                         <h3>SVG Output (Zoomable)</h3>
@@ -240,9 +244,9 @@
                 </div>
                 
                 <div class="image-card">
-                    <img src="examples/cat_photo_comparison_20260502_141824.png" alt="Comparison">
+                    <img src="examples/cat_photo_comparison_20260502_143518.png" alt="Comparison v2.0">
                     <div class="caption">
-                        <h3>Side-by-Side Comparison</h3>
+                        <h3>Comparison (v2.0)</h3>
                         <p>Original vs String Art Result</p>
                     </div>
                 </div>
@@ -255,20 +259,25 @@
             <a href="svg-viewer.html" class="btn">
                 🔍 Open SVG Viewer (Full Screen)
             </a>
-            <a href="examples/cat_photo_stringart_20260502_141824.svg" class="btn" download>
-                📥 Download SVG (600mm × 600mm)
+            <a href="examples/cat_photo_stringart_20260502_143518.svg" class="btn" download>
+                📥 Download SVG v2.0 (600mm × 600mm)
             </a>
         </div>
         
         <div class="specs">
-            <h3>🎯 How It Works</h3>
+            <h3>🎯 How It Works (v2.0.0)</h3>
             <ol style="padding-left: 20px; color: #555;">
+                <li style="margin: 15px 0;"><strong>Preprocessing:</strong> Detect edges using Sobel gradient to identify important features</li>
                 <li style="margin: 15px 0;"><strong>Setup:</strong> Place N pins evenly around a circle</li>
-                <li style="margin: 15px 0;"><strong>Greedy Selection:</strong> At each step, try all valid next pins and select the one that creates the line with maximum darkness match</li>
+                <li style="margin: 15px 0;"><strong>Feature-Aware Selection:</strong> At each step, try all valid next pins and select the one that best matches BOTH darkness AND edge strength</li>
                 <li style="margin: 15px 0;"><strong>Draw:</strong> Draw that line (lighten pixels along the path)</li>
                 <li style="margin: 15px 0;"><strong>Repeat:</strong> Continue until max lines reached or no improvement possible</li>
                 <li style="margin: 15px 0;"><strong>Export:</strong> Generate SVG with precise measurements for physical construction</li>
             </ol>
+            <p style="margin-top: 20px; padding: 15px; background: #f0f8ff; border-left: 4px solid #667eea; color: #555;">
+                <strong>✨ New in v2.0.0:</strong> Edge detection ensures important features (eyes, nose, ears) are prioritized, 
+                resulting in much clearer and sharper output compared to v1.0.0.
+            </p>
         </div>
         
         <footer>
