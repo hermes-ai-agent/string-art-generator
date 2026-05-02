@@ -130,7 +130,10 @@ func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 	return enhanced, edges
 }
 
-// enhanceContrast applies CLAHE-like contrast enhancement
+// enhanceContrast applies contrast enhancement with gamma correction
+// For string art with opaque strokes, we need to LIGHTEN the target
+// because opaque lines accumulate very quickly to solid black.
+// We apply gamma > 1 to lift shadows and prevent over-darkening.
 func enhanceContrast(img *image.Gray, width, height int) *image.Gray {
 	// Calculate histogram
 	var histogram [256]int
@@ -160,7 +163,13 @@ func enhanceContrast(img *image.Gray, width, height int) *image.Gray {
 		}
 	}
 
-	// Apply contrast stretching
+	// Apply contrast stretching + gamma correction
+	// Gamma > 1 lifts shadows (makes dark areas lighter)
+	// This is CRITICAL for opaque-stroke string art:
+	// Without gamma, the algorithm tries to make areas solid black,
+	// but with opaque strokes that looks terrible (no detail in shadows)
+	gamma := 1.8 // Lift shadows significantly
+	
 	result := image.NewGray(img.Bounds())
 	rangeVal := float64(highVal - lowVal)
 	if rangeVal < 1 {
@@ -171,14 +180,16 @@ func enhanceContrast(img *image.Gray, width, height int) *image.Gray {
 		for x := 0; x < width; x++ {
 			val := float64(img.GrayAt(x, y).Y)
 			// Stretch to full range
-			stretched := (val - float64(lowVal)) / rangeVal * 255.0
+			stretched := (val - float64(lowVal)) / rangeVal
 			if stretched < 0 {
 				stretched = 0
 			}
-			if stretched > 255 {
-				stretched = 255
+			if stretched > 1 {
+				stretched = 1
 			}
-			result.SetGray(x, y, color.Gray{Y: uint8(stretched)})
+			// Apply gamma (lifts shadows)
+			gammaApplied := math.Pow(stretched, 1.0/gamma) * 255.0
+			result.SetGray(x, y, color.Gray{Y: uint8(gammaApplied)})
 		}
 	}
 

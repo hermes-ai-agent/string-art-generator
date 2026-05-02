@@ -69,10 +69,11 @@ func GenerateStringArtV5(img *image.Gray, edgeMap *image.Gray, config *Config) (
 
 	for i := 0; i < config.NumLines; i++ {
 		// Adaptive line weight: reduce as we progress to capture fine details
+		// With opaque strokes, we need to be conservative to avoid over-darkening
 		progress := float64(i) / float64(config.NumLines)
-		adaptiveWeight := baseWeight * (1.0 - 0.4*progress) // Start at 100%, end at 60%
-		if adaptiveWeight < 8 {
-			adaptiveWeight = 8
+		adaptiveWeight := baseWeight * (1.0 - 0.5*progress) // Start at 100%, end at 50%
+		if adaptiveWeight < 6 {
+			adaptiveWeight = 6
 		}
 
 		bestLine := findBestLineV5(currentPin, pins, canvas, target, edgeMap, importance,
@@ -390,14 +391,18 @@ func findBestLineV5(fromPin int, pins []Pin, canvas, target [][]float64, edgeMap
 	return Line{From: fromPin, To: best.toPin, Score: best.score}
 }
 
-// evaluateLineV5 calculates the error reduction if we draw this line
-// Uses "fear removal" approach: only counts pixels that improve
+// evaluateLineV5 calculates the net error reduction if we draw this line
+// CRITICAL: With opaque strokes (mandatory rule), over-darkening is heavily penalized
+// because every line is fully visible and cannot be "hidden" by transparency.
+// The algorithm must be very selective about where to place lines.
 func evaluateLineV5(pixels []AntiAliasedPixel, canvas, target [][]float64,
 	edgeMap *image.Gray, importance [][]float64,
 	lineWeight, edgeWeight float64) float64 {
 
-	totalImprovement := 0.0
+	totalScore := 0.0
 	totalWeight := 0.0
+	improvingPixels := 0
+	worseningPixels := 0
 
 	for _, p := range pixels {
 		x, y := p.X, p.Y
@@ -413,39 +418,64 @@ func evaluateLineV5(pixels []AntiAliasedPixel, canvas, target [][]float64,
 			newVal = 0
 		}
 
-		// Error before and after
-		oldError := (currentVal - targetVal) * (currentVal - targetVal) // Squared error
+		// Error before and after (squared)
+		oldError := (currentVal - targetVal) * (currentVal - targetVal)
 		newError := (newVal - targetVal) * (newVal - targetVal)
 
-		// Improvement = reduction in squared error
+		// Net improvement (positive = better, negative = worse)
 		improvement := oldError - newError
-
-		// Fear removal: only count improvements (ignore worsening)
-		if improvement <= 0 {
-			continue
-		}
 
 		// Weight by importance
 		imp := importance[y][x]
 
-		// Edge bonus
+		// Edge bonus for improving pixels only
 		edgeVal := float64(edgeMap.GrayAt(x, y).Y) / 255.0
-		edgeBonus := 1.0 + edgeVal*edgeWeight*0.3
+		edgeBonus := 1.0 + edgeVal*edgeWeight*0.2
 
-		totalImprovement += improvement * imp * edgeBonus * w
+		if improvement > 0 {
+			// This pixel improves
+			totalScore += improvement * imp * edgeBonus * w
+			improvingPixels++
+		} else if improvement < 0 {
+			// This pixel gets WORSE (over-darkening)
+			// Penalize heavily - with opaque strokes, over-darkening is very visible
+			totalScore += improvement * imp * 2.0 * w // 2x penalty for worsening
+			worseningPixels++
+		}
+
 		totalWeight += w
 	}
 
 	if totalWeight > 0 {
-		return totalImprovement / totalWeight
+		score := totalScore / totalWeight
+
+		// Additional penalty if too many pixels worsen
+		// A good line should improve most pixels it touches
+		totalPixels := improvingPixels + worseningPixels
+		if totalPixels > 0 {
+			worsenRatio := float64(worseningPixels) / float64(totalPixels)
+			if worsenRatio > 0.5 {
+				// More than half the pixels get worse - heavily penalize
+				score *= (1.0 - worsenRatio)
+			}
+		}
+
+		return score
 	}
 	return 0
 }
 
 // drawLineAAOnCanvas draws an anti-aliased line on the canvas
+// Simulates SVG opaque stroke behavior: each line significantly darkens pixels
+// In SVG with 0.18mm opaque stroke, a line makes pixels nearly black where it passes
+// We simulate this with a high fixed darkening per line crossing
 func drawLineAAOnCanvas(canvas [][]float64, from, to Pin, weight float64, width, height int) {
 	pixels := getAntiAliasedLinePixels(from, to, width, height)
 
+	// SVG simulation: each opaque line crossing darkens by a fixed amount
+	// In real SVG, a 0.18mm stroke at viewBox 600 = ~0.24px at 800px canvas
+	// Multiple lines crossing = additive darkening until black
+	// Use weight as the darkening amount per crossing
 	for _, p := range pixels {
 		darkening := weight * p.Weight
 		canvas[p.Y][p.X] -= darkening
