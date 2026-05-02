@@ -163,12 +163,11 @@ func enhanceContrast(img *image.Gray, width, height int) *image.Gray {
 		}
 	}
 
-	// Apply contrast stretching + gamma correction
-	// Gamma > 1 lifts shadows (makes dark areas lighter)
-	// This is CRITICAL for opaque-stroke string art:
-	// Without gamma, the algorithm tries to make areas solid black,
-	// but with opaque strokes that looks terrible (no detail in shadows)
-	gamma := 1.8 // Lift shadows significantly
+	// Apply contrast stretching + mild gamma correction
+	// Gamma 1.2 = slight shadow lift (was 1.8 which was too aggressive)
+	// The SVG renders LIGHTER than the canvas simulation at mobile resolution
+	// so we need the target to stay relatively dark
+	gamma := 1.2 // Mild shadow lift only
 	
 	result := image.NewGray(img.Bounds())
 	rangeVal := float64(highVal - lowVal)
