@@ -8,7 +8,7 @@ import (
 )
 
 // GenerateStringArt generates string art lines using greedy algorithm with parallel evaluation
-func GenerateStringArt(img *image.Gray, config *Config) []Line {
+func GenerateStringArt(img *image.Gray, edgeMap *image.Gray, config *Config) []Line {
 	bounds := img.Bounds()
 	width, height := bounds.Dx(), bounds.Dy()
 	
@@ -35,7 +35,7 @@ func GenerateStringArt(img *image.Gray, config *Config) []Line {
 
 	// Generate lines
 	for i := 0; i < config.NumLines; i++ {
-		bestLine := findBestLine(currentPin, pins, canvas, img, config)
+		bestLine := findBestLine(currentPin, pins, canvas, img, edgeMap, config)
 		
 		if bestLine.Score <= 0 {
 			break // No more improvement possible
@@ -82,7 +82,7 @@ func GenerateStringArt(img *image.Gray, config *Config) []Line {
 }
 
 // findBestLine finds the best next line using parallel evaluation
-func findBestLine(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, config *Config) Line {
+func findBestLine(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, edgeMap *image.Gray, config *Config) Line {
 	numPins := len(pins)
 	
 	// v2.1.0: Random sampling optimization
@@ -132,11 +132,11 @@ func findBestLine(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, conf
 		go func() {
 			defer wg.Done()
 			for j := range jobs {
-				score := evaluateLine(fromPin, j.toPin, pins, canvas, img, config)
+				score := evaluateLine(fromPin, j.toPin, pins, canvas, img, edgeMap, config)
 				
 				// v2.2.0: Look-ahead optimization
 				if config.LookAhead {
-					futureScore := evaluateLookAhead(j.toPin, pins, canvas, img, config)
+					futureScore := evaluateLookAhead(j.toPin, pins, canvas, img, edgeMap, config)
 					score = score*0.7 + futureScore*0.3 // Weighted combination
 				}
 				
@@ -178,7 +178,8 @@ func findBestLine(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, conf
 }
 
 // evaluateLine calculates the score for a potential line
-func evaluateLine(fromPin, toPin int, pins []Pin, canvas [][]int, img *image.Gray, config *Config) float64 {
+// Python v2.0.0 logic: score = remaining darkness in target image
+func evaluateLine(fromPin, toPin int, pins []Pin, canvas [][]int, img *image.Gray, edgeMap *image.Gray, config *Config) float64 {
 	from := pins[fromPin]
 	to := pins[toPin]
 
@@ -203,19 +204,36 @@ func evaluateLine(fromPin, toPin int, pins []Pin, canvas [][]int, img *image.Gra
 			continue
 		}
 
-		// Get target darkness (inverted: 0 = white, 255 = black)
-		targetDarkness := 255 - int(img.GrayAt(x, y).Y)
+		// Python approach:
+		// - img_array starts as original image (dark = low value)
+		// - After each line, img_array gets LIGHTENED (value increases)
+		// - Score = darkness = 255 - img_array (remaining darkness to cover)
+		//
+		// Go equivalent:
+		// - img = original image (dark = low value) - IMMUTABLE
+		// - canvas starts WHITE (255), gets DARKENED (value decreases)
+		// - Remaining work = target_darkness - canvas_darkness
+		// - target_darkness = 255 - img
+		// - canvas_darkness = 255 - canvas
+		// - remaining = (255 - img) - (255 - canvas) = canvas - img
 		
-		// Get current canvas darkness
+		targetDarkness := 255 - int(img.GrayAt(x, y).Y)
 		canvasDarkness := 255 - canvas[y][x]
-
-		// Score: how much this line would improve the match
-		// Only count if canvas is lighter than target (we can still darken it)
-		if canvasDarkness < targetDarkness {
-			improvement := float64(min(config.LineWeight, targetDarkness-canvasDarkness))
-			score += improvement
-			validPixels++
+		remainingDarkness := targetDarkness - canvasDarkness
+		
+		// Only score if there's remaining darkness to add
+		if remainingDarkness <= 0 {
+			continue
 		}
+		
+		// Get edge strength from original edge map
+		edgeStrength := float64(edgeMap.GrayAt(x, y).Y)
+
+		// Combined score with edge weighting
+		pixelScore := float64(remainingDarkness) + (edgeStrength * config.EdgeWeight)
+		
+		score += pixelScore
+		validPixels++
 	}
 
 	// Normalize by line length
@@ -227,7 +245,7 @@ func evaluateLine(fromPin, toPin int, pins []Pin, canvas [][]int, img *image.Gra
 }
 
 // evaluateLookAhead calculates future score for look-ahead optimization (v2.2.0)
-func evaluateLookAhead(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, config *Config) float64 {
+func evaluateLookAhead(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, edgeMap *image.Gray, config *Config) float64 {
 	// Sample a few future moves and return average score
 	numPins := len(pins)
 	sampleSize := min(20, numPins/10) // Sample 20 pins or 10% of total
@@ -247,7 +265,7 @@ func evaluateLookAhead(fromPin int, pins []Pin, canvas [][]int, img *image.Gray,
 			continue
 		}
 		
-		score := evaluateLine(fromPin, toPin, pins, canvas, img, config)
+		score := evaluateLine(fromPin, toPin, pins, canvas, img, edgeMap, config)
 		totalScore += score
 		validSamples++
 	}

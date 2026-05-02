@@ -15,6 +15,7 @@ type Config struct {
 	LineWeight      int
 	MinDistance     int
 	Workers         int
+	EdgeWeight      float64 // Edge detection multiplier (prioritize edges)
 	Opacity         float64 // v2.1.0: Non-opaque string support (0.0-1.0)
 	RandomSampling  bool    // v2.1.0: Random sampling optimization
 	SampleSize      int     // v2.1.0: Number of pins to sample per iteration
@@ -51,7 +52,8 @@ func LoadImage(path string) (image.Image, error) {
 }
 
 // PreprocessImage applies edge detection (Sobel filter)
-func PreprocessImage(img image.Image) *image.Gray {
+// Returns both processed image and edge map
+func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 	bounds := img.Bounds()
 	width, height := bounds.Dx(), bounds.Dy()
 	
@@ -115,7 +117,7 @@ func PreprocessImage(img image.Image) *image.Gray {
 		}
 	}
 
-	return result
+	return result, edges
 }
 
 // GeneratePins creates evenly spaced pins around a circle

@@ -18,6 +18,7 @@ func main() {
 	lineWeight := flag.Int("weight", 30, "Line weight (darkness contribution)")
 	minDistance := flag.Int("min-dist", 20, "Minimum distance between consecutive pins")
 	workers := flag.Int("workers", 8, "Number of parallel workers for line evaluation")
+	edgeWeight := flag.Float64("edge-weight", 2.0, "Edge detection multiplier (prioritize edges, default 2.0)")
 	
 	// v2.1.0 parameters
 	opacity := flag.Float64("opacity", 1.0, "String opacity (0.0-1.0, default 1.0)")
@@ -73,7 +74,7 @@ func main() {
 	}
 
 	fmt.Println("Preprocessing image (edge detection)...")
-	processed := PreprocessImage(img)
+	processed, edgeMap := PreprocessImage(img)
 
 	// Generate string art
 	fmt.Println("Generating string art...")
@@ -83,6 +84,7 @@ func main() {
 		LineWeight:     *lineWeight,
 		MinDistance:    *minDistance,
 		Workers:        *workers,
+		EdgeWeight:     *edgeWeight,
 		Opacity:        *opacity,
 		RandomSampling: *randomSampling,
 		SampleSize:     *sampleSize,
@@ -91,7 +93,7 @@ func main() {
 		LookAhead:      *lookAhead,
 	}
 
-	lines := GenerateStringArt(processed, config)
+	lines := GenerateStringArt(processed, edgeMap, config)
 
 	// Export to SVG
 	fmt.Println("Exporting to SVG...")
