@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"image"
 	"math"
 	"sync"
@@ -29,6 +30,9 @@ func GenerateStringArt(img *image.Gray, config *Config) []Line {
 	lines := make([]Line, 0, config.NumLines)
 	currentPin := 0
 
+	// v2.2.0: Adaptive stopping - track recent scores
+	recentScores := make([]float64, 0, 10)
+
 	// Generate lines
 	for i := 0; i < config.NumLines; i++ {
 		bestLine := findBestLine(currentPin, pins, canvas, img, config)
@@ -37,19 +41,76 @@ func GenerateStringArt(img *image.Gray, config *Config) []Line {
 			break // No more improvement possible
 		}
 
+		// v2.2.0: Adaptive stopping - check quality plateau
+		if config.AdaptiveStop && len(recentScores) >= 10 {
+			avgScore := 0.0
+			for _, s := range recentScores {
+				avgScore += s
+			}
+			avgScore /= float64(len(recentScores))
+			
+			if avgScore < config.StopThreshold {
+				fmt.Printf("Adaptive stop at line %d (avg score: %.2f < threshold: %.2f)\n", 
+					i, avgScore, config.StopThreshold)
+				break
+			}
+		}
+
+		// v2.1.0: Apply opacity to line weight
+		effectiveWeight := int(float64(config.LineWeight) * config.Opacity)
+		
 		// Draw line on canvas
-		drawLine(canvas, pins[bestLine.From], pins[bestLine.To], config.LineWeight)
+		drawLine(canvas, pins[bestLine.From], pins[bestLine.To], effectiveWeight)
 		
 		lines = append(lines, bestLine)
 		currentPin = bestLine.To
+
+		// v2.2.0: Track score for adaptive stopping
+		recentScores = append(recentScores, bestLine.Score)
+		if len(recentScores) > 10 {
+			recentScores = recentScores[1:]
+		}
+
+		// Progress reporting
+		if (i+1)%100 == 0 {
+			fmt.Printf("Progress: %d/%d lines (score: %.2f)\n", i+1, config.NumLines, bestLine.Score)
+		}
 	}
 
+	fmt.Printf("Generated %d lines\n", len(lines))
 	return lines
 }
 
 // findBestLine finds the best next line using parallel evaluation
 func findBestLine(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, config *Config) Line {
 	numPins := len(pins)
+	
+	// v2.1.0: Random sampling optimization
+	candidatePins := make([]int, 0, numPins)
+	for toPin := 0; toPin < numPins; toPin++ {
+		// Skip invalid connections
+		distance := abs(toPin - fromPin)
+		if distance < config.MinDistance && distance > 0 {
+			continue
+		}
+		if numPins-distance < config.MinDistance {
+			continue
+		}
+		if toPin == fromPin {
+			continue
+		}
+		candidatePins = append(candidatePins, toPin)
+	}
+
+	// v2.1.0: Apply random sampling if enabled
+	if config.RandomSampling && len(candidatePins) > config.SampleSize {
+		// Shuffle and take first SampleSize elements
+		for i := range candidatePins {
+			j := i + int(math.Floor(float64(len(candidatePins)-i)*0.5)) // Simple pseudo-random
+			candidatePins[i], candidatePins[j] = candidatePins[j], candidatePins[i]
+		}
+		candidatePins = candidatePins[:config.SampleSize]
+	}
 	
 	// Create worker pool
 	type job struct {
@@ -60,8 +121,8 @@ func findBestLine(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, conf
 		score float64
 	}
 
-	jobs := make(chan job, numPins)
-	results := make(chan result, numPins)
+	jobs := make(chan job, len(candidatePins))
+	results := make(chan result, len(candidatePins))
 	
 	var wg sync.WaitGroup
 
@@ -72,6 +133,13 @@ func findBestLine(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, conf
 			defer wg.Done()
 			for j := range jobs {
 				score := evaluateLine(fromPin, j.toPin, pins, canvas, img, config)
+				
+				// v2.2.0: Look-ahead optimization
+				if config.LookAhead {
+					futureScore := evaluateLookAhead(j.toPin, pins, canvas, img, config)
+					score = score*0.7 + futureScore*0.3 // Weighted combination
+				}
+				
 				results <- result{toPin: j.toPin, score: score}
 			}
 		}()
@@ -79,19 +147,7 @@ func findBestLine(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, conf
 
 	// Send jobs
 	go func() {
-		for toPin := 0; toPin < numPins; toPin++ {
-			// Skip invalid connections
-			distance := abs(toPin - fromPin)
-			if distance < config.MinDistance && distance > 0 {
-				continue
-			}
-			if numPins-distance < config.MinDistance {
-				continue
-			}
-			if toPin == fromPin {
-				continue
-			}
-
+		for _, toPin := range candidatePins {
 			jobs <- job{toPin: toPin}
 		}
 		close(jobs)
@@ -168,6 +224,38 @@ func evaluateLine(fromPin, toPin int, pins []Pin, canvas [][]int, img *image.Gra
 	}
 
 	return score
+}
+
+// evaluateLookAhead calculates future score for look-ahead optimization (v2.2.0)
+func evaluateLookAhead(fromPin int, pins []Pin, canvas [][]int, img *image.Gray, config *Config) float64 {
+	// Sample a few future moves and return average score
+	numPins := len(pins)
+	sampleSize := min(20, numPins/10) // Sample 20 pins or 10% of total
+	
+	totalScore := 0.0
+	validSamples := 0
+	
+	for i := 0; i < sampleSize; i++ {
+		toPin := (fromPin + i*numPins/sampleSize) % numPins
+		
+		// Skip invalid connections
+		distance := abs(toPin - fromPin)
+		if distance < config.MinDistance && distance > 0 {
+			continue
+		}
+		if numPins-distance < config.MinDistance {
+			continue
+		}
+		
+		score := evaluateLine(fromPin, toPin, pins, canvas, img, config)
+		totalScore += score
+		validSamples++
+	}
+	
+	if validSamples > 0 {
+		return totalScore / float64(validSamples)
+	}
+	return 0.0
 }
 
 // drawLine draws a line on the canvas

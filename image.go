@@ -10,11 +10,17 @@ import (
 
 // Config holds string art generation parameters
 type Config struct {
-	NumPins     int
-	NumLines    int
-	LineWeight  int
-	MinDistance int
-	Workers     int
+	NumPins         int
+	NumLines        int
+	LineWeight      int
+	MinDistance     int
+	Workers         int
+	Opacity         float64 // v2.1.0: Non-opaque string support (0.0-1.0)
+	RandomSampling  bool    // v2.1.0: Random sampling optimization
+	SampleSize      int     // v2.1.0: Number of pins to sample per iteration
+	AdaptiveStop    bool    // v2.2.0: Adaptive stopping condition
+	StopThreshold   float64 // v2.2.0: Quality plateau threshold
+	LookAhead       bool    // v2.2.0: Look-ahead optimization (1-step minimax)
 }
 
 // Pin represents a point on the circle

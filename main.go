@@ -19,6 +19,16 @@ func main() {
 	minDistance := flag.Int("min-dist", 20, "Minimum distance between consecutive pins")
 	workers := flag.Int("workers", 8, "Number of parallel workers for line evaluation")
 	
+	// v2.1.0 parameters
+	opacity := flag.Float64("opacity", 1.0, "String opacity (0.0-1.0, default 1.0)")
+	randomSampling := flag.Bool("random-sampling", false, "Enable random sampling optimization")
+	sampleSize := flag.Int("sample-size", 1000, "Number of pins to sample per iteration (with --random-sampling)")
+	
+	// v2.2.0 parameters
+	adaptiveStop := flag.Bool("adaptive-stop", true, "Enable adaptive stopping (quality plateau detection)")
+	stopThreshold := flag.Float64("stop-threshold", 0.5, "Quality plateau threshold for adaptive stopping")
+	lookAhead := flag.Bool("look-ahead", false, "Enable look-ahead optimization (slower, better quality)")
+	
 	flag.Parse()
 
 	if *inputPath == "" {
@@ -68,11 +78,17 @@ func main() {
 	// Generate string art
 	fmt.Println("Generating string art...")
 	config := &Config{
-		NumPins:     *numPins,
-		NumLines:    *numLines,
-		LineWeight:  *lineWeight,
-		MinDistance: *minDistance,
-		Workers:     *workers,
+		NumPins:        *numPins,
+		NumLines:       *numLines,
+		LineWeight:     *lineWeight,
+		MinDistance:    *minDistance,
+		Workers:        *workers,
+		Opacity:        *opacity,
+		RandomSampling: *randomSampling,
+		SampleSize:     *sampleSize,
+		AdaptiveStop:   *adaptiveStop,
+		StopThreshold:  *stopThreshold,
+		LookAhead:      *lookAhead,
 	}
 
 	lines := GenerateStringArt(processed, config)
