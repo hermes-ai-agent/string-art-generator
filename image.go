@@ -13,7 +13,7 @@ type Config struct {
 	NumPins         int
 	NumLines        int
 	LineWeight      int
-	MinDistance     int
+	MinDistance      int
 	Workers         int
 	EdgeWeight      float64 // Edge detection multiplier (prioritize edges)
 	Opacity         float64 // v2.1.0: Non-opaque string support (0.0-1.0)
@@ -42,8 +42,8 @@ func LoadImage(path string) (image.Image, error) {
 		return nil, err
 	}
 
-	// Resize to 600x600 for processing
-	img = imaging.Resize(img, 600, 600, imaging.Lanczos)
+	// Resize to 800x800 for better quality (was 600x600)
+	img = imaging.Resize(img, 800, 800, imaging.Lanczos)
 	
 	// Convert to grayscale
 	gray := imaging.Grayscale(img)
@@ -51,8 +51,25 @@ func LoadImage(path string) (image.Image, error) {
 	return gray, nil
 }
 
+// LoadImageRGBA loads an image with alpha channel preserved
+func LoadImageRGBA(path string) (*image.NRGBA, error) {
+	img, err := imaging.Open(path)
+	if err != nil {
+		return nil, err
+	}
+
+	// Resize to 800x800 for processing
+	img = imaging.Resize(img, 800, 800, imaging.Lanczos)
+	
+	// Convert to NRGBA (preserves alpha)
+	nrgba := imaging.Clone(img)
+	
+	return nrgba, nil
+}
+
 // PreprocessImage applies edge detection (Sobel filter)
-// Returns both processed image and edge map
+// Returns the RAW grayscale image and edge map separately
+// IMPORTANT: The raw grayscale is the TARGET for string art generation
 func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 	bounds := img.Bounds()
 	width, height := bounds.Dx(), bounds.Dy()
@@ -67,6 +84,9 @@ func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 			}
 		}
 	}
+
+	// Apply slight contrast enhancement to the grayscale
+	enhanced := enhanceContrast(gray, width, height)
 
 	// Apply Sobel edge detection
 	edges := image.NewGray(bounds)
@@ -90,7 +110,7 @@ func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 			// Apply Sobel kernels
 			for ky := -1; ky <= 1; ky++ {
 				for kx := -1; kx <= 1; kx++ {
-					pixel := float64(gray.GrayAt(x+kx, y+ky).Y)
+					pixel := float64(enhanced.GrayAt(x+kx, y+ky).Y)
 					gx += pixel * float64(sobelX[ky+1][kx+1])
 					gy += pixel * float64(sobelY[ky+1][kx+1])
 				}
@@ -106,14 +126,128 @@ func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 		}
 	}
 
-	// Combine original with edges (70% edges, 30% original)
-	result := image.NewGray(bounds)
+	// Return the ENHANCED grayscale (not edge-blended!) and edge map
+	return enhanced, edges
+}
+
+// enhanceContrast applies CLAHE-like contrast enhancement
+func enhanceContrast(img *image.Gray, width, height int) *image.Gray {
+	// Calculate histogram
+	var histogram [256]int
 	for y := 0; y < height; y++ {
 		for x := 0; x < width; x++ {
-			edgeVal := float64(edges.GrayAt(x, y).Y)
-			origVal := float64(gray.GrayAt(x, y).Y)
-			combined := edgeVal*0.7 + origVal*0.3
-			result.SetGray(x, y, color.Gray{Y: uint8(combined)})
+			histogram[img.GrayAt(x, y).Y]++
+		}
+	}
+
+	// Find 2% and 98% percentiles for contrast stretching
+	totalPixels := width * height
+	lowThreshold := int(float64(totalPixels) * 0.02)
+	highThreshold := int(float64(totalPixels) * 0.98)
+
+	cumSum := 0
+	lowVal := 0
+	highVal := 255
+
+	for i := 0; i < 256; i++ {
+		cumSum += histogram[i]
+		if cumSum >= lowThreshold && lowVal == 0 {
+			lowVal = i
+		}
+		if cumSum >= highThreshold {
+			highVal = i
+			break
+		}
+	}
+
+	// Apply contrast stretching
+	result := image.NewGray(img.Bounds())
+	rangeVal := float64(highVal - lowVal)
+	if rangeVal < 1 {
+		rangeVal = 1
+	}
+
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			val := float64(img.GrayAt(x, y).Y)
+			// Stretch to full range
+			stretched := (val - float64(lowVal)) / rangeVal * 255.0
+			if stretched < 0 {
+				stretched = 0
+			}
+			if stretched > 255 {
+				stretched = 255
+			}
+			result.SetGray(x, y, color.Gray{Y: uint8(stretched)})
+		}
+	}
+
+	return result
+}
+
+// PreprocessImageRGBA applies edge detection with alpha channel awareness
+func PreprocessImageRGBA(img *image.NRGBA) (*image.NRGBA, *image.Gray) {
+	bounds := img.Bounds()
+	width, height := bounds.Dx(), bounds.Dy()
+	
+	// Convert to grayscale for edge detection
+	gray := image.NewGray(bounds)
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			r, g, b, _ := img.At(x, y).RGBA()
+			// Standard grayscale conversion
+			grayVal := uint8((r*299 + g*587 + b*114) / 1000 / 256)
+			gray.SetGray(x, y, color.Gray{Y: grayVal})
+		}
+	}
+	
+	// Apply Sobel edge detection
+	edges := image.NewGray(bounds)
+	
+	sobelX := [][]int{
+		{-1, 0, 1},
+		{-2, 0, 2},
+		{-1, 0, 1},
+	}
+	sobelY := [][]int{
+		{-1, -2, -1},
+		{0, 0, 0},
+		{1, 2, 1},
+	}
+
+	for y := 1; y < height-1; y++ {
+		for x := 1; x < width-1; x++ {
+			var gx, gy float64
+
+			for ky := -1; ky <= 1; ky++ {
+				for kx := -1; kx <= 1; kx++ {
+					pixel := float64(gray.GrayAt(x+kx, y+ky).Y)
+					gx += pixel * float64(sobelX[ky+1][kx+1])
+					gy += pixel * float64(sobelY[ky+1][kx+1])
+				}
+			}
+
+			magnitude := math.Sqrt(gx*gx + gy*gy)
+			if magnitude > 255 {
+				magnitude = 255
+			}
+
+			edges.SetGray(x, y, color.Gray{Y: uint8(magnitude)})
+		}
+	}
+	
+	// Create result with grayscale + alpha preserved
+	result := image.NewNRGBA(bounds)
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			grayVal := gray.GrayAt(x, y).Y
+			_, _, _, alpha := img.At(x, y).RGBA()
+			result.SetNRGBA(x, y, color.NRGBA{
+				R: grayVal,
+				G: grayVal,
+				B: grayVal,
+				A: uint8(alpha >> 8),
+			})
 		}
 	}
 

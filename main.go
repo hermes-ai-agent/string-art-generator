@@ -13,12 +13,12 @@ func main() {
 	// CLI flags
 	inputPath := flag.String("input", "", "Input image path (required)")
 	outputPath := flag.String("output", "", "Output SVG path (default: auto-generated)")
-	numPins := flag.Int("pins", 200, "Number of pins around the circle")
-	numLines := flag.Int("lines", 2000, "Number of lines to draw")
-	lineWeight := flag.Int("weight", 30, "Line weight (darkness contribution)")
-	minDistance := flag.Int("min-dist", 20, "Minimum distance between consecutive pins")
+	numPins := flag.Int("pins", 300, "Number of pins around the circle (default: 300)")
+	numLines := flag.Int("lines", 4000, "Number of lines to draw (default: 4000)")
+	lineWeight := flag.Int("weight", 20, "Line weight (darkness contribution, default: 20)")
+	minDistance := flag.Int("min-dist", 15, "Minimum distance between consecutive pins (default: 15)")
 	workers := flag.Int("workers", 8, "Number of parallel workers for line evaluation")
-	edgeWeight := flag.Float64("edge-weight", 2.0, "Edge detection multiplier (prioritize edges, default 2.0)")
+	edgeWeight := flag.Float64("edge-weight", 3.0, "Edge detection multiplier (default 3.0)")
 	
 	// v2.1.0 parameters
 	opacity := flag.Float64("opacity", 1.0, "String opacity (0.0-1.0, default 1.0)")
@@ -35,6 +35,12 @@ func main() {
 	
 	// v5.0.0 parameters (simulated annealing)
 	useSimulatedAnnealing := flag.Bool("sa", false, "Use Simulated Annealing algorithm (slower, better quality)")
+	
+	// v3.8.0 parameters (high-contrast)
+	highContrast := flag.Bool("high-contrast", false, "Focus on high-contrast areas only (better for recognizable subjects)")
+
+	// v5.0.0 parameters (legacy mode)
+	legacyMode := flag.Bool("legacy", false, "Use legacy v3.x generator instead of v5.0")
 	
 	flag.Parse()
 
@@ -66,8 +72,8 @@ func main() {
 		log.Fatalf("Failed to create output directory: %v", err)
 	}
 
-	fmt.Printf("String Art Generator (Go)\n")
-	fmt.Printf("=========================\n")
+	fmt.Printf("String Art Generator v5.0 (Go)\n")
+	fmt.Printf("==============================\n")
 	fmt.Printf("Input:        %s\n", *inputPath)
 	fmt.Printf("Output:       %s\n", *outputPath)
 	fmt.Printf("Pins:         %d\n", *numPins)
@@ -86,7 +92,7 @@ func main() {
 		log.Fatalf("Failed to load image: %v", err)
 	}
 
-	fmt.Println("Preprocessing image (edge detection)...")
+	fmt.Println("Preprocessing image (edge detection + contrast enhancement)...")
 	processed, edgeMap := PreprocessImage(img)
 
 	// Generate string art
@@ -106,60 +112,68 @@ func main() {
 		LookAhead:      *lookAhead,
 	}
 
-	var canvas [][]int
+	var canvasInt [][]int
 	
-	if *useSimulatedAnnealing {
-		// Simulated Annealing mode
-		fmt.Println("Mode: SIMULATED ANNEALING (global optimization)")
-		lines, canvasSA := GenerateStringArtSA(processed, edgeMap, config)
-		canvas = canvasSA
-		
-		// Export to SVG
-		fmt.Println("Exporting to SVG...")
-		if err := ExportSVG(lines, config, *outputPath); err != nil {
-			log.Fatalf("Failed to export SVG: %v", err)
+	if *legacyMode {
+		// Legacy modes
+		if *highContrast {
+			fmt.Println("Mode: LEGACY HIGH-CONTRAST")
+			lines, canvasHC := GenerateStringArtHighContrast(processed, edgeMap, config)
+			canvasInt = canvasHC
+			if err := ExportSVG(lines, config, *outputPath); err != nil {
+				log.Fatalf("Failed to export SVG: %v", err)
+			}
+		} else if *useSimulatedAnnealing {
+			fmt.Println("Mode: LEGACY SIMULATED ANNEALING")
+			lines, canvasSA := GenerateStringArtSA(processed, edgeMap, config)
+			canvasInt = canvasSA
+			if err := ExportSVG(lines, config, *outputPath); err != nil {
+				log.Fatalf("Failed to export SVG: %v", err)
+			}
+		} else if *dualColor {
+			fmt.Println("Mode: LEGACY DUAL-COLOR")
+			imgRGBA, err := LoadImageRGBA(*inputPath)
+			if err != nil {
+				log.Fatalf("Failed to load RGBA image: %v", err)
+			}
+			processedRGBA, edgeMapRGBA := PreprocessImageRGBA(imgRGBA)
+			blackLines, whiteLines, canvasDual := GenerateStringArtDual(processedRGBA, edgeMapRGBA, config)
+			canvasInt = canvasDual
+			if err := ExportSVGDual(blackLines, whiteLines, config, *outputPath); err != nil {
+				log.Fatalf("Failed to export SVG: %v", err)
+			}
+		} else {
+			fmt.Println("Mode: LEGACY SINGLE-COLOR")
+			lines, canvasSingle := GenerateStringArt(processed, edgeMap, config)
+			canvasInt = canvasSingle
+			if err := ExportSVG(lines, config, *outputPath); err != nil {
+				log.Fatalf("Failed to export SVG: %v", err)
+			}
 		}
-	} else if *dualColor {
-		// Dual-color mode: black + white threads
-		fmt.Println("Mode: DUAL-COLOR (black + white threads)")
-		
-		// Load image with alpha channel
-		imgRGBA, err := LoadImageRGBA(*inputPath)
-		if err != nil {
-			log.Fatalf("Failed to load RGBA image: %v", err)
-		}
-		
-		// Preprocess with alpha awareness
-		processedRGBA, edgeMapRGBA := PreprocessImageRGBA(imgRGBA)
-		
-		blackLines, whiteLines, canvasDual := GenerateStringArtDual(processedRGBA, edgeMapRGBA, config)
-		canvas = canvasDual
-		
-		// Export dual-color SVG
-		fmt.Println("Exporting dual-color SVG...")
-		if err := ExportSVGDual(blackLines, whiteLines, config, *outputPath); err != nil {
-			log.Fatalf("Failed to export SVG: %v", err)
-		}
-	} else {
-		// Single-color mode (original)
-		fmt.Println("Mode: SINGLE-COLOR (black threads only)")
-		lines, canvasSingle := GenerateStringArt(processed, edgeMap, config)
-		canvas = canvasSingle
-		
-		// Export to SVG
-		fmt.Println("Exporting to SVG...")
-		if err := ExportSVG(lines, config, *outputPath); err != nil {
-			log.Fatalf("Failed to export SVG: %v", err)
-		}
-	}
 
-	// Render canvas state to PNG (for showcase - this is what Python does)
-	canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
-	fmt.Println("Rendering canvas state to PNG...")
-	if err := RenderCanvasToImage(canvas, canvasPngPath); err != nil {
-		log.Fatalf("Failed to render canvas: %v", err)
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasToImage(canvasInt, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else {
+		// V5.0 mode (default)
+		fmt.Println("Mode: V5.0 (error reduction + anti-aliasing + fear removal + line removal)")
+		lines, canvasF := GenerateStringArtV5(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 	}
-	fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 
 	elapsed := time.Since(startTime)
 	fmt.Printf("\n✓ Done in %.2f seconds\n", elapsed.Seconds())
