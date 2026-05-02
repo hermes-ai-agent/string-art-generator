@@ -1,0 +1,2070 @@
+STRING ART CONSTRUCTION INSTRUCTIONS
+==================================================
+
+Version: 2.0.0 (Edge-aware algorithm)
+Total pins: 200
+Total strings: 2000
+Minimum pin distance: 20
+
+SEQUENCE (pin-to-pin):
+--------------------------------------------------
+   1. Pin   0 → Pin  88
+   2. Pin  88 → Pin  10
+   3. Pin  10 → Pin  93
+   4. Pin  93 → Pin   7
+   5. Pin   7 → Pin  92
+   6. Pin  92 → Pin  19
+   7. Pin  19 → Pin  94
+   8. Pin  94 → Pin   8
+   9. Pin   8 → Pin  89
+  10. Pin  89 → Pin  11
+  11. Pin  11 → Pin  94
+  12. Pin  94 → Pin  21
+  13. Pin  21 → Pin  95
+  14. Pin  95 → Pin  22
+  15. Pin  22 → Pin  96
+  16. Pin  96 → Pin  23
+  17. Pin  23 → Pin  97
+  18. Pin  97 → Pin  24
+  19. Pin  24 → Pin  99
+  20. Pin  99 → Pin 190
+  21. Pin 190 → Pin  98
+  22. Pin  98 → Pin  13
+  23. Pin  13 → Pin  87
+  24. Pin  87 → Pin  53
+  25. Pin  53 → Pin  74
+  26. Pin  74 → Pin  54
+  27. Pin  54 → Pin  76
+  28. Pin  76 → Pin  56
+  29. Pin  56 → Pin  77
+  30. Pin  77 → Pin  53
+  31. Pin  53 → Pin  76
+  32. Pin  76 → Pin  48
+  33. Pin  48 → Pin  74
+  34. Pin  74 → Pin 143
+  35. Pin 143 → Pin  73
+  36. Pin  73 → Pin 136
+  37. Pin 136 → Pin  74
+  38. Pin  74 → Pin 142
+  39. Pin 142 → Pin  72
+  40. Pin  72 → Pin 141
+  41. Pin 141 → Pin  71
+  42. Pin  71 → Pin 142
+  43. Pin 142 → Pin  73
+  44. Pin  73 → Pin  53
+  45. Pin  53 → Pin  79
+  46. Pin  79 → Pin  52
+  47. Pin  52 → Pin  76
+  48. Pin  76 → Pin 163
+  49. Pin 163 → Pin  74
+  50. Pin  74 → Pin 161
+  51. Pin 161 → Pin  73
+  52. Pin  73 → Pin  48
+  53. Pin  48 → Pin  77
+  54. Pin  77 → Pin 165
+  55. Pin 165 → Pin  78
+  56. Pin  78 → Pin  52
+  57. Pin  52 → Pin  72
+  58. Pin  72 → Pin 135
+  59. Pin 135 → Pin  71
+  60. Pin  71 → Pin 140
+  61. Pin 140 → Pin  67
+  62. Pin  67 → Pin 132
+  63. Pin 132 → Pin  66
+  64. Pin  66 → Pin 137
+  65. Pin 137 → Pin  65
+  66. Pin  65 → Pin 139
+  67. Pin 139 → Pin  68
+  68. Pin  68 → Pin 141
+  69. Pin 141 → Pin  65
+  70. Pin  65 → Pin 131
+  71. Pin 131 → Pin  64
+  72. Pin  64 → Pin 139
+  73. Pin 139 → Pin  63
+  74. Pin  63 → Pin 130
+  75. Pin 130 → Pin  62
+  76. Pin  62 → Pin 138
+  77. Pin 138 → Pin  67
+  78. Pin  67 → Pin 141
+  79. Pin 141 → Pin  64
+  80. Pin  64 → Pin 136
+  81. Pin 136 → Pin  59
+  82. Pin  59 → Pin 128
+  83. Pin 128 → Pin  58
+  84. Pin  58 → Pin 135
+  85. Pin 135 → Pin  53
+  86. Pin  53 → Pin 125
+  87. Pin 125 → Pin  56
+  88. Pin  56 → Pin 127
+  89. Pin 127 → Pin  57
+  90. Pin  57 → Pin 137
+  91. Pin 137 → Pin  75
+  92. Pin  75 → Pin  55
+  93. Pin  55 → Pin 122
+  94. Pin 122 → Pin  60
+  95. Pin  60 → Pin 129
+  96. Pin 129 → Pin  61
+  97. Pin  61 → Pin 137
+  98. Pin 137 → Pin  76
+  99. Pin  76 → Pin 164
+ 100. Pin 164 → Pin  77
+
+==================================================
+
+ 101. Pin  77 → Pin 171
+ 102. Pin 171 → Pin  78
+ 103. Pin  78 → Pin  48
+ 104. Pin  48 → Pin  75
+ 105. Pin  75 → Pin 162
+ 106. Pin 162 → Pin  74
+ 107. Pin  74 → Pin 141
+ 108. Pin 141 → Pin  70
+ 109. Pin  70 → Pin 134
+ 110. Pin 134 → Pin  71
+ 111. Pin  71 → Pin 157
+ 112. Pin 157 → Pin  70
+ 113. Pin  70 → Pin 140
+ 114. Pin 140 → Pin  69
+ 115. Pin  69 → Pin 133
+ 116. Pin 133 → Pin  68
+ 117. Pin  68 → Pin  48
+ 118. Pin  48 → Pin  72
+ 119. Pin  72 → Pin 158
+ 120. Pin 158 → Pin  71
+ 121. Pin  71 → Pin 159
+ 122. Pin 159 → Pin  73
+ 123. Pin  73 → Pin 160
+ 124. Pin 160 → Pin  71
+ 125. Pin  71 → Pin 151
+ 126. Pin 151 → Pin  68
+ 127. Pin  68 → Pin 138
+ 128. Pin 138 → Pin  66
+ 129. Pin  66 → Pin 140
+ 130. Pin 140 → Pin  63
+ 131. Pin  63 → Pin 138
+ 132. Pin 138 → Pin  58
+ 133. Pin  58 → Pin 125
+ 134. Pin 125 → Pin  59
+ 135. Pin  59 → Pin 123
+ 136. Pin 123 → Pin  56
+ 137. Pin  56 → Pin 134
+ 138. Pin 134 → Pin  52
+ 139. Pin  52 → Pin 118
+ 140. Pin 118 → Pin  33
+ 141. Pin  33 → Pin 116
+ 142. Pin 116 → Pin  31
+ 143. Pin  31 → Pin 117
+ 144. Pin 117 → Pin  54
+ 145. Pin  54 → Pin 126
+ 146. Pin 126 → Pin  55
+ 147. Pin  55 → Pin 136
+ 148. Pin 136 → Pin  75
+ 149. Pin  75 → Pin 144
+ 150. Pin 144 → Pin  62
+ 151. Pin  62 → Pin 139
+ 152. Pin 139 → Pin  38
+ 153. Pin  38 → Pin  76
+ 154. Pin  76 → Pin 199
+ 155. Pin 199 → Pin  77
+ 156. Pin  77 → Pin 173
+ 157. Pin 173 → Pin  79
+ 158. Pin  79 → Pin 179
+ 159. Pin 179 → Pin  78
+ 160. Pin  78 → Pin 166
+ 161. Pin 166 → Pin  76
+ 162. Pin  76 → Pin 143
+ 163. Pin 143 → Pin  69
+ 164. Pin  69 → Pin 142
+ 165. Pin 142 → Pin  40
+ 166. Pin  40 → Pin  75
+ 167. Pin  75 → Pin 143
+ 168. Pin 143 → Pin  62
+ 169. Pin  62 → Pin 128
+ 170. Pin 128 → Pin  57
+ 171. Pin  57 → Pin 120
+ 172. Pin 120 → Pin  54
+ 173. Pin  54 → Pin 135
+ 174. Pin 135 → Pin  73
+ 175. Pin  73 → Pin 154
+ 176. Pin 154 → Pin  67
+ 177. Pin  67 → Pin 149
+ 178. Pin 149 → Pin  74
+ 179. Pin  74 → Pin 197
+ 180. Pin 197 → Pin  86
+ 181. Pin  86 → Pin  12
+ 182. Pin  12 → Pin  89
+ 183. Pin  89 → Pin  15
+ 184. Pin  15 → Pin  95
+ 185. Pin  95 → Pin  12
+ 186. Pin  12 → Pin  97
+ 187. Pin  97 → Pin  25
+ 188. Pin  25 → Pin 101
+ 189. Pin 101 → Pin  26
+ 190. Pin  26 → Pin 104
+ 191. Pin 104 → Pin  30
+ 192. Pin  30 → Pin 110
+ 193. Pin 110 → Pin  33
+ 194. Pin  33 → Pin 117
+ 195. Pin 117 → Pin  34
+ 196. Pin  34 → Pin 131
+ 197. Pin 131 → Pin  31
+ 198. Pin  31 → Pin 108
+ 199. Pin 108 → Pin  29
+ 200. Pin  29 → Pin 107
+
+==================================================
+
+ 201. Pin 107 → Pin  31
+ 202. Pin  31 → Pin 115
+ 203. Pin 115 → Pin  49
+ 204. Pin  49 → Pin 114
+ 205. Pin 114 → Pin  31
+ 206. Pin  31 → Pin 105
+ 207. Pin 105 → Pin  28
+ 208. Pin  28 → Pin 103
+ 209. Pin 103 → Pin  29
+ 210. Pin  29 → Pin 129
+ 211. Pin 129 → Pin  64
+ 212. Pin  64 → Pin 125
+ 213. Pin 125 → Pin  52
+ 214. Pin  52 → Pin  74
+ 215. Pin  74 → Pin  44
+ 216. Pin  44 → Pin  71
+ 217. Pin  71 → Pin  48
+ 218. Pin  48 → Pin  79
+ 219. Pin  79 → Pin 166
+ 220. Pin 166 → Pin  67
+ 221. Pin  67 → Pin 146
+ 222. Pin 146 → Pin  59
+ 223. Pin  59 → Pin 137
+ 224. Pin 137 → Pin  62
+ 225. Pin  62 → Pin 183
+ 226. Pin 183 → Pin  83
+ 227. Pin  83 → Pin 196
+ 228. Pin 196 → Pin  82
+ 229. Pin  82 → Pin 195
+ 230. Pin 195 → Pin  85
+ 231. Pin  85 → Pin   4
+ 232. Pin   4 → Pin  91
+ 233. Pin  91 → Pin  17
+ 234. Pin  17 → Pin  90
+ 235. Pin  90 → Pin  10
+ 236. Pin  10 → Pin  65
+ 237. Pin  65 → Pin 145
+ 238. Pin 145 → Pin  71
+ 239. Pin  71 → Pin 153
+ 240. Pin 153 → Pin  75
+ 241. Pin  75 → Pin 140
+ 242. Pin 140 → Pin  39
+ 243. Pin  39 → Pin 141
+ 244. Pin 141 → Pin  63
+ 245. Pin  63 → Pin 136
+ 246. Pin 136 → Pin  53
+ 247. Pin  53 → Pin 191
+ 248. Pin 191 → Pin 100
+ 249. Pin 100 → Pin  25
+ 250. Pin  25 → Pin 102
+ 251. Pin 102 → Pin  26
+ 252. Pin  26 → Pin 103
+ 253. Pin 103 → Pin  25
+ 254. Pin  25 → Pin  98
+ 255. Pin  98 → Pin  26
+ 256. Pin  26 → Pin  99
+ 257. Pin  99 → Pin  14
+ 258. Pin  14 → Pin  69
+ 259. Pin  69 → Pin  49
+ 260. Pin  49 → Pin 148
+ 261. Pin 148 → Pin  61
+ 262. Pin  61 → Pin 182
+ 263. Pin 182 → Pin  80
+ 264. Pin  80 → Pin 186
+ 265. Pin 186 → Pin  64
+ 266. Pin  64 → Pin 140
+ 267. Pin 140 → Pin  61
+ 268. Pin  61 → Pin 127
+ 269. Pin 127 → Pin  65
+ 270. Pin  65 → Pin 158
+ 271. Pin 158 → Pin  75
+ 272. Pin  75 → Pin  30
+ 273. Pin  30 → Pin 130
+ 274. Pin 130 → Pin  67
+ 275. Pin  67 → Pin 139
+ 276. Pin 139 → Pin  72
+ 277. Pin  72 → Pin 134
+ 278. Pin 134 → Pin  55
+ 279. Pin  55 → Pin 174
+ 280. Pin 174 → Pin  79
+ 281. Pin  79 → Pin 187
+ 282. Pin 187 → Pin  49
+ 283. Pin  49 → Pin 113
+ 284. Pin 113 → Pin  35
+ 285. Pin  35 → Pin 111
+ 286. Pin 111 → Pin  31
+ 287. Pin  31 → Pin 113
+ 288. Pin 113 → Pin  52
+ 289. Pin  52 → Pin 121
+ 290. Pin 121 → Pin  58
+ 291. Pin  58 → Pin 126
+ 292. Pin 126 → Pin  53
+ 293. Pin  53 → Pin 133
+ 294. Pin 133 → Pin  50
+ 295. Pin  50 → Pin 149
+ 296. Pin 149 → Pin  66
+ 297. Pin  66 → Pin 147
+ 298. Pin 147 → Pin  48
+ 299. Pin  48 → Pin  82
+ 300. Pin  82 → Pin 194
+
+==================================================
+
+ 301. Pin 194 → Pin 102
+ 302. Pin 102 → Pin  16
+ 303. Pin  16 → Pin  71
+ 304. Pin  71 → Pin 143
+ 305. Pin 143 → Pin  72
+ 306. Pin  72 → Pin 162
+ 307. Pin 162 → Pin  63
+ 308. Pin  63 → Pin   8
+ 309. Pin   8 → Pin  87
+ 310. Pin  87 → Pin   5
+ 311. Pin   5 → Pin  60
+ 312. Pin  60 → Pin 139
+ 313. Pin 139 → Pin  71
+ 314. Pin  71 → Pin 133
+ 315. Pin 133 → Pin  51
+ 316. Pin  51 → Pin 117
+ 317. Pin 117 → Pin  53
+ 318. Pin  53 → Pin 173
+ 319. Pin 173 → Pin  54
+ 320. Pin  54 → Pin 192
+ 321. Pin 192 → Pin  81
+ 322. Pin  81 → Pin 181
+ 323. Pin 181 → Pin  60
+ 324. Pin  60 → Pin 136
+ 325. Pin 136 → Pin  35
+ 326. Pin  35 → Pin 135
+ 327. Pin 135 → Pin  70
+ 328. Pin  70 → Pin 156
+ 329. Pin 156 → Pin  74
+ 330. Pin  74 → Pin 164
+ 331. Pin 164 → Pin  75
+ 332. Pin  75 → Pin 198
+ 333. Pin 198 → Pin  83
+ 334. Pin  83 → Pin 177
+ 335. Pin 177 → Pin  77
+ 336. Pin  77 → Pin 170
+ 337. Pin 170 → Pin  73
+ 338. Pin  73 → Pin 163
+ 339. Pin 163 → Pin  81
+ 340. Pin  81 → Pin 168
+ 341. Pin 168 → Pin  70
+ 342. Pin  70 → Pin 152
+ 343. Pin 152 → Pin  65
+ 344. Pin  65 → Pin 164
+ 345. Pin 164 → Pin  73
+ 346. Pin  73 → Pin  38
+ 347. Pin  38 → Pin 129
+ 348. Pin 129 → Pin  63
+ 349. Pin  63 → Pin 184
+ 350. Pin 184 → Pin  95
+ 351. Pin  95 → Pin  43
+ 352. Pin  43 → Pin 142
+ 353. Pin 142 → Pin  75
+ 354. Pin  75 → Pin 155
+ 355. Pin 155 → Pin  68
+ 356. Pin  68 → Pin 132
+ 357. Pin 132 → Pin  32
+ 358. Pin  32 → Pin 116
+ 359. Pin 116 → Pin  54
+ 360. Pin  54 → Pin 124
+ 361. Pin 124 → Pin  28
+ 362. Pin  28 → Pin 128
+ 363. Pin 128 → Pin  60
+ 364. Pin  60 → Pin   6
+ 365. Pin   6 → Pin  61
+ 366. Pin  61 → Pin 142
+ 367. Pin 142 → Pin  54
+ 368. Pin  54 → Pin 122
+ 369. Pin 122 → Pin  45
+ 370. Pin  45 → Pin 120
+ 371. Pin 120 → Pin  55
+ 372. Pin  55 → Pin 192
+ 373. Pin 192 → Pin  78
+ 374. Pin  78 → Pin   0
+ 375. Pin   0 → Pin  84
+ 376. Pin  84 → Pin 188
+ 377. Pin 188 → Pin  51
+ 378. Pin  51 → Pin 124
+ 379. Pin 124 → Pin  61
+ 380. Pin  61 → Pin 150
+ 381. Pin 150 → Pin  68
+ 382. Pin  68 → Pin 167
+ 383. Pin 167 → Pin  78
+ 384. Pin  78 → Pin  40
+ 385. Pin  40 → Pin 140
+ 386. Pin 140 → Pin  41
+ 387. Pin  41 → Pin  76
+ 388. Pin  76 → Pin  29
+ 389. Pin  29 → Pin 106
+ 390. Pin 106 → Pin  18
+ 391. Pin  18 → Pin  91
+ 392. Pin  91 → Pin  14
+ 393. Pin  14 → Pin  71
+ 394. Pin  71 → Pin  50
+ 395. Pin  50 → Pin 189
+ 396. Pin 189 → Pin  67
+ 397. Pin  67 → Pin 160
+ 398. Pin 160 → Pin  74
+ 399. Pin  74 → Pin 148
+ 400. Pin 148 → Pin  69
+
+==================================================
+
+ 401. Pin  69 → Pin 156
+ 402. Pin 156 → Pin  55
+ 403. Pin  55 → Pin 135
+ 404. Pin 135 → Pin  52
+ 405. Pin  52 → Pin 172
+ 406. Pin 172 → Pin  78
+ 407. Pin  78 → Pin  32
+ 408. Pin  32 → Pin 105
+ 409. Pin 105 → Pin  43
+ 410. Pin  43 → Pin 120
+ 411. Pin 120 → Pin  58
+ 412. Pin  58 → Pin 178
+ 413. Pin 178 → Pin  78
+ 414. Pin  78 → Pin 168
+ 415. Pin 168 → Pin  75
+ 416. Pin  75 → Pin 145
+ 417. Pin 145 → Pin  58
+ 418. Pin  58 → Pin   3
+ 419. Pin   3 → Pin  84
+ 420. Pin  84 → Pin   9
+ 421. Pin   9 → Pin  96
+ 422. Pin  96 → Pin  13
+ 423. Pin  13 → Pin  68
+ 424. Pin  68 → Pin 161
+ 425. Pin 161 → Pin  75
+ 426. Pin  75 → Pin  31
+ 427. Pin  31 → Pin 118
+ 428. Pin 118 → Pin  55
+ 429. Pin  55 → Pin 193
+ 430. Pin 193 → Pin 101
+ 431. Pin 101 → Pin 194
+ 432. Pin 194 → Pin  81
+ 433. Pin  81 → Pin 193
+ 434. Pin 193 → Pin  57
+ 435. Pin  57 → Pin 176
+ 436. Pin 176 → Pin  82
+ 437. Pin  82 → Pin 175
+ 438. Pin 175 → Pin  56
+ 439. Pin  56 → Pin 144
+ 440. Pin 144 → Pin  76
+ 441. Pin  76 → Pin  37
+ 442. Pin  37 → Pin 137
+ 443. Pin 137 → Pin  58
+ 444. Pin  58 → Pin 195
+ 445. Pin 195 → Pin 103
+ 446. Pin 103 → Pin   6
+ 447. Pin   6 → Pin  86
+ 448. Pin  86 → Pin  11
+ 449. Pin  11 → Pin 100
+ 450. Pin 100 → Pin  27
+ 451. Pin  27 → Pin 107
+ 452. Pin 107 → Pin  30
+ 453. Pin  30 → Pin 115
+ 454. Pin 115 → Pin  29
+ 455. Pin  29 → Pin 109
+ 456. Pin 109 → Pin  19
+ 457. Pin  19 → Pin  74
+ 458. Pin  74 → Pin 146
+ 459. Pin 146 → Pin  47
+ 460. Pin  47 → Pin 132
+ 461. Pin 132 → Pin  63
+ 462. Pin  63 → Pin 126
+ 463. Pin 126 → Pin  65
+ 464. Pin  65 → Pin 187
+ 465. Pin 187 → Pin  97
+ 466. Pin  97 → Pin   9
+ 467. Pin   9 → Pin  64
+ 468. Pin  64 → Pin 151
+ 469. Pin 151 → Pin  52
+ 470. Pin  52 → Pin 190
+ 471. Pin 190 → Pin  70
+ 472. Pin  70 → Pin  48
+ 473. Pin  48 → Pin  99
+ 474. Pin  99 → Pin 191
+ 475. Pin 191 → Pin  71
+ 476. Pin  71 → Pin 169
+ 477. Pin 169 → Pin  73
+ 478. Pin  73 → Pin  23
+ 479. Pin  23 → Pin 110
+ 480. Pin 110 → Pin  19
+ 481. Pin  19 → Pin  75
+ 482. Pin  75 → Pin 159
+ 483. Pin 159 → Pin  79
+ 484. Pin  79 → Pin 180
+ 485. Pin 180 → Pin  80
+ 486. Pin  80 → Pin   2
+ 487. Pin   2 → Pin  57
+ 488. Pin  57 → Pin 119
+ 489. Pin 119 → Pin  44
+ 490. Pin  44 → Pin 174
+ 491. Pin 174 → Pin  54
+ 492. Pin  54 → Pin 168
+ 493. Pin 168 → Pin  39
+ 494. Pin  39 → Pin 162
+ 495. Pin 162 → Pin  73
+ 496. Pin  73 → Pin 141
+ 497. Pin 141 → Pin  76
+ 498. Pin  76 → Pin 156
+ 499. Pin 156 → Pin  72
+ 500. Pin  72 → Pin   3
+
+==================================================
+
+ 501. Pin   3 → Pin  89
+ 502. Pin  89 → Pin   2
+ 503. Pin   2 → Pin  84
+ 504. Pin  84 → Pin 185
+ 505. Pin 185 → Pin  63
+ 506. Pin  63 → Pin  10
+ 507. Pin  10 → Pin  94
+ 508. Pin  94 → Pin 183
+ 509. Pin 183 → Pin  84
+ 510. Pin  84 → Pin  40
+ 511. Pin  40 → Pin 141
+ 512. Pin 141 → Pin  69
+ 513. Pin  69 → Pin 159
+ 514. Pin 159 → Pin  66
+ 515. Pin  66 → Pin 165
+ 516. Pin 165 → Pin  67
+ 517. Pin  67 → Pin  11
+ 518. Pin  11 → Pin  65
+ 519. Pin  65 → Pin 148
+ 520. Pin 148 → Pin  68
+ 521. Pin  68 → Pin   1
+ 522. Pin   1 → Pin  56
+ 523. Pin  56 → Pin 194
+ 524. Pin 194 → Pin  55
+ 525. Pin  55 → Pin 104
+ 526. Pin 104 → Pin  31
+ 527. Pin  31 → Pin 103
+ 528. Pin 103 → Pin  51
+ 529. Pin  51 → Pin 114
+ 530. Pin 114 → Pin  30
+ 531. Pin  30 → Pin 112
+ 532. Pin 112 → Pin  47
+ 533. Pin  47 → Pin 136
+ 534. Pin 136 → Pin  57
+ 535. Pin  57 → Pin 144
+ 536. Pin 144 → Pin  45
+ 537. Pin  45 → Pin  75
+ 538. Pin  75 → Pin 171
+ 539. Pin 171 → Pin  83
+ 540. Pin  83 → Pin  48
+ 541. Pin  48 → Pin 187
+ 542. Pin 187 → Pin  80
+ 543. Pin  80 → Pin 167
+ 544. Pin 167 → Pin  74
+ 545. Pin  74 → Pin 135
+ 546. Pin 135 → Pin  36
+ 547. Pin  36 → Pin 110
+ 548. Pin 110 → Pin  24
+ 549. Pin  24 → Pin  98
+ 550. Pin  98 → Pin  10
+ 551. Pin  10 → Pin  66
+ 552. Pin  66 → Pin 131
+ 553. Pin 131 → Pin  33
+ 554. Pin  33 → Pin 106
+ 555. Pin 106 → Pin  34
+ 556. Pin  34 → Pin 134
+ 557. Pin 134 → Pin  50
+ 558. Pin  50 → Pin 130
+ 559. Pin 130 → Pin  70
+ 560. Pin  70 → Pin 158
+ 561. Pin 158 → Pin  78
+ 562. Pin  78 → Pin 156
+ 563. Pin 156 → Pin  75
+ 564. Pin  75 → Pin 150
+ 565. Pin 150 → Pin  63
+ 566. Pin  63 → Pin 198
+ 567. Pin 198 → Pin  87
+ 568. Pin  87 → Pin 186
+ 569. Pin 186 → Pin  97
+ 570. Pin  97 → Pin  15
+ 571. Pin  15 → Pin 102
+ 572. Pin 102 → Pin  28
+ 573. Pin  28 → Pin 125
+ 574. Pin 125 → Pin  61
+ 575. Pin  61 → Pin 122
+ 576. Pin 122 → Pin  53
+ 577. Pin  53 → Pin 189
+ 578. Pin 189 → Pin  89
+ 579. Pin  89 → Pin  13
+ 580. Pin  13 → Pin  90
+ 581. Pin  90 → Pin 177
+ 582. Pin 177 → Pin  58
+ 583. Pin  58 → Pin  79
+ 584. Pin  79 → Pin   1
+ 585. Pin   1 → Pin  80
+ 586. Pin  80 → Pin  32
+ 587. Pin  32 → Pin 109
+ 588. Pin 109 → Pin  14
+ 589. Pin  14 → Pin  90
+ 590. Pin  90 → Pin 173
+ 591. Pin 173 → Pin  85
+ 592. Pin  85 → Pin 185
+ 593. Pin 185 → Pin  67
+ 594. Pin  67 → Pin  47
+ 595. Pin  47 → Pin 123
+ 596. Pin 123 → Pin  44
+ 597. Pin  44 → Pin 173
+ 598. Pin 173 → Pin  43
+ 599. Pin  43 → Pin 145
+ 600. Pin 145 → Pin  76
+
+==================================================
+
+ 601. Pin  76 → Pin 147
+ 602. Pin 147 → Pin  60
+ 603. Pin  60 → Pin 195
+ 604. Pin 195 → Pin  72
+ 605. Pin  72 → Pin  39
+ 606. Pin  39 → Pin  79
+ 607. Pin  79 → Pin 182
+ 608. Pin 182 → Pin  62
+ 609. Pin  62 → Pin 163
+ 610. Pin 163 → Pin  64
+ 611. Pin  64 → Pin 142
+ 612. Pin 142 → Pin  66
+ 613. Pin  66 → Pin 188
+ 614. Pin 188 → Pin  81
+ 615. Pin  81 → Pin 170
+ 616. Pin 170 → Pin  72
+ 617. Pin  72 → Pin 153
+ 618. Pin 153 → Pin  59
+ 619. Pin  59 → Pin   4
+ 620. Pin   4 → Pin  58
+ 621. Pin  58 → Pin 160
+ 622. Pin 160 → Pin  76
+ 623. Pin  76 → Pin 155
+ 624. Pin 155 → Pin  53
+ 625. Pin  53 → Pin 137
+ 626. Pin 137 → Pin  38
+ 627. Pin  38 → Pin 138
+ 628. Pin 138 → Pin  69
+ 629. Pin  69 → Pin 162
+ 630. Pin 162 → Pin  61
+ 631. Pin  61 → Pin   7
+ 632. Pin   7 → Pin  62
+ 633. Pin  62 → Pin 123
+ 634. Pin 123 → Pin  57
+ 635. Pin  57 → Pin 177
+ 636. Pin 177 → Pin  84
+ 637. Pin  84 → Pin   4
+ 638. Pin   4 → Pin  74
+ 639. Pin  74 → Pin  30
+ 640. Pin  30 → Pin 108
+ 641. Pin 108 → Pin  18
+ 642. Pin  18 → Pin  92
+ 643. Pin  92 → Pin 179
+ 644. Pin 179 → Pin  61
+ 645. Pin  61 → Pin 136
+ 646. Pin 136 → Pin  37
+ 647. Pin  37 → Pin 159
+ 648. Pin 159 → Pin  59
+ 649. Pin  59 → Pin 180
+ 650. Pin 180 → Pin  93
+ 651. Pin  93 → Pin   9
+ 652. Pin   9 → Pin  65
+ 653. Pin  65 → Pin 140
+ 654. Pin 140 → Pin  52
+ 655. Pin  52 → Pin 165
+ 656. Pin 165 → Pin  76
+ 657. Pin  76 → Pin 157
+ 658. Pin 157 → Pin  35
+ 659. Pin  35 → Pin 120
+ 660. Pin 120 → Pin  44
+ 661. Pin  44 → Pin  68
+ 662. Pin  68 → Pin 191
+ 663. Pin 191 → Pin  77
+ 664. Pin  77 → Pin 143
+ 665. Pin 143 → Pin  55
+ 666. Pin  55 → Pin 168
+ 667. Pin 168 → Pin  74
+ 668. Pin  74 → Pin 134
+ 669. Pin 134 → Pin  68
+ 670. Pin  68 → Pin 166
+ 671. Pin 166 → Pin  73
+ 672. Pin  73 → Pin  20
+ 673. Pin  20 → Pin  92
+ 674. Pin  92 → Pin   6
+ 675. Pin   6 → Pin  90
+ 676. Pin  90 → Pin  41
+ 677. Pin  41 → Pin 164
+ 678. Pin 164 → Pin  66
+ 679. Pin  66 → Pin 153
+ 680. Pin 153 → Pin  76
+ 681. Pin  76 → Pin  25
+ 682. Pin  25 → Pin 111
+ 683. Pin 111 → Pin  34
+ 684. Pin  34 → Pin 107
+ 685. Pin 107 → Pin  18
+ 686. Pin  18 → Pin  94
+ 687. Pin  94 → Pin 189
+ 688. Pin 189 → Pin  98
+ 689. Pin  98 → Pin  45
+ 690. Pin  45 → Pin 175
+ 691. Pin 175 → Pin  55
+ 692. Pin  55 → Pin 199
+ 693. Pin 199 → Pin  86
+ 694. Pin  86 → Pin 174
+ 695. Pin 174 → Pin  78
+ 696. Pin  78 → Pin  23
+ 697. Pin  23 → Pin 113
+ 698. Pin 113 → Pin  27
+ 699. Pin  27 → Pin 105
+ 700. Pin 105 → Pin  42
+
+==================================================
+
+ 701. Pin  42 → Pin 144
+ 702. Pin 144 → Pin  68
+ 703. Pin  68 → Pin 131
+ 704. Pin 131 → Pin  69
+ 705. Pin  69 → Pin 157
+ 706. Pin 157 → Pin  63
+ 707. Pin  63 → Pin 144
+ 708. Pin 144 → Pin  74
+ 709. Pin  74 → Pin 154
+ 710. Pin 154 → Pin  60
+ 711. Pin  60 → Pin 135
+ 712. Pin 135 → Pin  45
+ 713. Pin  45 → Pin  96
+ 714. Pin  96 → Pin 186
+ 715. Pin 186 → Pin  46
+ 716. Pin  46 → Pin 145
+ 717. Pin 145 → Pin  57
+ 718. Pin  57 → Pin   3
+ 719. Pin   3 → Pin  71
+ 720. Pin  71 → Pin 155
+ 721. Pin 155 → Pin  73
+ 722. Pin  73 → Pin 196
+ 723. Pin 196 → Pin  59
+ 724. Pin  59 → Pin 197
+ 725. Pin 197 → Pin  53
+ 726. Pin  53 → Pin 152
+ 727. Pin 152 → Pin  36
+ 728. Pin  36 → Pin 164
+ 729. Pin 164 → Pin  71
+ 730. Pin  71 → Pin 131
+ 731. Pin 131 → Pin  45
+ 732. Pin  45 → Pin 107
+ 733. Pin 107 → Pin  26
+ 734. Pin  26 → Pin 148
+ 735. Pin 148 → Pin  73
+ 736. Pin  73 → Pin 171
+ 737. Pin 171 → Pin  51
+ 738. Pin  51 → Pin 181
+ 739. Pin 181 → Pin  80
+ 740. Pin  80 → Pin   5
+ 741. Pin   5 → Pin 101
+ 742. Pin 101 → Pin 192
+ 743. Pin 192 → Pin 100
+ 744. Pin 100 → Pin 190
+ 745. Pin 190 → Pin  68
+ 746. Pin  68 → Pin  12
+ 747. Pin  12 → Pin  66
+ 748. Pin  66 → Pin 183
+ 749. Pin 183 → Pin  53
+ 750. Pin  53 → Pin 171
+ 751. Pin 171 → Pin  44
+ 752. Pin  44 → Pin 143
+ 753. Pin 143 → Pin  63
+ 754. Pin  63 → Pin 145
+ 755. Pin 145 → Pin  70
+ 756. Pin  70 → Pin 167
+ 757. Pin 167 → Pin  39
+ 758. Pin  39 → Pin  76
+ 759. Pin  76 → Pin 142
+ 760. Pin 142 → Pin  70
+ 761. Pin  70 → Pin 151
+ 762. Pin 151 → Pin  73
+ 763. Pin  73 → Pin 133
+ 764. Pin 133 → Pin  49
+ 765. Pin  49 → Pin 169
+ 766. Pin 169 → Pin  82
+ 767. Pin  82 → Pin 182
+ 768. Pin 182 → Pin  95
+ 769. Pin  95 → Pin  10
+ 770. Pin  10 → Pin  85
+ 771. Pin  85 → Pin 184
+ 772. Pin 184 → Pin  83
+ 773. Pin  83 → Pin 199
+ 774. Pin 199 → Pin  65
+ 775. Pin  65 → Pin 186
+ 776. Pin 186 → Pin  55
+ 777. Pin  55 → Pin 137
+ 778. Pin 137 → Pin  67
+ 779. Pin  67 → Pin  22
+ 780. Pin  22 → Pin 138
+ 781. Pin 138 → Pin  49
+ 782. Pin  49 → Pin 119
+ 783. Pin 119 → Pin  32
+ 784. Pin  32 → Pin 106
+ 785. Pin 106 → Pin  43
+ 786. Pin  43 → Pin 118
+ 787. Pin 118 → Pin  34
+ 788. Pin  34 → Pin 119
+ 789. Pin 119 → Pin  54
+ 790. Pin  54 → Pin 121
+ 791. Pin 121 → Pin  56
+ 792. Pin  56 → Pin 126
+ 793. Pin 126 → Pin  60
+ 794. Pin  60 → Pin 160
+ 795. Pin 160 → Pin  38
+ 796. Pin  38 → Pin 161
+ 797. Pin 161 → Pin  72
+ 798. Pin  72 → Pin 160
+ 799. Pin 160 → Pin  68
+ 800. Pin  68 → Pin 158
+
+==================================================
+
+ 801. Pin 158 → Pin  57
+ 802. Pin  57 → Pin   0
+ 803. Pin   0 → Pin  55
+ 804. Pin  55 → Pin 172
+ 805. Pin 172 → Pin  76
+ 806. Pin  76 → Pin 150
+ 807. Pin 150 → Pin  44
+ 808. Pin  44 → Pin 172
+ 809. Pin 172 → Pin  88
+ 810. Pin  88 → Pin   8
+ 811. Pin   8 → Pin  83
+ 812. Pin  83 → Pin 194
+ 813. Pin 194 → Pin 103
+ 814. Pin 103 → Pin  54
+ 815. Pin  54 → Pin 193
+ 816. Pin 193 → Pin 108
+ 817. Pin 108 → Pin  28
+ 818. Pin  28 → Pin 127
+ 819. Pin 127 → Pin  55
+ 820. Pin  55 → Pin 169
+ 821. Pin 169 → Pin  75
+ 822. Pin  75 → Pin 163
+ 823. Pin 163 → Pin  40
+ 824. Pin  40 → Pin 139
+ 825. Pin 139 → Pin  37
+ 826. Pin  37 → Pin 165
+ 827. Pin 165 → Pin  53
+ 828. Pin  53 → Pin 134
+ 829. Pin 134 → Pin  35
+ 830. Pin  35 → Pin 153
+ 831. Pin 153 → Pin  51
+ 832. Pin  51 → Pin 190
+ 833. Pin 190 → Pin  76
+ 834. Pin  76 → Pin 159
+ 835. Pin 159 → Pin  70
+ 836. Pin  70 → Pin 133
+ 837. Pin 133 → Pin  31
+ 838. Pin  31 → Pin 126
+ 839. Pin 126 → Pin  57
+ 840. Pin  57 → Pin 117
+ 841. Pin 117 → Pin  50
+ 842. Pin  50 → Pin 188
+ 843. Pin 188 → Pin  98
+ 844. Pin  98 → Pin  49
+ 845. Pin  49 → Pin 132
+ 846. Pin 132 → Pin  62
+ 847. Pin  62 → Pin 149
+ 848. Pin 149 → Pin  75
+ 849. Pin  75 → Pin 175
+ 850. Pin 175 → Pin  91
+ 851. Pin  91 → Pin 189
+ 852. Pin 189 → Pin  90
+ 853. Pin  90 → Pin  16
+ 854. Pin  16 → Pin  92
+ 855. Pin  92 → Pin 180
+ 856. Pin 180 → Pin  62
+ 857. Pin  62 → Pin 198
+ 858. Pin 198 → Pin  76
+ 859. Pin  76 → Pin 146
+ 860. Pin 146 → Pin  44
+ 861. Pin  44 → Pin 121
+ 862. Pin 121 → Pin  42
+ 863. Pin  42 → Pin  96
+ 864. Pin  96 → Pin 184
+ 865. Pin 184 → Pin  66
+ 866. Pin  66 → Pin   0
+ 867. Pin   0 → Pin  86
+ 868. Pin  86 → Pin 181
+ 869. Pin 181 → Pin  93
+ 870. Pin  93 → Pin  22
+ 871. Pin  22 → Pin 109
+ 872. Pin 109 → Pin  36
+ 873. Pin  36 → Pin 137
+ 874. Pin 137 → Pin  60
+ 875. Pin  60 → Pin 196
+ 876. Pin 196 → Pin 104
+ 877. Pin 104 → Pin  28
+ 878. Pin  28 → Pin 106
+ 879. Pin 106 → Pin  54
+ 880. Pin  54 → Pin 199
+ 881. Pin 199 → Pin  84
+ 882. Pin  84 → Pin 178
+ 883. Pin 178 → Pin  91
+ 884. Pin  91 → Pin  47
+ 885. Pin  47 → Pin  74
+ 886. Pin  74 → Pin  17
+ 887. Pin  17 → Pin  70
+ 888. Pin  70 → Pin  28
+ 889. Pin  28 → Pin 114
+ 890. Pin 114 → Pin  52
+ 891. Pin  52 → Pin 196
+ 892. Pin 196 → Pin  58
+ 893. Pin  58 → Pin 152
+ 894. Pin 152 → Pin  72
+ 895. Pin  72 → Pin 133
+ 896. Pin 133 → Pin  33
+ 897. Pin  33 → Pin 130
+ 898. Pin 130 → Pin  57
+ 899. Pin  57 → Pin 187
+ 900. Pin 187 → Pin  70
+
+==================================================
+
+ 901. Pin  70 → Pin 169
+ 902. Pin 169 → Pin  76
+ 903. Pin  76 → Pin 140
+ 904. Pin 140 → Pin  73
+ 905. Pin  73 → Pin 157
+ 906. Pin 157 → Pin  58
+ 907. Pin  58 → Pin   2
+ 908. Pin   2 → Pin  87
+ 909. Pin  87 → Pin 197
+ 910. Pin 197 → Pin  63
+ 911. Pin  63 → Pin 124
+ 912. Pin 124 → Pin  50
+ 913. Pin  50 → Pin 170
+ 914. Pin 170 → Pin  88
+ 915. Pin  88 → Pin   5
+ 916. Pin   5 → Pin  59
+ 917. Pin  59 → Pin 139
+ 918. Pin 139 → Pin  66
+ 919. Pin  66 → Pin 146
+ 920. Pin 146 → Pin  72
+ 921. Pin  72 → Pin 159
+ 922. Pin 159 → Pin  60
+ 923. Pin  60 → Pin 148
+ 924. Pin 148 → Pin  76
+ 925. Pin  76 → Pin 167
+ 926. Pin 167 → Pin  69
+ 927. Pin  69 → Pin 190
+ 928. Pin 190 → Pin  67
+ 929. Pin  67 → Pin  25
+ 930. Pin  25 → Pin  99
+ 931. Pin  99 → Pin   2
+ 932. Pin   2 → Pin  70
+ 933. Pin  70 → Pin 163
+ 934. Pin 163 → Pin  37
+ 935. Pin  37 → Pin 155
+ 936. Pin 155 → Pin  61
+ 937. Pin  61 → Pin 195
+ 938. Pin 195 → Pin 102
+ 939. Pin 102 → Pin  29
+ 940. Pin  29 → Pin 116
+ 941. Pin 116 → Pin  49
+ 942. Pin  49 → Pin 165
+ 943. Pin 165 → Pin  75
+ 944. Pin  75 → Pin 135
+ 945. Pin 135 → Pin  51
+ 946. Pin  51 → Pin 176
+ 947. Pin 176 → Pin  46
+ 948. Pin  46 → Pin 177
+ 949. Pin 177 → Pin  93
+ 950. Pin  93 → Pin  19
+ 951. Pin  19 → Pin  63
+ 952. Pin  63 → Pin 116
+ 953. Pin 116 → Pin  30
+ 954. Pin  30 → Pin 103
+ 955. Pin 103 → Pin 196
+ 956. Pin 196 → Pin 112
+ 957. Pin 112 → Pin  58
+ 958. Pin  58 → Pin 146
+ 959. Pin 146 → Pin  77
+ 960. Pin  77 → Pin 154
+ 961. Pin 154 → Pin  52
+ 962. Pin  52 → Pin 167
+ 963. Pin 167 → Pin  38
+ 964. Pin  38 → Pin  80
+ 965. Pin  80 → Pin 161
+ 966. Pin 161 → Pin  71
+ 967. Pin  71 → Pin  15
+ 968. Pin  15 → Pin  90
+ 969. Pin  90 → Pin  54
+ 970. Pin  54 → Pin 186
+ 971. Pin 186 → Pin  69
+ 972. Pin  69 → Pin 152
+ 973. Pin 152 → Pin  62
+ 974. Pin  62 → Pin 161
+ 975. Pin 161 → Pin  59
+ 976. Pin  59 → Pin 179
+ 977. Pin 179 → Pin  55
+ 978. Pin  55 → Pin 198
+ 979. Pin 198 → Pin  64
+ 980. Pin  64 → Pin 157
+ 981. Pin 157 → Pin  48
+ 982. Pin  48 → Pin 168
+ 983. Pin 168 → Pin  47
+ 984. Pin  47 → Pin 149
+ 985. Pin 149 → Pin  69
+ 986. Pin  69 → Pin 134
+ 987. Pin 134 → Pin  54
+ 988. Pin  54 → Pin 191
+ 989. Pin 191 → Pin 106
+ 990. Pin 106 → Pin  30
+ 991. Pin  30 → Pin 131
+ 992. Pin 131 → Pin  46
+ 993. Pin  46 → Pin 135
+ 994. Pin 135 → Pin  61
+ 995. Pin  61 → Pin   5
+ 996. Pin   5 → Pin  77
+ 997. Pin  77 → Pin 176
+ 998. Pin 176 → Pin  76
+ 999. Pin  76 → Pin 154
+1000. Pin 154 → Pin  72
+
+==================================================
+
+1001. Pin  72 → Pin 147
+1002. Pin 147 → Pin  75
+1003. Pin  75 → Pin 141
+1004. Pin 141 → Pin  60
+1005. Pin  60 → Pin   8
+1006. Pin   8 → Pin  93
+1007. Pin  93 → Pin  21
+1008. Pin  21 → Pin 104
+1009. Pin 104 → Pin 194
+1010. Pin 194 → Pin  59
+1011. Pin  59 → Pin 119
+1012. Pin 119 → Pin  56
+1013. Pin  56 → Pin 157
+1014. Pin 157 → Pin  67
+1015. Pin  67 → Pin 186
+1016. Pin 186 → Pin  75
+1017. Pin  75 → Pin 174
+1018. Pin 174 → Pin  91
+1019. Pin  91 → Pin 190
+1020. Pin 190 → Pin  77
+1021. Pin  77 → Pin 145
+1022. Pin 145 → Pin  25
+1023. Pin  25 → Pin  73
+1024. Pin  73 → Pin 144
+1025. Pin 144 → Pin  24
+1026. Pin  24 → Pin 101
+1027. Pin 101 → Pin  45
+1028. Pin  45 → Pin 123
+1029. Pin 123 → Pin  52
+1030. Pin  52 → Pin 195
+1031. Pin 195 → Pin 111
+1032. Pin 111 → Pin  61
+1033. Pin  61 → Pin 154
+1034. Pin 154 → Pin  63
+1035. Pin  63 → Pin 182
+1036. Pin 182 → Pin  83
+1037. Pin  83 → Pin 165
+1038. Pin 165 → Pin  71
+1039. Pin  71 → Pin 149
+1040. Pin 149 → Pin  61
+1041. Pin  61 → Pin 110
+1042. Pin 110 → Pin  15
+1043. Pin  15 → Pin 100
+1044. Pin 100 → Pin  16
+1045. Pin  16 → Pin  68
+1046. Pin  68 → Pin   2
+1047. Pin   2 → Pin  95
+1048. Pin  95 → Pin  14
+1049. Pin  14 → Pin 107
+1050. Pin 107 → Pin  52
+1051. Pin  52 → Pin 182
+1052. Pin 182 → Pin  87
+1053. Pin  87 → Pin   9
+1054. Pin   9 → Pin  90
+1055. Pin  90 → Pin   3
+1056. Pin   3 → Pin 119
+1057. Pin 119 → Pin  36
+1058. Pin  36 → Pin 158
+1059. Pin 158 → Pin  56
+1060. Pin  56 → Pin 172
+1061. Pin 172 → Pin  43
+1062. Pin  43 → Pin 148
+1063. Pin 148 → Pin  70
+1064. Pin  70 → Pin 178
+1065. Pin 178 → Pin  47
+1066. Pin  47 → Pin 114
+1067. Pin 114 → Pin  27
+1068. Pin  27 → Pin 150
+1069. Pin 150 → Pin  70
+1070. Pin  70 → Pin 129
+1071. Pin 129 → Pin  32
+1072. Pin  32 → Pin 128
+1073. Pin 128 → Pin  49
+1074. Pin  49 → Pin 188
+1075. Pin 188 → Pin  80
+1076. Pin  80 → Pin 173
+1077. Pin 173 → Pin  89
+1078. Pin  89 → Pin 171
+1079. Pin 171 → Pin  74
+1080. Pin  74 → Pin  24
+1081. Pin  24 → Pin 143
+1082. Pin 143 → Pin  41
+1083. Pin  41 → Pin 142
+1084. Pin 142 → Pin  67
+1085. Pin  67 → Pin 134
+1086. Pin 134 → Pin  19
+1087. Pin  19 → Pin  96
+1088. Pin  96 → Pin 185
+1089. Pin 185 → Pin  73
+1090. Pin  73 → Pin 153
+1091. Pin 153 → Pin  54
+1092. Pin  54 → Pin   1
+1093. Pin   1 → Pin  84
+1094. Pin  84 → Pin 184
+1095. Pin 184 → Pin  53
+1096. Pin  53 → Pin 192
+1097. Pin 192 → Pin  86
+1098. Pin  86 → Pin 185
+1099. Pin 185 → Pin  49
+1100. Pin  49 → Pin 174
+
+==================================================
+
+1101. Pin 174 → Pin  60
+1102. Pin  60 → Pin   4
+1103. Pin   4 → Pin  87
+1104. Pin  87 → Pin 169
+1105. Pin 169 → Pin  40
+1106. Pin  40 → Pin 170
+1107. Pin 170 → Pin  71
+1108. Pin  71 → Pin 194
+1109. Pin 194 → Pin  57
+1110. Pin  57 → Pin 139
+1111. Pin 139 → Pin  76
+1112. Pin  76 → Pin 162
+1113. Pin 162 → Pin  64
+1114. Pin  64 → Pin 146
+1115. Pin 146 → Pin  75
+1116. Pin  75 → Pin 166
+1117. Pin 166 → Pin  45
+1118. Pin  45 → Pin 118
+1119. Pin 118 → Pin  63
+1120. Pin  63 → Pin  20
+1121. Pin  20 → Pin 136
+1122. Pin 136 → Pin  33
+1123. Pin  33 → Pin 112
+1124. Pin 112 → Pin  26
+1125. Pin  26 → Pin  97
+1126. Pin  97 → Pin  11
+1127. Pin  11 → Pin  64
+1128. Pin  64 → Pin 164
+1129. Pin 164 → Pin  51
+1130. Pin  51 → Pin 170
+1131. Pin 170 → Pin  58
+1132. Pin  58 → Pin 187
+1133. Pin 187 → Pin  81
+1134. Pin  81 → Pin 175
+1135. Pin 175 → Pin  50
+1136. Pin  50 → Pin 193
+1137. Pin 193 → Pin  82
+1138. Pin  82 → Pin 170
+1139. Pin 170 → Pin  76
+1140. Pin  76 → Pin  55
+1141. Pin  55 → Pin 139
+1142. Pin 139 → Pin  61
+1143. Pin  61 → Pin 172
+1144. Pin 172 → Pin  42
+1145. Pin  42 → Pin 116
+1146. Pin 116 → Pin  27
+1147. Pin  27 → Pin 125
+1148. Pin 125 → Pin  62
+1149. Pin  62 → Pin 155
+1150. Pin 155 → Pin  69
+1151. Pin  69 → Pin 161
+1152. Pin 161 → Pin  48
+1153. Pin  48 → Pin 179
+1154. Pin 179 → Pin  96
+1155. Pin  96 → Pin  20
+1156. Pin  20 → Pin  94
+1157. Pin  94 → Pin 181
+1158. Pin 181 → Pin  79
+1159. Pin  79 → Pin  22
+1160. Pin  22 → Pin  91
+1161. Pin  91 → Pin   7
+1162. Pin   7 → Pin 104
+1163. Pin 104 → Pin 197
+1164. Pin 197 → Pin  52
+1165. Pin  52 → Pin 122
+1166. Pin 122 → Pin  28
+1167. Pin  28 → Pin 121
+1168. Pin 121 → Pin  53
+1169. Pin  53 → Pin 172
+1170. Pin 172 → Pin  84
+1171. Pin  84 → Pin  43
+1172. Pin  43 → Pin 126
+1173. Pin 126 → Pin  28
+1174. Pin  28 → Pin 109
+1175. Pin 109 → Pin  45
+1176. Pin  45 → Pin  89
+1177. Pin  89 → Pin  16
+1178. Pin  16 → Pin 103
+1179. Pin 103 → Pin  53
+1180. Pin  53 → Pin 141
+1181. Pin 141 → Pin  66
+1182. Pin  66 → Pin 156
+1183. Pin 156 → Pin  34
+1184. Pin  34 → Pin 150
+1185. Pin 150 → Pin  51
+1186. Pin  51 → Pin 139
+1187. Pin 139 → Pin  70
+1188. Pin  70 → Pin 144
+1189. Pin 144 → Pin  78
+1190. Pin  78 → Pin 176
+1191. Pin 176 → Pin  56
+1192. Pin  56 → Pin 167
+1193. Pin 167 → Pin  72
+1194. Pin  72 → Pin 132
+1195. Pin 132 → Pin  35
+1196. Pin  35 → Pin 137
+1197. Pin 137 → Pin  22
+1198. Pin  22 → Pin  65
+1199. Pin  65 → Pin 163
+1200. Pin 163 → Pin  36
+
+==================================================
+
+1201. Pin  36 → Pin 120
+1202. Pin 120 → Pin  25
+1203. Pin  25 → Pin 147
+1204. Pin 147 → Pin  71
+1205. Pin  71 → Pin 130
+1206. Pin 130 → Pin  31
+1207. Pin  31 → Pin 129
+1208. Pin 129 → Pin  48
+1209. Pin  48 → Pin 190
+1210. Pin 190 → Pin 105
+1211. Pin 105 → Pin 195
+1212. Pin 195 → Pin  51
+1213. Pin  51 → Pin 116
+1214. Pin 116 → Pin  64
+1215. Pin  64 → Pin 144
+1216. Pin 144 → Pin  55
+1217. Pin  55 → Pin 190
+1218. Pin 190 → Pin  75
+1219. Pin  75 → Pin 152
+1220. Pin 152 → Pin  68
+1221. Pin  68 → Pin 140
+1222. Pin 140 → Pin  72
+1223. Pin  72 → Pin 163
+1224. Pin 163 → Pin  50
+1225. Pin  50 → Pin 185
+1226. Pin 185 → Pin  64
+1227. Pin  64 → Pin 158
+1228. Pin 158 → Pin  80
+1229. Pin  80 → Pin 160
+1230. Pin 160 → Pin  66
+1231. Pin  66 → Pin 189
+1232. Pin 189 → Pin  92
+1233. Pin  92 → Pin  17
+1234. Pin  17 → Pin 105
+1235. Pin 105 → Pin  33
+1236. Pin  33 → Pin 107
+1237. Pin 107 → Pin  56
+1238. Pin  56 → Pin 135
+1239. Pin 135 → Pin  32
+1240. Pin  32 → Pin 113
+1241. Pin 113 → Pin  53
+1242. Pin  53 → Pin 198
+1243. Pin 198 → Pin  56
+1244. Pin  56 → Pin 195
+1245. Pin 195 → Pin  54
+1246. Pin  54 → Pin 156
+1247. Pin 156 → Pin  38
+1248. Pin  38 → Pin  99
+1249. Pin  99 → Pin 188
+1250. Pin 188 → Pin  52
+1251. Pin  52 → Pin 126
+1252. Pin 126 → Pin  44
+1253. Pin  44 → Pin 175
+1254. Pin 175 → Pin  66
+1255. Pin  66 → Pin 144
+1256. Pin 144 → Pin  77
+1257. Pin  77 → Pin 151
+1258. Pin 151 → Pin  62
+1259. Pin  62 → Pin 196
+1260. Pin 196 → Pin  85
+1261. Pin  85 → Pin 179
+1262. Pin 179 → Pin  51
+1263. Pin  51 → Pin 166
+1264. Pin 166 → Pin  39
+1265. Pin  39 → Pin 165
+1266. Pin 165 → Pin  65
+1267. Pin  65 → Pin 142
+1268. Pin 142 → Pin  23
+1269. Pin  23 → Pin 124
+1270. Pin 124 → Pin   3
+1271. Pin   3 → Pin  83
+1272. Pin  83 → Pin 178
+1273. Pin 178 → Pin  53
+1274. Pin  53 → Pin 199
+1275. Pin 199 → Pin 108
+1276. Pin 108 → Pin  13
+1277. Pin  13 → Pin  94
+1278. Pin  94 → Pin  54
+1279. Pin  54 → Pin 155
+1280. Pin 155 → Pin  74
+1281. Pin  74 → Pin 158
+1282. Pin 158 → Pin  35
+1283. Pin  35 → Pin 112
+1284. Pin 112 → Pin  28
+1285. Pin  28 → Pin  71
+1286. Pin  71 → Pin 166
+1287. Pin 166 → Pin  44
+1288. Pin  44 → Pin 142
+1289. Pin 142 → Pin  55
+1290. Pin  55 → Pin 124
+1291. Pin 124 → Pin  47
+1292. Pin  47 → Pin 187
+1293. Pin 187 → Pin  76
+1294. Pin  76 → Pin 151
+1295. Pin 151 → Pin  45
+1296. Pin  45 → Pin 121
+1297. Pin 121 → Pin  57
+1298. Pin  57 → Pin 191
+1299. Pin 191 → Pin  95
+1300. Pin  95 → Pin  23
+
+==================================================
+
+1301. Pin  23 → Pin 101
+1302. Pin 101 → Pin  27
+1303. Pin  27 → Pin 108
+1304. Pin 108 → Pin  46
+1305. Pin  46 → Pin 170
+1306. Pin 170 → Pin  43
+1307. Pin  43 → Pin 122
+1308. Pin 122 → Pin  26
+1309. Pin  26 → Pin 100
+1310. Pin 100 → Pin  14
+1311. Pin  14 → Pin  92
+1312. Pin  92 → Pin 176
+1313. Pin 176 → Pin  68
+1314. Pin  68 → Pin 153
+1315. Pin 153 → Pin  67
+1316. Pin  67 → Pin 184
+1317. Pin 184 → Pin  43
+1318. Pin  43 → Pin  64
+1319. Pin  64 → Pin   8
+1320. Pin   8 → Pin  94
+1321. Pin  94 → Pin 182
+1322. Pin 182 → Pin  98
+1323. Pin  98 → Pin  19
+1324. Pin  19 → Pin  70
+1325. Pin  70 → Pin 161
+1326. Pin 161 → Pin  34
+1327. Pin  34 → Pin  67
+1328. Pin  67 → Pin 150
+1329. Pin 150 → Pin  69
+1330. Pin  69 → Pin 168
+1331. Pin 168 → Pin  88
+1332. Pin  88 → Pin   6
+1333. Pin   6 → Pin 102
+1334. Pin 102 → Pin 192
+1335. Pin 192 → Pin  80
+1336. Pin  80 → Pin  29
+1337. Pin  29 → Pin 127
+1338. Pin 127 → Pin  54
+1339. Pin  54 → Pin 167
+1340. Pin 167 → Pin  86
+1341. Pin  86 → Pin   7
+1342. Pin   7 → Pin  96
+1343. Pin  96 → Pin  15
+1344. Pin  15 → Pin  70
+1345. Pin  70 → Pin 138
+1346. Pin 138 → Pin  21
+1347. Pin  21 → Pin  77
+1348. Pin  77 → Pin   0
+1349. Pin   0 → Pin 120
+1350. Pin 120 → Pin   4
+1351. Pin   4 → Pin  86
+1352. Pin  86 → Pin 184
+1353. Pin 184 → Pin  62
+1354. Pin  62 → Pin 156
+1355. Pin 156 → Pin  68
+1356. Pin  68 → Pin 180
+1357. Pin 180 → Pin  97
+1358. Pin  97 → Pin  10
+1359. Pin  10 → Pin  91
+1360. Pin  91 → Pin  19
+1361. Pin  19 → Pin 107
+1362. Pin 107 → Pin 191
+1363. Pin 191 → Pin  78
+1364. Pin  78 → Pin 145
+1365. Pin 145 → Pin  64
+1366. Pin  64 → Pin 183
+1367. Pin 183 → Pin  82
+1368. Pin  82 → Pin 165
+1369. Pin 165 → Pin  74
+1370. Pin  74 → Pin 145
+1371. Pin 145 → Pin  32
+1372. Pin  32 → Pin 133
+1373. Pin 133 → Pin  35
+1374. Pin  35 → Pin 150
+1375. Pin 150 → Pin  48
+1376. Pin  48 → Pin 173
+1377. Pin 173 → Pin  75
+1378. Pin  75 → Pin 139
+1379. Pin 139 → Pin  69
+1380. Pin  69 → Pin 192
+1381. Pin 192 → Pin  99
+1382. Pin  99 → Pin  20
+1383. Pin  20 → Pin 135
+1384. Pin 135 → Pin  59
+1385. Pin  59 → Pin   7
+1386. Pin   7 → Pin  81
+1387. Pin  81 → Pin 164
+1388. Pin 164 → Pin  63
+1389. Pin  63 → Pin 127
+1390. Pin 127 → Pin  45
+1391. Pin  45 → Pin 110
+1392. Pin 110 → Pin 194
+1393. Pin 194 → Pin  85
+1394. Pin  85 → Pin 180
+1395. Pin 180 → Pin  60
+1396. Pin  60 → Pin   0
+1397. Pin   0 → Pin  56
+1398. Pin  56 → Pin 141
+1399. Pin 141 → Pin  54
+1400. Pin  54 → Pin 185
+
+==================================================
+
+1401. Pin 185 → Pin  95
+1402. Pin  95 → Pin  31
+1403. Pin  31 → Pin  76
+1404. Pin  76 → Pin 174
+1405. Pin 174 → Pin  53
+1406. Pin  53 → Pin 147
+1407. Pin 147 → Pin  68
+1408. Pin  68 → Pin 186
+1409. Pin 186 → Pin  49
+1410. Pin  49 → Pin 137
+1411. Pin 137 → Pin  63
+1412. Pin  63 → Pin 156
+1413. Pin 156 → Pin  57
+1414. Pin  57 → Pin 124
+1415. Pin 124 → Pin  38
+1416. Pin  38 → Pin 115
+1417. Pin 115 → Pin  24
+1418. Pin  24 → Pin 104
+1419. Pin 104 → Pin  17
+1420. Pin  17 → Pin 133
+1421. Pin 133 → Pin  52
+1422. Pin  52 → Pin 191
+1423. Pin 191 → Pin  58
+1424. Pin  58 → Pin 180
+1425. Pin 180 → Pin  50
+1426. Pin  50 → Pin 132
+1427. Pin 132 → Pin  32
+1428. Pin  32 → Pin 110
+1429. Pin 110 → Pin  34
+1430. Pin  34 → Pin 151
+1431. Pin 151 → Pin  74
+1432. Pin  74 → Pin 174
+1433. Pin 174 → Pin  81
+1434. Pin  81 → Pin 183
+1435. Pin 183 → Pin  61
+1436. Pin  61 → Pin 197
+1437. Pin 197 → Pin  84
+1438. Pin  84 → Pin 170
+1439. Pin 170 → Pin  87
+1440. Pin  87 → Pin 175
+1441. Pin 175 → Pin  72
+1442. Pin  72 → Pin 149
+1443. Pin 149 → Pin  76
+1444. Pin  76 → Pin 161
+1445. Pin 161 → Pin  67
+1446. Pin  67 → Pin   1
+1447. Pin   1 → Pin  88
+1448. Pin  88 → Pin 186
+1449. Pin 186 → Pin  56
+1450. Pin  56 → Pin   2
+1451. Pin   2 → Pin  82
+1452. Pin  82 → Pin 181
+1453. Pin 181 → Pin  59
+1454. Pin  59 → Pin 111
+1455. Pin 111 → Pin  16
+1456. Pin  16 → Pin 112
+1457. Pin 112 → Pin 197
+1458. Pin 197 → Pin 106
+1459. Pin 106 → Pin  57
+1460. Pin  57 → Pin 151
+1461. Pin 151 → Pin  36
+1462. Pin  36 → Pin 154
+1463. Pin 154 → Pin  70
+1464. Pin  70 → Pin 177
+1465. Pin 177 → Pin  53
+1466. Pin  53 → Pin 118
+1467. Pin 118 → Pin  24
+1468. Pin  24 → Pin  96
+1469. Pin  96 → Pin 190
+1470. Pin 190 → Pin  53
+1471. Pin  53 → Pin   0
+1472. Pin   0 → Pin 118
+1473. Pin 118 → Pin  58
+1474. Pin  58 → Pin 136
+1475. Pin 136 → Pin  72
+1476. Pin  72 → Pin 166
+1477. Pin 166 → Pin  38
+1478. Pin  38 → Pin  70
+1479. Pin  70 → Pin 160
+1480. Pin 160 → Pin  77
+1481. Pin  77 → Pin 158
+1482. Pin 158 → Pin  40
+1483. Pin  40 → Pin 162
+1484. Pin 162 → Pin  68
+1485. Pin  68 → Pin 142
+1486. Pin 142 → Pin  42
+1487. Pin  42 → Pin 118
+1488. Pin 118 → Pin  49
+1489. Pin  49 → Pin 130
+1490. Pin 130 → Pin  39
+1491. Pin  39 → Pin 129
+1492. Pin 129 → Pin  68
+1493. Pin  68 → Pin  26
+1494. Pin  26 → Pin  76
+1495. Pin  76 → Pin 168
+1496. Pin 168 → Pin   6
+1497. Pin   6 → Pin 122
+1498. Pin 122 → Pin  48
+1499. Pin  48 → Pin 191
+1500. Pin 191 → Pin  90
+
+==================================================
+
+1501. Pin  90 → Pin 187
+1502. Pin 187 → Pin  71
+1503. Pin  71 → Pin 178
+1504. Pin 178 → Pin  85
+1505. Pin  85 → Pin 198
+1506. Pin 198 → Pin 114
+1507. Pin 114 → Pin  29
+1508. Pin  29 → Pin 130
+1509. Pin 130 → Pin  32
+1510. Pin  32 → Pin 120
+1511. Pin 120 → Pin  52
+1512. Pin  52 → Pin 146
+1513. Pin 146 → Pin  25
+1514. Pin  25 → Pin  82
+1515. Pin  82 → Pin 190
+1516. Pin 190 → Pin 101
+1517. Pin 101 → Pin  20
+1518. Pin  20 → Pin  95
+1519. Pin  95 → Pin 177
+1520. Pin 177 → Pin  47
+1521. Pin  47 → Pin 186
+1522. Pin 186 → Pin  51
+1523. Pin  51 → Pin 163
+1524. Pin 163 → Pin  35
+1525. Pin  35 → Pin 109
+1526. Pin 109 → Pin 193
+1527. Pin 193 → Pin  70
+1528. Pin  70 → Pin 153
+1529. Pin 153 → Pin  56
+1530. Pin  56 → Pin 169
+1531. Pin 169 → Pin  39
+1532. Pin  39 → Pin 159
+1533. Pin 159 → Pin  36
+1534. Pin  36 → Pin  89
+1535. Pin  89 → Pin 172
+1536. Pin 172 → Pin  83
+1537. Pin  83 → Pin 176
+1538. Pin 176 → Pin  50
+1539. Pin  50 → Pin 128
+1540. Pin 128 → Pin  37
+1541. Pin  37 → Pin 154
+1542. Pin 154 → Pin  75
+1543. Pin  75 → Pin 177
+1544. Pin 177 → Pin  79
+1545. Pin  79 → Pin 147
+1546. Pin 147 → Pin  59
+1547. Pin  59 → Pin 188
+1548. Pin 188 → Pin 103
+1549. Pin 103 → Pin 193
+1550. Pin 193 → Pin  98
+1551. Pin  98 → Pin  23
+1552. Pin  23 → Pin 138
+1553. Pin 138 → Pin  78
+1554. Pin  78 → Pin 164
+1555. Pin 164 → Pin  70
+1556. Pin  70 → Pin  13
+1557. Pin  13 → Pin  66
+1558. Pin  66 → Pin 154
+1559. Pin 154 → Pin  50
+1560. Pin  50 → Pin 138
+1561. Pin 138 → Pin  64
+1562. Pin  64 → Pin 155
+1563. Pin 155 → Pin  52
+1564. Pin  52 → Pin 116
+1565. Pin 116 → Pin   2
+1566. Pin   2 → Pin 161
+1567. Pin 161 → Pin  63
+1568. Pin  63 → Pin 114
+1569. Pin 114 → Pin  23
+1570. Pin  23 → Pin  94
+1571. Pin  94 → Pin 196
+1572. Pin 196 → Pin 116
+1573. Pin 116 → Pin  53
+1574. Pin  53 → Pin  93
+1575. Pin  93 → Pin  17
+1576. Pin  17 → Pin 112
+1577. Pin 112 → Pin  31
+1578. Pin  31 → Pin 134
+1579. Pin 134 → Pin  18
+1580. Pin  18 → Pin 113
+1581. Pin 113 → Pin  57
+1582. Pin  57 → Pin  90
+1583. Pin  90 → Pin  12
+1584. Pin  12 → Pin  60
+1585. Pin  60 → Pin 131
+1586. Pin 131 → Pin  16
+1587. Pin  16 → Pin  73
+1588. Pin  73 → Pin 147
+1589. Pin 147 → Pin  64
+1590. Pin  64 → Pin 133
+1591. Pin 133 → Pin  46
+1592. Pin  46 → Pin 168
+1593. Pin 168 → Pin 188
+1594. Pin 188 → Pin  87
+1595. Pin  87 → Pin   7
+1596. Pin   7 → Pin 124
+1597. Pin 124 → Pin  64
+1598. Pin  64 → Pin  10
+1599. Pin  10 → Pin 172
+1600. Pin 172 → Pin  79
+
+==================================================
+
+1601. Pin  79 → Pin 160
+1602. Pin 160 → Pin 186
+1603. Pin 186 → Pin  84
+1604. Pin  84 → Pin 179
+1605. Pin 179 → Pin 159
+1606. Pin 159 → Pin  32
+1607. Pin  32 → Pin 144
+1608. Pin 144 → Pin  72
+1609. Pin  72 → Pin 150
+1610. Pin 150 → Pin  66
+1611. Pin  66 → Pin 128
+1612. Pin 128 → Pin  47
+1613. Pin  47 → Pin 142
+1614. Pin 142 → Pin  77
+1615. Pin  77 → Pin 166
+1616. Pin 166 → Pin  37
+1617. Pin  37 → Pin 112
+1618. Pin 112 → Pin   9
+1619. Pin   9 → Pin  99
+1620. Pin  99 → Pin 183
+1621. Pin 183 → Pin  63
+1622. Pin  63 → Pin  17
+1623. Pin  17 → Pin  61
+1624. Pin  61 → Pin 160
+1625. Pin 160 → Pin  31
+1626. Pin  31 → Pin 125
+1627. Pin 125 → Pin  51
+1628. Pin  51 → Pin 194
+1629. Pin 194 → Pin 170
+1630. Pin 170 → Pin   8
+1631. Pin   8 → Pin  62
+1632. Pin  62 → Pin 185
+1633. Pin 185 → Pin  97
+1634. Pin  97 → Pin  22
+1635. Pin  22 → Pin 139
+1636. Pin 139 → Pin  49
+1637. Pin  49 → Pin 178
+1638. Pin 178 → Pin  72
+1639. Pin  72 → Pin 155
+1640. Pin 155 → Pin  70
+1641. Pin  70 → Pin 132
+1642. Pin 132 → Pin  18
+1643. Pin  18 → Pin 135
+1644. Pin 135 → Pin  62
+1645. Pin  62 → Pin 157
+1646. Pin 157 → Pin  38
+1647. Pin  38 → Pin 164
+1648. Pin 164 → Pin  52
+1649. Pin  52 → Pin 177
+1650. Pin 177 → Pin  17
+1651. Pin  17 → Pin 103
+1652. Pin 103 → Pin  19
+1653. Pin  19 → Pin 133
+1654. Pin 133 → Pin 113
+1655. Pin 113 → Pin  30
+1656. Pin  30 → Pin 157
+1657. Pin 157 → Pin  65
+1658. Pin  65 → Pin 159
+1659. Pin 159 → Pin   1
+1660. Pin   1 → Pin  87
+1661. Pin  87 → Pin  11
+1662. Pin  11 → Pin 173
+1663. Pin 173 → Pin  76
+1664. Pin  76 → Pin 185
+1665. Pin 185 → Pin  48
+1666. Pin  48 → Pin 170
+1667. Pin 170 → Pin  90
+1668. Pin  90 → Pin   5
+1669. Pin   5 → Pin 123
+1670. Pin 123 → Pin  50
+1671. Pin  50 → Pin 152
+1672. Pin 152 → Pin  74
+1673. Pin  74 → Pin 139
+1674. Pin 139 → Pin  39
+1675. Pin  39 → Pin 154
+1676. Pin 154 → Pin  69
+1677. Pin  69 → Pin 145
+1678. Pin 145 → Pin  62
+1679. Pin  62 → Pin   6
+1680. Pin   6 → Pin  85
+1681. Pin  85 → Pin  40
+1682. Pin  40 → Pin 168
+1683. Pin 168 → Pin  68
+1684. Pin  68 → Pin 195
+1685. Pin 195 → Pin  82
+1686. Pin  82 → Pin  52
+1687. Pin  52 → Pin 117
+1688. Pin 117 → Pin  41
+1689. Pin  41 → Pin 126
+1690. Pin 126 → Pin 106
+1691. Pin 106 → Pin 196
+1692. Pin 196 → Pin  53
+1693. Pin  53 → Pin 105
+1694. Pin 105 → Pin   7
+1695. Pin   7 → Pin  92
+1696. Pin  92 → Pin  22
+1697. Pin  22 → Pin  99
+1698. Pin  99 → Pin  27
+1699. Pin  27 → Pin 111
+1700. Pin 111 → Pin  21
+
+==================================================
+
+1701. Pin  21 → Pin 105
+1702. Pin 105 → Pin  25
+1703. Pin  25 → Pin  70
+1704. Pin  70 → Pin 143
+1705. Pin 143 → Pin  67
+1706. Pin  67 → Pin 171
+1707. Pin 171 → Pin  42
+1708. Pin  42 → Pin 125
+1709. Pin 125 → Pin   5
+1710. Pin   5 → Pin 102
+1711. Pin 102 → Pin  27
+1712. Pin  27 → Pin 149
+1713. Pin 149 → Pin  54
+1714. Pin  54 → Pin 198
+1715. Pin 198 → Pin 107
+1716. Pin 107 → Pin  43
+1717. Pin  43 → Pin 131
+1718. Pin 131 → Pin  47
+1719. Pin  47 → Pin 148
+1720. Pin 148 → Pin  34
+1721. Pin  34 → Pin 135
+1722. Pin 135 → Pin  57
+1723. Pin  57 → Pin 138
+1724. Pin 138 → Pin  76
+1725. Pin  76 → Pin 175
+1726. Pin 175 → Pin  54
+1727. Pin  54 → Pin 102
+1728. Pin 102 → Pin  22
+1729. Pin  22 → Pin 110
+1730. Pin 110 → Pin  43
+1731. Pin  43 → Pin 165
+1732. Pin 165 → Pin   4
+1733. Pin   4 → Pin 121
+1734. Pin 121 → Pin  37
+1735. Pin  37 → Pin 160
+1736. Pin 160 → Pin 113
+1737. Pin 113 → Pin  38
+1738. Pin  38 → Pin  74
+1739. Pin  74 → Pin 179
+1740. Pin 179 → Pin  50
+1741. Pin  50 → Pin 192
+1742. Pin 192 → Pin 171
+1743. Pin 171 → Pin  43
+1744. Pin  43 → Pin  94
+1745. Pin  94 → Pin   9
+1746. Pin   9 → Pin  88
+1747. Pin  88 → Pin 175
+1748. Pin 175 → Pin  90
+1749. Pin  90 → Pin  50
+1750. Pin  50 → Pin 190
+1751. Pin 190 → Pin  81
+1752. Pin  81 → Pin 166
+1753. Pin 166 → Pin  69
+1754. Pin  69 → Pin 153
+1755. Pin 153 → Pin  28
+1756. Pin  28 → Pin 151
+1757. Pin 151 → Pin 198
+1758. Pin 198 → Pin 117
+1759. Pin 117 → Pin   3
+1760. Pin   3 → Pin  59
+1761. Pin  59 → Pin 158
+1762. Pin 158 → Pin 184
+1763. Pin 184 → Pin  80
+1764. Pin  80 → Pin 148
+1765. Pin 148 → Pin  66
+1766. Pin  66 → Pin 155
+1767. Pin 155 → Pin  77
+1768. Pin  77 → Pin 178
+1769. Pin 178 → Pin  65
+1770. Pin  65 → Pin 119
+1771. Pin 119 → Pin  35
+1772. Pin  35 → Pin 108
+1773. Pin 108 → Pin  32
+1774. Pin  32 → Pin 121
+1775. Pin 121 → Pin 159
+1776. Pin 159 → Pin  74
+1777. Pin  74 → Pin 191
+1778. Pin 191 → Pin  81
+1779. Pin  81 → Pin  60
+1780. Pin  60 → Pin 161
+1781. Pin 161 → Pin 185
+1782. Pin 185 → Pin  55
+1783. Pin  55 → Pin 197
+1784. Pin 197 → Pin  83
+1785. Pin  83 → Pin 188
+1786. Pin 188 → Pin 156
+1787. Pin 156 → Pin 118
+1788. Pin 118 → Pin  51
+1789. Pin  51 → Pin 189
+1790. Pin 189 → Pin  88
+1791. Pin  88 → Pin 185
+1792. Pin 185 → Pin  47
+1793. Pin  47 → Pin 120
+1794. Pin 120 → Pin   5
+1795. Pin   5 → Pin  86
+1796. Pin  86 → Pin 169
+1797. Pin 169 → Pin  79
+1798. Pin  79 → Pin 193
+1799. Pin 193 → Pin  80
+1800. Pin  80 → Pin 174
+
+==================================================
+
+1801. Pin 174 → Pin  90
+1802. Pin  90 → Pin  11
+1803. Pin  11 → Pin  95
+1804. Pin  95 → Pin 183
+1805. Pin 183 → Pin 163
+1806. Pin 163 → Pin   3
+1807. Pin   3 → Pin  91
+1808. Pin  91 → Pin  15
+1809. Pin  15 → Pin  60
+1810. Pin  60 → Pin 149
+1811. Pin 149 → Pin  73
+1812. Pin  73 → Pin 156
+1813. Pin 156 → Pin  60
+1814. Pin  60 → Pin 138
+1815. Pin 138 → Pin  54
+1816. Pin  54 → Pin 115
+1817. Pin 115 → Pin 199
+1818. Pin 199 → Pin  64
+1819. Pin  64 → Pin 197
+1820. Pin 197 → Pin  73
+1821. Pin  73 → Pin 177
+1822. Pin 177 → Pin  51
+1823. Pin  51 → Pin 134
+1824. Pin 134 → Pin  36
+1825. Pin  36 → Pin 138
+1826. Pin 138 → Pin  48
+1827. Pin  48 → Pin 144
+1828. Pin 144 → Pin  43
+1829. Pin  43 → Pin 119
+1830. Pin 119 → Pin  33
+1831. Pin  33 → Pin 155
+1832. Pin 155 → Pin  79
+1833. Pin  79 → Pin 148
+1834. Pin 148 → Pin  75
+1835. Pin  75 → Pin 180
+1836. Pin 180 → Pin  56
+1837. Pin  56 → Pin 136
+1838. Pin 136 → Pin  48
+1839. Pin  48 → Pin 124
+1840. Pin 124 → Pin  99
+1841. Pin  99 → Pin  16
+1842. Pin  16 → Pin 137
+1843. Pin 137 → Pin  20
+1844. Pin  20 → Pin 109
+1845. Pin 109 → Pin  31
+1846. Pin  31 → Pin 158
+1847. Pin 158 → Pin  69
+1848. Pin  69 → Pin  12
+1849. Pin  12 → Pin 127
+1850. Pin 127 → Pin 105
+1851. Pin 105 → Pin  29
+1852. Pin  29 → Pin 123
+1853. Pin 123 → Pin   2
+1854. Pin   2 → Pin  85
+1855. Pin  85 → Pin 164
+1856. Pin 164 → Pin 124
+1857. Pin 124 → Pin  36
+1858. Pin  36 → Pin 161
+1859. Pin 161 → Pin   0
+1860. Pin   0 → Pin 157
+1861. Pin 157 → Pin  39
+1862. Pin  39 → Pin 138
+1863. Pin 138 → Pin  61
+1864. Pin  61 → Pin 128
+1865. Pin 128 → Pin 104
+1866. Pin 104 → Pin  27
+1867. Pin  27 → Pin 127
+1868. Pin 127 → Pin  26
+1869. Pin  26 → Pin 141
+1870. Pin 141 → Pin  42
+1871. Pin  42 → Pin  69
+1872. Pin  69 → Pin 147
+1873. Pin 147 → Pin  77
+1874. Pin  77 → Pin 150
+1875. Pin 150 → Pin  52
+1876. Pin  52 → Pin 181
+1877. Pin 181 → Pin  78
+1878. Pin  78 → Pin 173
+1879. Pin 173 → Pin  83
+1880. Pin  83 → Pin 181
+1881. Pin 181 → Pin  72
+1882. Pin  72 → Pin 188
+1883. Pin 188 → Pin 100
+1884. Pin 100 → Pin  23
+1885. Pin  23 → Pin 141
+1886. Pin 141 → Pin  57
+1887. Pin  57 → Pin 134
+1888. Pin 134 → Pin  49
+1889. Pin  49 → Pin 184
+1890. Pin 184 → Pin 162
+1891. Pin 162 → Pin  35
+1892. Pin  35 → Pin 152
+1893. Pin 152 → Pin  46
+1894. Pin  46 → Pin 148
+1895. Pin 148 → Pin  59
+1896. Pin  59 → Pin 129
+1897. Pin 129 → Pin 103
+1898. Pin 103 → Pin   7
+1899. Pin   7 → Pin  93
+1900. Pin  93 → Pin 187
+
+==================================================
+
+1901. Pin 187 → Pin 158
+1902. Pin 158 → Pin   6
+1903. Pin   6 → Pin 114
+1904. Pin 114 → Pin  19
+1905. Pin  19 → Pin 178
+1906. Pin 178 → Pin  59
+1907. Pin  59 → Pin  18
+1908. Pin  18 → Pin  97
+1909. Pin  97 → Pin  17
+1910. Pin  17 → Pin 134
+1911. Pin 134 → Pin  43
+1912. Pin  43 → Pin 169
+1913. Pin 169 → Pin  77
+1914. Pin  77 → Pin 175
+1915. Pin 175 → Pin  14
+1916. Pin  14 → Pin  96
+1917. Pin  96 → Pin  56
+1918. Pin  56 → Pin 143
+1919. Pin 143 → Pin  68
+1920. Pin  68 → Pin  47
+1921. Pin  47 → Pin 147
+1922. Pin 147 → Pin  67
+1923. Pin  67 → Pin  10
+1924. Pin  10 → Pin  89
+1925. Pin  89 → Pin 176
+1926. Pin 176 → Pin  94
+1927. Pin  94 → Pin  12
+1928. Pin  12 → Pin 102
+1929. Pin 102 → Pin 130
+1930. Pin 130 → Pin  40
+1931. Pin  40 → Pin 125
+1932. Pin 125 → Pin   4
+1933. Pin   4 → Pin  56
+1934. Pin  56 → Pin 130
+1935. Pin 130 → Pin  14
+1936. Pin  14 → Pin  98
+1937. Pin  98 → Pin 184
+1938. Pin 184 → Pin  75
+1939. Pin  75 → Pin 170
+1940. Pin 170 → Pin  91
+1941. Pin  91 → Pin 199
+1942. Pin 199 → Pin  88
+1943. Pin  88 → Pin  11
+1944. Pin  11 → Pin  62
+1945. Pin  62 → Pin 117
+1946. Pin 117 → Pin  43
+1947. Pin  43 → Pin 132
+1948. Pin 132 → Pin 102
+1949. Pin 102 → Pin  20
+1950. Pin  20 → Pin  93
+1951. Pin  93 → Pin  18
+1952. Pin  18 → Pin 131
+1953. Pin 131 → Pin  59
+1954. Pin  59 → Pin 122
+1955. Pin 122 → Pin  37
+1956. Pin  37 → Pin 110
+1957. Pin 110 → Pin  29
+1958. Pin  29 → Pin 156
+1959. Pin 156 → Pin  71
+1960. Pin  71 → Pin 152
+1961. Pin 152 → Pin  34
+1962. Pin  34 → Pin 154
+1963. Pin 154 → Pin  68
+1964. Pin  68 → Pin 146
+1965. Pin 146 → Pin  73
+1966. Pin  73 → Pin 173
+1967. Pin 173 → Pin 193
+1968. Pin 193 → Pin 102
+1969. Pin 102 → Pin  24
+1970. Pin  24 → Pin 125
+1971. Pin 125 → Pin  50
+1972. Pin  50 → Pin 169
+1973. Pin 169 → Pin   7
+1974. Pin   7 → Pin  63
+1975. Pin  63 → Pin 151
+1976. Pin 151 → Pin  49
+1977. Pin  49 → Pin 192
+1978. Pin 192 → Pin  77
+1979. Pin  77 → Pin 163
+1980. Pin 163 → Pin  66
+1981. Pin  66 → Pin  15
+1982. Pin  15 → Pin  92
+1983. Pin  92 → Pin 188
+1984. Pin 188 → Pin  84
+1985. Pin  84 → Pin  64
+1986. Pin  64 → Pin 153
+1987. Pin 153 → Pin 114
+1988. Pin 114 → Pin   2
+1989. Pin   2 → Pin  92
+1990. Pin  92 → Pin 173
+1991. Pin 173 → Pin  52
+1992. Pin  52 → Pin 136
+1993. Pin 136 → Pin  73
+1994. Pin  73 → Pin 176
+1995. Pin 176 → Pin  71
+1996. Pin  71 → Pin 150
+1997. Pin 150 → Pin 173
+1998. Pin 173 → Pin  42
+1999. Pin  42 → Pin 160
+2000. Pin 160 → Pin  33
+
+==================================================
+

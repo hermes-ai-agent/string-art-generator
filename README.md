@@ -66,6 +66,15 @@ python3 string_art_generator.py input_image.jpg \
 
 ## Version History
 
+### v2.0.0 (2026-05-02)
+**Major Quality Improvements**
+- Edge detection preprocessing (Sobel gradient)
+- Feature-aware line selection (prioritizes edges)
+- Optimized parameters: 2000 lines (was 3000), better clarity
+- Increased line weight and min distance for less blur
+- Performance tracking in metadata
+- **Result:** Much clearer output, sharper features, less blur
+
 ### v1.0.0 (2026-05-02)
 - Initial implementation
 - Circular pin arrangement
