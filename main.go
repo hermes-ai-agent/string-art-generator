@@ -93,13 +93,21 @@ func main() {
 		LookAhead:      *lookAhead,
 	}
 
-	lines := GenerateStringArt(processed, edgeMap, config)
+	lines, canvas := GenerateStringArt(processed, edgeMap, config)
 
 	// Export to SVG
 	fmt.Println("Exporting to SVG...")
 	if err := ExportSVG(lines, config, *outputPath); err != nil {
 		log.Fatalf("Failed to export SVG: %v", err)
 	}
+
+	// Render canvas state to PNG (for showcase - this is what Python does)
+	canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+	fmt.Println("Rendering canvas state to PNG...")
+	if err := RenderCanvasToImage(canvas, canvasPngPath); err != nil {
+		log.Fatalf("Failed to render canvas: %v", err)
+	}
+	fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 
 	elapsed := time.Since(startTime)
 	fmt.Printf("\n✓ Done in %.2f seconds\n", elapsed.Seconds())

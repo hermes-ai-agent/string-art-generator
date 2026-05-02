@@ -8,7 +8,8 @@ import (
 )
 
 // GenerateStringArt generates string art lines using greedy algorithm with parallel evaluation
-func GenerateStringArt(img *image.Gray, edgeMap *image.Gray, config *Config) []Line {
+// Returns lines and final canvas state
+func GenerateStringArt(img *image.Gray, edgeMap *image.Gray, config *Config) ([]Line, [][]int) {
 	bounds := img.Bounds()
 	width, height := bounds.Dx(), bounds.Dy()
 	
@@ -78,7 +79,7 @@ func GenerateStringArt(img *image.Gray, edgeMap *image.Gray, config *Config) []L
 	}
 
 	fmt.Printf("Generated %d lines\n", len(lines))
-	return lines
+	return lines, canvas
 }
 
 // findBestLine finds the best next line using parallel evaluation
