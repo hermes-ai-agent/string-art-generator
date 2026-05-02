@@ -30,11 +30,24 @@ func main() {
 	stopThreshold := flag.Float64("stop-threshold", 0.5, "Quality plateau threshold for adaptive stopping")
 	lookAhead := flag.Bool("look-ahead", false, "Enable look-ahead optimization (slower, better quality)")
 	
+	// v4.0.0 parameters (dual-color)
+	dualColor := flag.Bool("dual-color", false, "Enable dual-color mode (black + white threads)")
+	
+	// v5.0.0 parameters (simulated annealing)
+	useSimulatedAnnealing := flag.Bool("sa", false, "Use Simulated Annealing algorithm (slower, better quality)")
+	
 	flag.Parse()
 
 	if *inputPath == "" {
 		fmt.Println("Error: --input is required")
 		flag.Usage()
+		os.Exit(1)
+	}
+
+	// MANDATORY RULE: Pin maximal 360 (1 pin per degree)
+	if *numPins > 360 {
+		fmt.Printf("Error: --pins cannot exceed 360 (requested: %d)\n", *numPins)
+		fmt.Println("Reason: Maximum 1 pin per degree for physical construction")
 		os.Exit(1)
 	}
 
@@ -93,12 +106,51 @@ func main() {
 		LookAhead:      *lookAhead,
 	}
 
-	lines, canvas := GenerateStringArt(processed, edgeMap, config)
-
-	// Export to SVG
-	fmt.Println("Exporting to SVG...")
-	if err := ExportSVG(lines, config, *outputPath); err != nil {
-		log.Fatalf("Failed to export SVG: %v", err)
+	var canvas [][]int
+	
+	if *useSimulatedAnnealing {
+		// Simulated Annealing mode
+		fmt.Println("Mode: SIMULATED ANNEALING (global optimization)")
+		lines, canvasSA := GenerateStringArtSA(processed, edgeMap, config)
+		canvas = canvasSA
+		
+		// Export to SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+	} else if *dualColor {
+		// Dual-color mode: black + white threads
+		fmt.Println("Mode: DUAL-COLOR (black + white threads)")
+		
+		// Load image with alpha channel
+		imgRGBA, err := LoadImageRGBA(*inputPath)
+		if err != nil {
+			log.Fatalf("Failed to load RGBA image: %v", err)
+		}
+		
+		// Preprocess with alpha awareness
+		processedRGBA, edgeMapRGBA := PreprocessImageRGBA(imgRGBA)
+		
+		blackLines, whiteLines, canvasDual := GenerateStringArtDual(processedRGBA, edgeMapRGBA, config)
+		canvas = canvasDual
+		
+		// Export dual-color SVG
+		fmt.Println("Exporting dual-color SVG...")
+		if err := ExportSVGDual(blackLines, whiteLines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+	} else {
+		// Single-color mode (original)
+		fmt.Println("Mode: SINGLE-COLOR (black threads only)")
+		lines, canvasSingle := GenerateStringArt(processed, edgeMap, config)
+		canvas = canvasSingle
+		
+		// Export to SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
 	}
 
 	// Render canvas state to PNG (for showcase - this is what Python does)
