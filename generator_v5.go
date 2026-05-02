@@ -69,11 +69,13 @@ func GenerateStringArtV5(img *image.Gray, edgeMap *image.Gray, config *Config) (
 
 	for i := 0; i < config.NumLines; i++ {
 		// Adaptive line weight: reduce as we progress to capture fine details
-		// With opaque strokes, we need to be conservative to avoid over-darkening
+		// With source-over compositing, weight/255 = per-line alpha
+		// weight 30 → α ≈ 0.118 (each line removes ~12% of remaining brightness)
+		// weight 15 → α ≈ 0.059 (each line removes ~6% - finer control)
 		progress := float64(i) / float64(config.NumLines)
 		adaptiveWeight := baseWeight * (1.0 - 0.5*progress) // Start at 100%, end at 50%
-		if adaptiveWeight < 6 {
-			adaptiveWeight = 6
+		if adaptiveWeight < 10 {
+			adaptiveWeight = 10
 		}
 
 		bestLine := findBestLineV5(currentPin, pins, canvas, target, edgeMap, importance,
@@ -392,9 +394,8 @@ func findBestLineV5(fromPin int, pins []Pin, canvas, target [][]float64, edgeMap
 }
 
 // evaluateLineV5 calculates the net error reduction if we draw this line
-// CRITICAL: With opaque strokes (mandatory rule), over-darkening is heavily penalized
-// because every line is fully visible and cannot be "hidden" by transparency.
-// The algorithm must be very selective about where to place lines.
+// Uses SOURCE-OVER compositing model to match SVG rendering.
+// Heavily penalizes over-darkening since strokes are opaque.
 func evaluateLineV5(pixels []AntiAliasedPixel, canvas, target [][]float64,
 	edgeMap *image.Gray, importance [][]float64,
 	lineWeight, edgeWeight float64) float64 {
@@ -404,19 +405,21 @@ func evaluateLineV5(pixels []AntiAliasedPixel, canvas, target [][]float64,
 	improvingPixels := 0
 	worseningPixels := 0
 
+	lineAlpha := lineWeight / 255.0 // Same as in drawLineAAOnCanvas
+
 	for _, p := range pixels {
 		x, y := p.X, p.Y
 		w := p.Weight
 
-		currentVal := canvas[y][x]
-		targetVal := target[y][x]
+		currentVal := canvas[y][x]  // Current brightness (0=black, 255=white)
+		targetVal := target[y][x]   // Target brightness
 
-		// How much this line would darken the pixel
-		darkening := lineWeight * w
-		newVal := currentVal - darkening
-		if newVal < 0 {
-			newVal = 0
+		// Source-over compositing: new brightness = current * (1 - α*w)
+		effectiveAlpha := lineAlpha * w
+		if effectiveAlpha > 1.0 {
+			effectiveAlpha = 1.0
 		}
+		newVal := currentVal * (1.0 - effectiveAlpha)
 
 		// Error before and after (squared)
 		oldError := (currentVal - targetVal) * (currentVal - targetVal)
@@ -439,7 +442,7 @@ func evaluateLineV5(pixels []AntiAliasedPixel, canvas, target [][]float64,
 		} else if improvement < 0 {
 			// This pixel gets WORSE (over-darkening)
 			// Penalize heavily - with opaque strokes, over-darkening is very visible
-			totalScore += improvement * imp * 2.0 * w // 2x penalty for worsening
+			totalScore += improvement * imp * 2.5 * w // 2.5x penalty for worsening
 			worseningPixels++
 		}
 
@@ -450,12 +453,11 @@ func evaluateLineV5(pixels []AntiAliasedPixel, canvas, target [][]float64,
 		score := totalScore / totalWeight
 
 		// Additional penalty if too many pixels worsen
-		// A good line should improve most pixels it touches
 		totalPixels := improvingPixels + worseningPixels
 		if totalPixels > 0 {
 			worsenRatio := float64(worseningPixels) / float64(totalPixels)
-			if worsenRatio > 0.5 {
-				// More than half the pixels get worse - heavily penalize
+			if worsenRatio > 0.4 {
+				// More than 40% of pixels get worse - penalize
 				score *= (1.0 - worsenRatio)
 			}
 		}
@@ -466,22 +468,31 @@ func evaluateLineV5(pixels []AntiAliasedPixel, canvas, target [][]float64,
 }
 
 // drawLineAAOnCanvas draws an anti-aliased line on the canvas
-// Simulates SVG opaque stroke behavior: each line significantly darkens pixels
-// In SVG with 0.18mm opaque stroke, a line makes pixels nearly black where it passes
-// We simulate this with a high fixed darkening per line crossing
+// Uses SOURCE-OVER COMPOSITING to match SVG rendering behavior.
+// 
+// In SVG, a 0.18mm stroke in viewBox 600 is sub-pixel on most screens.
+// The browser anti-aliases it, giving each line a fractional alpha.
+// Multiple lines composite via: brightness(N) = (1-α)^N
+//
+// We simulate this by using multiplicative darkening (not additive).
+// This accurately predicts how the SVG will look on screen.
 func drawLineAAOnCanvas(canvas [][]float64, from, to Pin, weight float64, width, height int) {
 	pixels := getAntiAliasedLinePixels(from, to, width, height)
 
-	// SVG simulation: each opaque line crossing darkens by a fixed amount
-	// In real SVG, a 0.18mm stroke at viewBox 600 = ~0.24px at 800px canvas
-	// Multiple lines crossing = additive darkening until black
-	// Use weight as the darkening amount per crossing
+	// Calculate per-line alpha based on SVG rendering model
+	// 0.18mm stroke in 600-unit viewBox = 0.0003 of width
+	// On a typical screen (400-800px display), this is 0.12-0.24px
+	// We use weight to control the effective alpha
+	// Higher weight = thicker effective line = more darkening per pass
+	lineAlpha := weight / 255.0 // Normalize: weight 25 → α ≈ 0.098
+	
 	for _, p := range pixels {
-		darkening := weight * p.Weight
-		canvas[p.Y][p.X] -= darkening
-		if canvas[p.Y][p.X] < 0 {
-			canvas[p.Y][p.X] = 0
+		// Source-over compositing: new_brightness = old_brightness * (1 - α * aa_weight)
+		effectiveAlpha := lineAlpha * p.Weight
+		if effectiveAlpha > 1.0 {
+			effectiveAlpha = 1.0
 		}
+		canvas[p.Y][p.X] *= (1.0 - effectiveAlpha)
 	}
 }
 
