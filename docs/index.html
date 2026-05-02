@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Art Generator - Examples</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .specs {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .specs h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .specs ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .specs li {
+            padding: 8px 0;
+            color: #555;
+        }
+        
+        .specs li strong {
+            color: #333;
+            display: inline-block;
+            width: 150px;
+        }
+        
+        .example {
+            margin: 50px 0;
+        }
+        
+        .example h2 {
+            color: #764ba2;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .image-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-card .caption {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .image-card .caption h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .image-card .caption p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .download-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+            color: #666;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 String Art Generator</h1>
+            <p class="subtitle">Convert images to string art sequences with precision SVG output</p>
+        </header>
+        
+        <div class="specs">
+            <h3>📐 Technical Specifications</h3>
+            <ul>
+                <li><strong>Output Format:</strong> SVG (Scalable Vector Graphics)</li>
+                <li><strong>Canvas Size:</strong> 600mm × 600mm</li>
+                <li><strong>Stroke Width:</strong> 0.18mm (full opaque)</li>
+                <li><strong>Algorithm:</strong> Greedy line selection</li>
+                <li><strong>Pin Arrangement:</strong> Circular (200 pins default)</li>
+                <li><strong>Max Lines:</strong> 3000 strings</li>
+            </ul>
+        </div>
+        
+        <div class="example">
+            <h2>Example: Cat Portrait</h2>
+            <p style="color: #666; margin-bottom: 20px;">
+                Generated with 200 pins and 3000 strings. The algorithm selects the optimal line at each step 
+                to best match the target image darkness.
+            </p>
+            
+            <div class="gallery">
+                <div class="image-card">
+                    <img src="examples/cat_photo.jpg" alt="Original Cat Photo">
+                    <div class="caption">
+                        <h3>Original Image</h3>
+                        <p>Source photograph</p>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="examples/cat_photo_render_20260502_141824.png" alt="String Art Render">
+                    <div class="caption">
+                        <h3>String Art Render</h3>
+                        <p>3000 lines, 200 pins</p>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="examples/cat_photo_comparison_20260502_141824.png" alt="Comparison">
+                    <div class="caption">
+                        <h3>Side-by-Side Comparison</h3>
+                        <p>Original vs String Art Result</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="download-section">
+            <h3>📥 Download Files</h3>
+            <p style="margin-bottom: 20px;">Get the SVG file for physical construction or further processing</p>
+            <a href="examples/cat_photo_stringart_20260502_141824.svg" class="btn" download>
+                Download SVG (600mm × 600mm)
+            </a>
+        </div>
+        
+        <div class="specs">
+            <h3>🎯 How It Works</h3>
+            <ol style="padding-left: 20px; color: #555;">
+                <li style="margin: 15px 0;"><strong>Setup:</strong> Place N pins evenly around a circle</li>
+                <li style="margin: 15px 0;"><strong>Greedy Selection:</strong> At each step, try all valid next pins and select the one that creates the line with maximum darkness match</li>
+                <li style="margin: 15px 0;"><strong>Draw:</strong> Draw that line (lighten pixels along the path)</li>
+                <li style="margin: 15px 0;"><strong>Repeat:</strong> Continue until max lines reached or no improvement possible</li>
+                <li style="margin: 15px 0;"><strong>Export:</strong> Generate SVG with precise measurements for physical construction</li>
+            </ol>
+        </div>
+        
+        <footer>
+            <p>
+                <strong>String Art Generator</strong> v1.0.0<br>
+                <a href="https://github.com/hermes-ai-agent/string-art-generator" target="_blank">View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
