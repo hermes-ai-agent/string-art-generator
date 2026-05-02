@@ -21,7 +21,10 @@ Sistem pembelajaran otomatis untuk continuous improvement string art generator.
 - **Allah** - Islamic knowledge
 
 ### Override Topic (Single Focus)
-- **String-Art** - String art development (CURRENT)
+- **String-Art** - String art Go development (CURRENT)
+  - Focus: Go implementation at `~/string-art/*.go`
+  - Target: Performance, algorithms, Go-specific optimizations
+  - Status: v3.1.0 - Research improvements ported to Go
 
 ### Commands
 
@@ -42,9 +45,9 @@ python3 ~/.hermes/scripts/topic_manager.py reset
 ## Learning Focus Areas
 
 ### 1. Algorithms
-- **Current:** Greedy line selection
-- **Targets:** TSP-based, genetic algorithms, simulated annealing
-- **Goal:** Better image matching with fewer lines
+- **Current:** Greedy line selection (Go implementation)
+- **Targets:** TSP-based, genetic algorithms, simulated annealing, GPU acceleration
+- **Goal:** Better image matching with fewer lines, maintain Go performance
 
 ### 2. Pin Arrangements
 - **Current:** Circular only
@@ -52,9 +55,9 @@ python3 ~/.hermes/scripts/topic_manager.py reset
 - **Goal:** More flexibility for different art styles
 
 ### 3. Performance
-- **Current:** Single-threaded
-- **Targets:** Multi-threading, GPU acceleration
-- **Goal:** Faster generation for high-resolution images
+- **Current:** Go with parallel workers (8 workers, 2.5s for 2000 lines)
+- **Targets:** Line caching, SIMD, GPU compute shaders, better concurrency
+- **Goal:** Sub-second generation, real-time preview
 
 ### 4. Rendering
 - **Current:** Basic line drawing
@@ -169,5 +172,6 @@ python3 ~/.hermes/scripts/topic_manager.py status
 
 ---
 
-**Status:** Active - Learning string-art every ~15-30 minutes when idle
+**Status:** Active - Learning Go string-art every ~15-30 minutes when idle
 **Last Updated:** 2026-05-02
+**Current Version:** v3.1.0 (Go + Research improvements)
