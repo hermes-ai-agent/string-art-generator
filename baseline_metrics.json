@@ -1,10 +1,11 @@
 {
-  "version": "v36.0",
-  "ssim": 0.259,
-  "quality_score": 7.0,
-  "generation_time": 12.4,
+  "version": "v9.0",
+  "ssim": 0.258,
+  "quality_score": 6,
+  "generation_time": 11.4,
   "pins": 300,
-  "lines": 2418,
-  "improvement": "Multi-scale edge detection (1x+2x+4x)",
-  "timestamp": "2026-05-03T22:01:48.187203"
+  "lines": 2500,
+  "improvement": "Birsak Supersampling + Enhanced Scoring",
+  "timestamp": "2026-05-03T10:14:00",
+  "note": "BASELINE RESET 2026-05-03 22:10 - v9 is user-confirmed GOOD. v36 (SSIM 0.259) is close but needs verification with measure_ssim.py. Next session MUST measure actual SSIM."
 }
