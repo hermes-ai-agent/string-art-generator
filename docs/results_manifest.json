@@ -10,7 +10,7 @@
     "failed": false,
     "timestamp": "2026-05-03T19:40:43.247480",
     "svg": "v34_20260503_194121.svg",
-    "png": "v34_20260503_194121_canvas.png",
+    "png": "v34_20260503_194121_mobile_400px.png",
     "filename": "v34_20260503_194121.svg"
   },
   {
@@ -24,7 +24,7 @@
     "failed": false,
     "timestamp": "2026-05-03T19:18:09.607146",
     "svg": "v33_20260503_191809.svg",
-    "png": "v33_20260503_191809_canvas.png",
+    "png": "v33_20260503_191809_mobile_400px.png",
     "filename": "v33_20260503_191809.svg"
   },
   {
@@ -38,7 +38,7 @@
     "failed": true,
     "timestamp": "2026-05-03T18:31:40.603906",
     "svg": "result_v31_20260503_183100.svg",
-    "png": "result_v31_20260503_183100.png",
+    "png": "result_v31_20260503_183100_mobile_400px.png",
     "filename": "result_v31_20260503_183100.svg"
   },
   {
@@ -52,7 +52,7 @@
     "failed": false,
     "timestamp": "2026-05-03T18:21:27.486052",
     "svg": "result_v30_20260503_182127.svg",
-    "png": "result_v30_20260503_182127.png",
+    "png": "result_v30_20260503_182127_mobile_400px.png",
     "filename": "result_v30_20260503_182127.svg"
   },
   {
@@ -80,7 +80,7 @@
     "failed": false,
     "timestamp": "2026-05-03T16:37:59.953918",
     "svg": "test_v27.svg",
-    "png": "test_v27_canvas.png",
+    "png": "test_v27_mobile_400px.png",
     "filename": "test_v27.svg"
   },
   {
@@ -94,7 +94,7 @@
     "failed": false,
     "timestamp": "2026-05-03T16:08:16.411030",
     "svg": "test_v26.svg",
-    "png": "test_v26_canvas.png",
+    "png": "test_v26_mobile_400px.png",
     "filename": "test_v26.svg"
   },
   {
@@ -108,7 +108,7 @@
     "failed": false,
     "timestamp": "2026-05-03T15:30:18.759846",
     "svg": "test_v25_improved.svg",
-    "png": "test_v25_improved_canvas.png",
+    "png": "test_v25_improved_mobile_400px.png",
     "filename": "test_v25_improved.svg"
   },
   {
@@ -122,7 +122,7 @@
     "failed": false,
     "timestamp": "2026-05-03T13:26:57.358467",
     "svg": "test_v22.svg",
-    "png": "test_v22_canvas.png",
+    "png": "test_v22_mobile_400px.png",
     "filename": "test_v22.svg"
   },
   {
@@ -150,7 +150,7 @@
     "failed": false,
     "timestamp": "2026-05-03T12:42:52.206851",
     "svg": "test_v19_output.svg",
-    "png": "test_v19_output_canvas.png",
+    "png": "test_v19_output_mobile_400px.png",
     "filename": "test_v19_output.svg"
   },
   {
@@ -178,7 +178,7 @@
     "failed": false,
     "timestamp": "2026-05-03T12:28:48.791186",
     "svg": "test_v17_output.svg",
-    "png": "test_v17_output_canvas.png",
+    "png": "test_v17_output_mobile_400px.png",
     "filename": "test_v17_output.svg"
   },
   {
@@ -206,7 +206,7 @@
     "failed": false,
     "timestamp": "2026-05-03T12:43:52.100669",
     "svg": "test_v14c_heavy.svg",
-    "png": "test_v14c_heavy_canvas.png",
+    "png": "test_v14c_heavy_mobile_400px.png",
     "filename": "test_v14c_heavy.svg"
   },
   {
@@ -220,7 +220,7 @@
     "failed": false,
     "timestamp": "2026-05-03T10:47:48.177476",
     "svg": "test_v13.svg",
-    "png": "test_v13_canvas.png",
+    "png": "test_v13_mobile_400px.png",
     "filename": "test_v13.svg"
   },
   {
@@ -234,7 +234,7 @@
     "failed": false,
     "timestamp": "2026-05-03T10:45:08.367935",
     "svg": "test_v12.svg",
-    "png": "test_v12_canvas.png",
+    "png": "test_v12_mobile_400px.png",
     "filename": "test_v12.svg"
   },
   {
@@ -248,7 +248,7 @@
     "failed": false,
     "timestamp": "2026-05-03T11:18:01.340401",
     "svg": "manual_v11.svg",
-    "png": "manual_v11_canvas.png",
+    "png": "manual_v11_mobile_400px.png",
     "filename": "manual_v11.svg"
   },
   {
@@ -262,7 +262,7 @@
     "failed": false,
     "timestamp": "2026-05-03T10:32:14.788621",
     "svg": "test_v10.svg",
-    "png": "test_v10_canvas.png",
+    "png": "test_v10_mobile_400px.png",
     "filename": "test_v10.svg"
   },
   {
@@ -276,7 +276,7 @@
     "failed": false,
     "timestamp": "2026-05-03T10:14:46.514235",
     "svg": "test_v9_birsak.svg",
-    "png": "test_v9_birsak_canvas.png",
+    "png": "test_v9_birsak_mobile_400px.png",
     "filename": "test_v9_birsak.svg"
   },
   {
@@ -290,7 +290,7 @@
     "failed": false,
     "timestamp": "2026-05-03T09:37:51.154465",
     "svg": "test_v8_improved.svg",
-    "png": "test_v8_improved_canvas.png",
+    "png": "test_v8_improved_mobile_400px.png",
     "filename": "test_v8_improved.svg"
   },
   {
@@ -304,7 +304,7 @@
     "failed": false,
     "timestamp": "2026-05-03T08:27:57.841358",
     "svg": "cat_v7.0_ssim.svg",
-    "png": "cat_v7.0_ssim_canvas.png",
+    "png": "cat_v7.0_ssim_mobile_400px.png",
     "filename": "cat_v7.0_ssim.svg"
   },
   {
@@ -318,7 +318,7 @@
     "failed": false,
     "timestamp": "2026-05-03T09:41:45.384854",
     "svg": "test_v6_baseline.svg",
-    "png": "test_v6_baseline_canvas.png",
+    "png": "test_v6_baseline_mobile_400px.png",
     "filename": "test_v6_baseline.svg"
   },
   {
@@ -332,7 +332,7 @@
     "failed": false,
     "timestamp": "2026-05-03T12:50:02.079906",
     "svg": "test_v5_enhanced.svg",
-    "png": "test_v5_enhanced_canvas.png",
+    "png": "test_v5_enhanced_mobile_400px.png",
     "filename": "test_v5_enhanced.svg"
   },
   {
@@ -360,7 +360,7 @@
     "failed": false,
     "timestamp": "2026-05-03T16:10:56.325603",
     "svg": "test_v3.6_tuned1.svg",
-    "png": "test_v3.6_tuned1_canvas.png",
+    "png": "test_v3.6_tuned1_mobile_400px.png",
     "filename": "test_v3.6_tuned1.svg"
   },
   {
@@ -374,7 +374,7 @@
     "failed": false,
     "timestamp": "2026-05-03T13:08:30.029645",
     "svg": "test_tuned_v2.svg",
-    "png": "test_tuned_v2_canvas.png",
+    "png": "test_tuned_v2_mobile_400px.png",
     "filename": "test_tuned_v2.svg"
   },
   {
@@ -388,7 +388,7 @@
     "failed": false,
     "timestamp": "2026-05-03T13:08:29.971356",
     "svg": "test_tuned_v1.svg",
-    "png": "test_tuned_v1_canvas.png",
+    "png": "test_tuned_v1_mobile_400px.png",
     "filename": "test_tuned_v1.svg"
   }
 ]

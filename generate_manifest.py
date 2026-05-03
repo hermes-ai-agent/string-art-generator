@@ -26,19 +26,23 @@ def parse_version_from_filename(filename):
     return None
 
 def find_png_for_svg(svg_path):
-    """Find corresponding PNG file for SVG."""
-    png_path = svg_path.with_suffix('.png')
-    if png_path.exists():
-        return png_path.name
-    
-    png_canvas = svg_path.parent / f"{svg_path.stem}_canvas.png"
-    if png_canvas.exists():
-        return png_canvas.name
-    
+    """Find corresponding PNG file for SVG. Prioritize mobile PNG (clearer rendering)."""
+    # Priority 1: mobile PNG (best quality for gallery)
     png_mobile = svg_path.parent / f"{svg_path.stem}_mobile_400px.png"
     if png_mobile.exists():
         return png_mobile.name
     
+    # Priority 2: exact match
+    png_path = svg_path.with_suffix('.png')
+    if png_path.exists():
+        return png_path.name
+    
+    # Priority 3: canvas PNG
+    png_canvas = svg_path.parent / f"{svg_path.stem}_canvas.png"
+    if png_canvas.exists():
+        return png_canvas.name
+    
+    # Fallback: use SVG
     return svg_path.name
 
 def extract_description(filename):
