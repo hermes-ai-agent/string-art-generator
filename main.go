@@ -92,6 +92,9 @@ func main() {
 
 	// v19.0.0 parameters (Focused improvements)
 	useV19Focused := flag.Bool("v19", false, "Use v19.0 Focused improvements (enhanced face detection, SSIM-based add/remove, 3-phase optimization)")
+
+	// v20.0.0 parameters (Improved v5)
+	useV20Improved := flag.Bool("v20", false, "Use v20.0 Improved v5 (enhanced face detection, SSIM-based optimization, 3-phase processing)")
 	
 	flag.Parse()
 
@@ -398,6 +401,23 @@ func main() {
 		// V7.0 mode (SSIM-optimized)
 		fmt.Println("Mode: V7.0 (SSIM-optimized supersampled rendering)")
 		lines, canvasF := GenerateStringArtV7(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV20Improved {
+		// V20.0 mode (Improved v5)
+		fmt.Println("Mode: V20.0 (Improved v5 with enhanced face detection, SSIM-based optimization, 3-phase processing)")
+		lines, canvasF := GenerateStringArtV20Improved(processed, edgeMap, config)
 
 		// Export SVG
 		fmt.Println("Exporting to SVG...")
