@@ -29,3 +29,4 @@ Thumbs.db
 
 # Keep test images for examples
 !test_circle.png
+.wrangler/
