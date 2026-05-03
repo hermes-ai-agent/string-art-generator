@@ -442,7 +442,7 @@ func evaluateLineV5(pixels []AntiAliasedPixel, canvas, target [][]float64,
 		} else if improvement < 0 {
 			// This pixel gets WORSE (over-darkening)
 			// Penalize heavily - with opaque strokes, over-darkening is very visible
-			totalScore += improvement * imp * 2.5 * w // 2.5x penalty for worsening
+			totalScore += improvement * imp * 4.0 * w // 4.0x penalty for worsening
 			worseningPixels++
 		}
 

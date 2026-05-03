@@ -44,6 +44,9 @@ func main() {
 	
 	// v6.0.0 parameters (supersampled rendering)
 	useSupersampled := flag.Bool("v6", false, "Use v6.0 supersampled rendering (Birsak 2018 style)")
+
+	// v7.0.0 parameters (SSIM-optimized)
+	useSSIMOptimized := flag.Bool("v7", false, "Use v7.0 SSIM-optimized supersampled rendering")
 	
 	flag.Parse()
 
@@ -156,6 +159,23 @@ func main() {
 
 		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
 		if err := RenderCanvasToImage(canvasInt, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useSSIMOptimized {
+		// V7.0 mode (SSIM-optimized)
+		fmt.Println("Mode: V7.0 (SSIM-optimized supersampled rendering)")
+		lines, canvasF := GenerateStringArtV7(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
 			log.Fatalf("Failed to render canvas: %v", err)
 		}
 		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
