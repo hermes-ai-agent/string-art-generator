@@ -23,11 +23,12 @@ class QualityGate:
                 return json.load(f)
         return {
             "version": "v9.0",
-            "ssim": 0.2148,
-            "quality_score": 7,
+            "ssim": 0.258,
+            "quality_score": 6,
             "generation_time": 11.4,
             "pins": 300,
-            "lines": 3200
+            "lines": 2500,
+            "note": "HARDCODED FALLBACK - v9 is the GOOD baseline"
         }
     
     def save_baseline(self, metrics):
