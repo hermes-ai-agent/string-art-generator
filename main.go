@@ -53,6 +53,21 @@ func main() {
 
 	// v8.1.0 parameters (enhanced v5-based)
 	useV8Enhanced := flag.Bool("v8e", false, "Use v8.0 enhanced v5-based rendering with face detection and add/remove optimization")
+
+	// v9.0.0 parameters (Birsak 2018 supersampled)
+	useV9Birsak := flag.Bool("v9", false, "Use v9.0 Birsak 2018 supersampled rendering (4x supersampling)")
+
+	// v10.0.0 parameters (Enhanced perceptual)
+	useV10Enhanced := flag.Bool("v10", false, "Use v10.0 Enhanced perceptual rendering with sophisticated face detection")
+
+	// v11.0.0 parameters (Improved SSIM-focused)
+	useV11Improved := flag.Bool("v11", false, "Use v11.0 Improved SSIM-focused rendering with 2x supersampling and enhanced optimization")
+
+	// v12.0.0 parameters (Focused improvements)
+	useV12Focused := flag.Bool("v12", false, "Use v12.0 Focused improvements with enhanced face detection and better scoring")
+
+	// v13.0.0 parameters (Optimized V5 improvements)
+	useV13Optimized := flag.Bool("v13", false, "Use v13.0 Optimized improvements over V5 with better mobile rendering calibration")
 	
 	flag.Parse()
 
@@ -99,13 +114,13 @@ func main() {
 
 	// Load and preprocess image
 	fmt.Println("Loading image...")
-	img, err := LoadImage(*inputPath)
+	imgRaw, err := LoadImage(*inputPath)
 	if err != nil {
 		log.Fatalf("Failed to load image: %v", err)
 	}
 
 	fmt.Println("Preprocessing image (edge detection + contrast enhancement)...")
-	processed, edgeMap := PreprocessImage(img)
+	processed, edgeMap := PreprocessImage(imgRaw)
 
 	// Generate string art
 	fmt.Println("Generating string art...")
@@ -172,6 +187,91 @@ func main() {
 		// V8.1 mode (enhanced v5-based rendering)
 		fmt.Println("Mode: V8.1 (enhanced v5-based rendering with face detection and add/remove optimization)")
 		lines, canvasF := GenerateStringArtV8Enhanced(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV13Optimized {
+		// V13.0 mode (Optimized V5 improvements)
+		fmt.Println("Mode: V13.0 (Optimized improvements over V5 with better mobile rendering calibration)")
+		lines, canvasF := GenerateStringArtV13Optimized(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV12Focused {
+		// V12.0 mode (Focused improvements)
+		fmt.Println("Mode: V12.0 (Focused improvements with enhanced face detection and better scoring)")
+		lines, canvasF := GenerateStringArtV12Focused(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV11Improved {
+		// V11.0 mode (Improved SSIM-focused rendering)
+		fmt.Println("Mode: V11.0 (Improved SSIM-focused rendering with 2x supersampling and enhanced optimization)")
+		lines, canvasF := GenerateStringArtV11Improved(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV10Enhanced {
+		// V10.0 mode (Enhanced perceptual rendering)
+		fmt.Println("Mode: V10.0 (Enhanced perceptual rendering with sophisticated face detection)")
+		lines, canvasF := GenerateStringArtV10Enhanced(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV9Birsak {
+		// V9.0 mode (Birsak 2018 supersampled rendering)
+		fmt.Println("Mode: V9.0 (Birsak 2018 supersampled rendering - 8x supersampling)")
+		lines, canvasF := GenerateStringArtV9Birsak(processed, edgeMap, config)
 
 		// Export SVG
 		fmt.Println("Exporting to SVG...")
