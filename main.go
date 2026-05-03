@@ -102,6 +102,12 @@ func main() {
 	// v22.0.0 parameters (Optimized v3.3.0+)
 	useV22Optimized := flag.Bool("v22", false, "Use v22.0 Optimized (4x Birsak 2018, SSIM-based 2-phase, faster and more efficient)")
 	
+	// v23.0.0 parameters (True SSIM-optimized)
+	useV23SSIM := flag.Bool("v23", false, "Use v23.0 SSIM-Optimized (4x Birsak 2018, local windowed SSIM, SSIM-based scoring)")
+	
+	// v24.0.0 parameters (Birsak 8x supersampling)
+	useV24Birsak8x := flag.Bool("v24", false, "Use v24.0 Birsak 8x Supersampling (8x = 64 gray levels, perceptual SSIM scoring)")
+	
 	flag.Parse()
 
 	if *inputPath == "" {
@@ -420,6 +426,23 @@ func main() {
 			log.Fatalf("Failed to render canvas: %v", err)
 		}
 		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV23SSIM {
+		// V23.0 mode (True SSIM-optimized)
+		fmt.Println("Mode: V23.0 (4x Birsak 2018 supersampling, local windowed SSIM, SSIM-based line scoring)")
+		lines, canvasF := GenerateStringArtV23SSIM(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 	} else if *useV22Optimized {
 		// V22.0 mode (Optimized v3.3.0+)
 		fmt.Println("Mode: V22.0 (4x Birsak 2018 supersampling, SSIM-based 2-phase optimization, optimized performance)")
@@ -526,6 +549,23 @@ func main() {
 		// V16.0 mode (Fixed improvements)
 		fmt.Println("Mode: V16.0 (Fixed improvements with corrected SSIM scoring and add/remove optimization)")
 		lines, canvasF := GenerateStringArtV16Fixed(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV24Birsak8x {
+		// V24.0 mode (Birsak 8x supersampling)
+		fmt.Println("Mode: V24.0 (Birsak 8x supersampling - 64 gray levels, perceptual SSIM scoring)")
+		lines, canvasF := GenerateStringArtV24Birsak8x(processed, edgeMap, config)
 
 		// Export SVG
 		fmt.Println("Exporting to SVG...")
