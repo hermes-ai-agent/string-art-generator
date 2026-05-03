@@ -99,6 +99,9 @@ func main() {
 	// v21.0.0 parameters (Supersampled v3.3.0+)
 	useV21Supersampled := flag.Bool("v21", false, "Use v21.0 Supersampled (8x Birsak 2018, SSIM-based 3-phase, enhanced face detection)")
 	
+	// v31.0.0 parameters (Face-aware importance map)
+	useV31FaceImportance := flag.Bool("v31", false, "Use v31.0 Face-aware importance map (enhanced face detection, adaptive weighting)")
+	
 	// v22.0.0 parameters (Optimized v3.3.0+)
 	useV22Optimized := flag.Bool("v22", false, "Use v22.0 Optimized (4x Birsak 2018, SSIM-based 2-phase, faster and more efficient)")
 	
@@ -690,6 +693,24 @@ func main() {
 		processed, edgeMap = PreprocessImageV30(imgRaw)
 		
 		lines, canvasF := GenerateStringArtV30CannyEdge(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV31FaceImportance {
+		// V31.0 mode (Face-aware importance map)
+		fmt.Println("Mode: V31.0 (Face-aware importance map with enhanced face detection and adaptive weighting)")
+		
+		lines, canvasF := GenerateStringArtV31FaceImportance(processed, edgeMap, config)
 
 		// Export SVG
 		fmt.Println("Exporting to SVG...")
