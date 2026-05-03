@@ -117,6 +117,15 @@ func main() {
 	// v27.0.0 parameters (Efficient 4x)
 	useV27Efficient := flag.Bool("v27", false, "Use v27.0 Efficient (4x supersampling, fast MSE scoring, heuristic removal, adaptive brightness)")
 	
+	// v28.0.0 parameters (Birsak 8x improved)
+	useV28Birsak8x := flag.Bool("v28", false, "Use v28.0 Birsak 8x (8x supersampling, SSIM-based scoring, enhanced face detection, 2-phase optimization)")
+	
+	// v29.0.0 parameters (SSIM-based removal)
+	useV29SSIMRemoval := flag.Bool("v29", false, "Use v29.0 SSIM-based removal (V5 greedy + intelligent SSIM-based multi-pass removal)")
+	
+	// v30.0.0 parameters (Canny edge detection)
+	useV30CannyEdge := flag.Bool("v30", false, "Use v30.0 Canny Edge Detection (Canny + morphological operations + SSIM-based removal)")
+	
 	flag.Parse()
 
 	if *inputPath == "" {
@@ -626,6 +635,61 @@ func main() {
 		// V27.0 mode (Efficient 4x)
 		fmt.Println("Mode: V27.0 (Efficient 4x supersampling, fast MSE scoring, heuristic removal, adaptive brightness)")
 		lines, canvasF := GenerateStringArtV27Efficient(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV28Birsak8x {
+		// V28.0 mode (Birsak 8x improved)
+		fmt.Println("Mode: V28.0 (Birsak 8x supersampling, SSIM-based scoring, enhanced face detection, 2-phase optimization)")
+		lines, canvasF := GenerateStringArtV28Birsak8x(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV29SSIMRemoval {
+		// V29.0 mode (SSIM-based removal)
+		fmt.Println("Mode: V29.0 (V5 greedy + intelligent SSIM-based multi-pass removal)")
+		lines, canvasF := GenerateStringArtV29SSIMRemoval(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV30CannyEdge {
+		// V30.0 mode (Canny edge detection)
+		fmt.Println("Mode: V30.0 (Canny Edge Detection + morphological operations + SSIM-based removal)")
+		
+		// Use Canny edge detection preprocessing
+		processed, edgeMap = PreprocessImageV30(imgRaw)
+		
+		lines, canvasF := GenerateStringArtV30CannyEdge(processed, edgeMap, config)
 
 		// Export SVG
 		fmt.Println("Exporting to SVG...")
