@@ -32,3 +32,5 @@ Thumbs.db
 !docs/v10_best_svgrender_800px.png
 .wrangler/
 string-art
+string-art-gen
+string-art-generator
