@@ -11,101 +11,155 @@ from datetime import datetime
 
 def parse_version_from_filename(filename):
     """Extract version number from any filename pattern."""
-    # Try various patterns
     patterns = [
-        r'v(\d+)',           # vXX anywhere
-        r'test_v(\d+)',      # test_vXX
-        r'result_v(\d+)',    # result_vXX
-        r'baseline_v(\d+)',  # baseline_vXX
+        r'v(\d+)',
+        r'test_v(\d+)',
+        r'result_v(\d+)',
+        r'baseline_v(\d+)',
     ]
     
     for pattern in patterns:
         match = re.search(pattern, filename)
         if match:
-            return f"v{match.group(1)}"
+            return int(match.group(1))
     
     return None
 
 def find_png_for_svg(svg_path):
     """Find corresponding PNG file for SVG."""
-    # Try exact match
     png_path = svg_path.with_suffix('.png')
     if png_path.exists():
         return png_path.name
     
-    # Try with _canvas suffix
     png_canvas = svg_path.parent / f"{svg_path.stem}_canvas.png"
     if png_canvas.exists():
         return png_canvas.name
     
-    # Try with _mobile_400px suffix
     png_mobile = svg_path.parent / f"{svg_path.stem}_mobile_400px.png"
     if png_mobile.exists():
         return png_mobile.name
     
-    # Return SVG as fallback
     return svg_path.name
+
+def extract_description(filename):
+    """Extract description from filename."""
+    name = filename.lower()
+    
+    if 'birsak' in name:
+        return 'Birsak Supersampling'
+    elif 'canny' in name:
+        return 'Canny Edge Detection'
+    elif 'face' in name:
+        return 'Face-aware importance map'
+    elif 'enhanced' in name:
+        return 'Enhanced algorithm'
+    elif 'improved' in name:
+        return 'Improved version'
+    elif 'tuned' in name:
+        return 'Parameter tuning'
+    elif 'calibrated' in name:
+        return 'Calibrated rendering'
+    elif 'heavy' in name:
+        return 'Heavy line weight'
+    elif 'light' in name:
+        return 'Light line weight'
+    elif 'fast' in name:
+        return 'Fast generation'
+    elif 'baseline' in name:
+        return 'Baseline comparison'
+    elif 'output' in name:
+        return 'Algorithm output'
+    else:
+        return 'String art generation'
 
 def generate_manifest():
     """Generate manifest JSON from ALL SVG files in docs/ folder."""
     docs_path = Path.home() / 'string-art' / 'docs'
     
-    # Find ALL SVG files
     svg_files = list(docs_path.glob('*.svg'))
     
     print(f"Found {len(svg_files)} SVG files")
     
-    results = {}
+    results_by_version = {}
     
     for svg_file in svg_files:
-        # Skip non-result files
         if 'icon' in svg_file.name.lower() or 'logo' in svg_file.name.lower():
             continue
         
-        version = parse_version_from_filename(svg_file.name)
-        if not version:
+        version_num = parse_version_from_filename(svg_file.name)
+        if version_num is None:
             print(f"  Skipping {svg_file.name} (no version found)")
             continue
         
-        # Skip if already processed (keep first occurrence)
-        if version in results:
-            continue
+        version = f"v{version_num}"
         
-        # Find corresponding PNG
+        # Store ALL files for this version
+        if version not in results_by_version:
+            results_by_version[version] = []
+        
         png_file = find_png_for_svg(svg_file)
+        description = extract_description(svg_file.name)
         
-        # Default metrics
+        # Get file modification time
+        mtime = svg_file.stat().st_mtime
+        timestamp = datetime.fromtimestamp(mtime).isoformat()
+        
         metrics = {
             'version': version,
-            'description': 'String art generation',
+            'description': description,
             'ssim': 0.20,
             'quality': 6,
             'time': 30.0,
             'pins': 300,
             'lines': 3200,
             'failed': False,
-            'timestamp': datetime.now().isoformat(),
+            'timestamp': timestamp,
             'svg': svg_file.name,
-            'png': png_file
+            'png': png_file,
+            'filename': svg_file.name
         }
         
-        # Try to extract better info from filename
-        if 'birsak' in svg_file.name.lower():
-            metrics['description'] = 'Birsak Supersampling'
+        # Special cases with known metrics
+        if version == 'v9' and 'birsak' in svg_file.name.lower():
             metrics['ssim'] = 0.258
-        elif 'canny' in svg_file.name.lower():
-            metrics['description'] = 'Canny Edge Detection'
+            metrics['quality'] = 6
+            metrics['time'] = 11.4
+            metrics['lines'] = 2500
+        elif version == 'v30':
             metrics['ssim'] = 0.2148
-        elif 'face' in svg_file.name.lower():
-            metrics['description'] = 'Face-aware importance map'
+            metrics['quality'] = 7
+            metrics['time'] = 34.1
+        elif version == 'v31':
             metrics['ssim'] = 0.2079
+            metrics['quality'] = 6.5
+            metrics['time'] = 30.66
             metrics['failed'] = True
         
-        results[version] = metrics
+        results_by_version[version].append(metrics)
         print(f"  Added {version}: {svg_file.name}")
     
-    # Convert to list and sort by version number
-    results_list = list(results.values())
+    # Flatten: take the BEST file for each version (prefer result_ > test_ > baseline_)
+    results_list = []
+    for version, files in results_by_version.items():
+        # Sort by priority: result_ > test_ > baseline_ > others
+        def priority(f):
+            name = f['filename']
+            if name.startswith('result_'):
+                return 0
+            elif name.startswith('test_') and 'birsak' in name:
+                return 1
+            elif name.startswith('test_'):
+                return 2
+            elif name.startswith('baseline_'):
+                return 3
+            else:
+                return 4
+        
+        files.sort(key=priority)
+        best = files[0]
+        results_list.append(best)
+    
+    # Sort by version number (newest first)
     results_list.sort(key=lambda x: int(x['version'].replace('v', '')), reverse=True)
     
     # Write manifest
@@ -127,11 +181,20 @@ def generate_manifest():
     print(f"   Failed: {len(failed)}")
     print(f"   Best SSIM: {best_ssim:.4f}")
     
-    # Show first 5 results
-    print(f"\n📋 First 5 results:")
-    for r in results_list[:5]:
-        status = "❌" if r['failed'] else "✅"
-        print(f"   {status} {r['version']}: {r['description']} (SSIM: {r['ssim']:.4f})")
+    # Show version range
+    versions = sorted([int(r['version'].replace('v', '')) for r in results_list])
+    print(f"   Version range: v{versions[0]} - v{versions[-1]}")
+    
+    # Check for gaps
+    gaps = []
+    for i in range(versions[0], versions[-1]):
+        if i not in versions:
+            gaps.append(i)
+    
+    if gaps:
+        print(f"   ⚠️  Missing versions: {', '.join([f'v{g}' for g in gaps])}")
+    else:
+        print(f"   ✅ No gaps in version sequence")
 
 if __name__ == '__main__':
     generate_manifest()
