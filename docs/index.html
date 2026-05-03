@@ -47,6 +47,7 @@
         .badge-best { background: #10b981; color: white; }
         .badge-version { background: #3b82f6; color: white; }
         .badge-quality { background: #f59e0b; color: #1a1a2e; }
+        .badge-prev { background: #6b7280; color: white; }
         h2 { color: white; margin-bottom: 15px; font-size: 1.5em; }
         .stats {
             display: grid;
@@ -63,6 +64,7 @@
         }
         .stat-value { font-size: 1.5em; font-weight: bold; color: #60a5fa; }
         .stat-label { color: #9ca3af; margin-top: 4px; font-size: 0.85em; }
+        .stat-improvement { color: #10b981; font-size: 0.8em; margin-top: 2px; }
         .image-container {
             text-align: center;
             margin: 25px 0;
@@ -142,16 +144,81 @@
 <body>
     <div class="container">
         <h1>🎨 String Art Generator</h1>
-        <p class="subtitle">High-performance Go implementation with source-over compositing</p>
+        <p class="subtitle">High-performance Go implementation with Wu anti-aliased compositing</p>
         
-        <!-- V10 BEST VERSION -->
+        <!-- V11 BEST VERSION -->
         <div class="card">
             <span class="badge badge-best">⭐ BEST VERSION</span>
-            <span class="badge badge-version">v10.0</span>
-            <span class="badge badge-quality">7/10 Quality</span>
+            <span class="badge badge-version">v11.0</span>
+            <span class="badge badge-quality">8/10 Quality</span>
             
-            <h2>v10.0: Source-Over Compositing</h2>
-            <p style="color: #9ca3af;">Physically accurate SVG simulation with calibrated alpha. Confirmed best by both objective metrics and visual AI assessment.</p>
+            <h2>v11.0: Wu Anti-Aliased Compositing</h2>
+            <p style="color: #9ca3af;">Wu's anti-aliased line drawing matches SVG renderer behavior. Combined with multi-start greedy, iterative replacement, and calibrated stroke-width for optimal SVG output.</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">350</div>
+                    <div class="stat-label">Pins</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">5685</div>
+                    <div class="stat-label">Lines</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">160s</div>
+                    <div class="stat-label">Generation</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">0.224</div>
+                    <div class="stat-label">SSIM</div>
+                    <div class="stat-improvement">+14.4% vs V10</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">8117</div>
+                    <div class="stat-label">MSE</div>
+                    <div class="stat-improvement">-6.2% vs V10</div>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <img src="v11_best.svg" alt="String Art v11.0 - Best Version">
+                <div class="image-label">SVG Output (zoomable, vector)</div>
+            </div>
+            
+            <div class="image-container">
+                <img src="v11_best_svgrender_800px.png" alt="String Art v11.0 PNG Render">
+                <div class="image-label">SVG Rendered at 800px (what you see in browser)</div>
+            </div>
+            
+            <div class="note">
+                <strong>💡 Why V11 is the best:</strong> Wu's anti-aliased line drawing in the canvas simulation matches how SVG renderers actually draw lines. This eliminates the canvas↔SVG gap that plagued V10. Combined with 350 pins (vs 300), more lines (5685 vs 3489), and iterative line replacement, V11 achieves +14.4% SSIM improvement over V10.
+            </div>
+        </div>
+
+        <!-- COMPARISON V11 vs V10 -->
+        <div class="card">
+            <h2>Version Comparison</h2>
+            <p style="color: #9ca3af; margin-bottom: 15px;">V11 (new best) vs V10 (previous best). V11 has significantly better contrast, sharper details, and more recognizable features.</p>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <img src="v11_best_svgrender_800px.png" alt="V11">
+                    <div class="comparison-label">V11 (SSIM 0.224) ⭐ NEW</div>
+                </div>
+                <div class="comparison-item">
+                    <img src="v10_best_svgrender_800px.png" alt="V10">
+                    <div class="comparison-label">V10 (SSIM 0.196)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- V10 PREVIOUS BEST -->
+        <div class="card">
+            <span class="badge badge-prev">Previous Best</span>
+            <span class="badge badge-version">v10.0</span>
+            
+            <h2>v10.0: Source-Over Compositing (Bresenham)</h2>
+            <p style="color: #9ca3af;">Previous best using Bresenham rasterization with source-over compositing.</p>
             
             <div class="stats">
                 <div class="stat">
@@ -177,48 +244,24 @@
             </div>
             
             <div class="image-container">
-                <img src="v10_best.svg" alt="String Art v10.0 - Best Version">
-                <div class="image-label">SVG Output (zoomable, vector)</div>
-            </div>
-            
-            <div class="image-container">
-                <img src="v10_best_svgrender_800px.png" alt="String Art v10.0 PNG Render">
-                <div class="image-label">SVG Rendered at 800px (what you see in browser)</div>
-            </div>
-            
-            <div class="note">
-                <strong>💡 Why V10 is the best:</strong> Source-over compositing (alpha=0.25) accurately models how SVG renders overlapping strokes. Canvas-SVG brightness gap is only 2.7 points. Greedy algorithm with importance-weighted scoring achieves near-optimal line placement in 6.6 seconds.
-            </div>
-        </div>
-
-        <!-- COMPARISON -->
-        <div class="card">
-            <h2>Version Comparison</h2>
-            <p style="color: #9ca3af; margin-bottom: 15px;">V10 vs V9 (previous best). V10 has better contrast, sharper details, and more recognizable features.</p>
-            
-            <div class="comparison">
-                <div class="comparison-item">
-                    <img src="v10_best_svgrender_800px.png" alt="V10">
-                    <div class="comparison-label">V10 (SSIM 0.196) ⭐</div>
-                </div>
-                <div class="comparison-item">
-                    <img src="test_v9_birsak.svg" alt="V9">
-                    <div class="comparison-label">V9 (SSIM 0.194)</div>
-                </div>
+                <img src="v10_best_svgrender_800px.png" alt="String Art v10.0">
+                <div class="image-label">V10 SVG Rendered at 800px</div>
             </div>
         </div>
 
         <!-- ALGORITHM -->
         <div class="card">
-            <h2>Algorithm Details</h2>
+            <h2>V11 Algorithm Details</h2>
             <ul class="features">
-                <li><strong>Source-Over Compositing:</strong> canvas[px] *= (1 - α), matching SVG stroke rendering</li>
-                <li><strong>Calibrated Alpha (0.25):</strong> Empirically matched to SVG stroke-width 0.18mm at 800px</li>
-                <li><strong>Bresenham Rasterization:</strong> 1px lines, no anti-aliasing spread (matches SVG at render resolution)</li>
+                <li><strong>Wu's Anti-Aliased Lines:</strong> Fractional pixel coverage matching SVG renderer behavior</li>
+                <li><strong>Source-Over Compositing:</strong> canvas[px] *= (1 - α × coverage), per-pixel Wu coverage</li>
+                <li><strong>Calibrated Alpha (0.15):</strong> Matched to SVG stroke-width 0.12mm for optimal SSIM</li>
+                <li><strong>Multi-Start Greedy:</strong> 3 starting pins, picks best result</li>
+                <li><strong>Iterative Replacement:</strong> 2 passes replacing each line with better alternatives</li>
+                <li><strong>Line Removal:</strong> Removes lines that hurt quality after greedy phase</li>
                 <li><strong>Importance Map:</strong> 60% darkness + 40% edges, center-weighted Gaussian</li>
-                <li><strong>Greedy + Removal:</strong> Add best lines, then remove any that hurt quality</li>
                 <li><strong>Parallel Evaluation:</strong> 8 workers for fast candidate scoring</li>
-                <li><strong>Adaptive Stopping:</strong> Detects quality plateau, stops when no improvement possible</li>
+                <li><strong>Adaptive Stopping:</strong> Detects quality plateau, jumps to high-error regions</li>
             </ul>
         </div>
 
@@ -231,7 +274,7 @@
                     <div class="stat-label">SVG Size</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">0.18mm</div>
+                    <div class="stat-value">0.12mm</div>
                     <div class="stat-label">Stroke Width</div>
                 </div>
                 <div class="stat">
@@ -244,7 +287,7 @@
                 </div>
             </div>
             <p style="margin-top: 15px; color: #9ca3af; font-size: 0.9em;">
-                <strong>Usage:</strong> <code>go run . --input photo.jpg --output art.svg --pins 300 --lines 3500 --weight 20</code>
+                <strong>Usage:</strong> <code>go run . --input photo.jpg --output art.svg --pins 350 --lines 7000 --weight 20 --wu --opacity 0.15</code>
             </p>
             <p style="margin-top: 10px; color: #9ca3af; font-size: 0.9em;">
                 <strong>Source:</strong> <a href="https://github.com/hermes-ai-agent/string-art-generator">github.com/hermes-ai-agent/string-art-generator</a>

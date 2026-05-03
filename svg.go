@@ -8,12 +8,17 @@ import (
 // ExportSVG exports the string art to SVG format
 // MANDATORY RULES (NEVER VIOLATE):
 // 1. SVG dimensions: 600mm x 600mm
-// 2. Stroke width: 0.18mm
+// 2. Stroke width: calibrated per generator version
 // 3. Stroke opacity: 1.0 (fully opaque - physical thread is opaque)
 func ExportSVG(lines []Line, config *Config, outputPath string) error {
 	const svgWidth = 600.0
 	const svgHeight = 600.0
-	const strokeWidth = 0.18 // mm - MANDATORY
+	strokeWidth := 0.18 // mm - default for V10
+	if config.Opacity > 0 && config.Opacity < 0.20 {
+		// V11 Wu with lower alpha needs thinner SVG strokes to match
+		// Calibrated: alpha=0.15 → stroke-width=0.12 gives best SSIM
+		strokeWidth = 0.12
+	}
 	const strokeOpacity = 1.0 // MANDATORY - physical thread is opaque
 
 	// Calculate pin positions

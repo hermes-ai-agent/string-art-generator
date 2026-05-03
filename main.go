@@ -28,6 +28,10 @@ func main() {
 	stopThreshold := flag.Float64("stop-threshold", 0.5, "Quality plateau threshold for adaptive stopping")
 	lookAhead := flag.Bool("look-ahead", false, "Enable look-ahead optimization (slower, better quality)")
 
+	// Enhanced mode
+	enhanced := flag.Bool("enhanced", false, "Use V10.1 Enhanced generator (multi-start, iterative replacement)")
+	wuMode := flag.Bool("wu", false, "Use V11 Wu anti-aliased generator (better SVG match)")
+
 	// Legacy modes
 	legacyMode := flag.Bool("legacy", false, "Use legacy v3.x generator")
 	dualColor := flag.Bool("dual-color", false, "Enable dual-color mode (black + white threads)")
@@ -156,6 +160,36 @@ func main() {
 			}
 			fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 		}
+	} else if *wuMode {
+		// V11 Wu Anti-Aliased (better SVG match)
+		fmt.Println("Mode: V11.0 Wu Anti-Aliased (better SVG match)")
+		lines, canvasF := GenerateStringArtV11(processed, edgeMap, config)
+
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasToImageFloat(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *enhanced {
+		// V10.1 Enhanced (multi-start, iterative replacement, adaptive penalties)
+		fmt.Println("Mode: V10.1 Enhanced (multi-start, iterative replacement)")
+		lines, canvasF := GenerateStringArtV10Enhanced(processed, edgeMap, config)
+
+		// Export SVG
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Export canvas PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasToImageFloat(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 	} else {
 		// DEFAULT: V10.0 Source-Over (BEST VERSION - confirmed by metrics + vision AI)
 		fmt.Println("Mode: V10.0 Source-Over (BEST - alpha=0.25, Bresenham)")
