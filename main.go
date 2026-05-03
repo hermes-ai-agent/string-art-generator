@@ -47,6 +47,12 @@ func main() {
 
 	// v7.0.0 parameters (SSIM-optimized)
 	useSSIMOptimized := flag.Bool("v7", false, "Use v7.0 SSIM-optimized supersampled rendering")
+
+	// v8.0.0 parameters (enhanced supersampled)
+	useEnhancedSupersampled := flag.Bool("v8", false, "Use v8.0 enhanced supersampled rendering with add/remove optimization")
+
+	// v8.1.0 parameters (enhanced v5-based)
+	useV8Enhanced := flag.Bool("v8e", false, "Use v8.0 enhanced v5-based rendering with face detection and add/remove optimization")
 	
 	flag.Parse()
 
@@ -159,6 +165,40 @@ func main() {
 
 		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
 		if err := RenderCanvasToImage(canvasInt, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV8Enhanced {
+		// V8.1 mode (enhanced v5-based rendering)
+		fmt.Println("Mode: V8.1 (enhanced v5-based rendering with face detection and add/remove optimization)")
+		lines, canvasF := GenerateStringArtV8Enhanced(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useEnhancedSupersampled {
+		// V8.0 mode (enhanced supersampled rendering)
+		fmt.Println("Mode: V8.0 (enhanced supersampled rendering with add/remove optimization)")
+		lines, canvasF := GenerateStringArtV8(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
 			log.Fatalf("Failed to render canvas: %v", err)
 		}
 		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
