@@ -96,6 +96,12 @@ func main() {
 	// v20.0.0 parameters (Improved v5)
 	useV20Improved := flag.Bool("v20", false, "Use v20.0 Improved v5 (enhanced face detection, SSIM-based optimization, 3-phase processing)")
 	
+	// v21.0.0 parameters (Supersampled v3.3.0+)
+	useV21Supersampled := flag.Bool("v21", false, "Use v21.0 Supersampled (8x Birsak 2018, SSIM-based 3-phase, enhanced face detection)")
+	
+	// v22.0.0 parameters (Optimized v3.3.0+)
+	useV22Optimized := flag.Bool("v22", false, "Use v22.0 Optimized (4x Birsak 2018, SSIM-based 2-phase, faster and more efficient)")
+	
 	flag.Parse()
 
 	if *inputPath == "" {
@@ -401,6 +407,40 @@ func main() {
 		// V7.0 mode (SSIM-optimized)
 		fmt.Println("Mode: V7.0 (SSIM-optimized supersampled rendering)")
 		lines, canvasF := GenerateStringArtV7(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV22Optimized {
+		// V22.0 mode (Optimized v3.3.0+)
+		fmt.Println("Mode: V22.0 (4x Birsak 2018 supersampling, SSIM-based 2-phase optimization, optimized performance)")
+		lines, canvasF := GenerateStringArtV22Optimized(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV21Supersampled {
+		// V21.0 mode (Supersampled v3.3.0+)
+		fmt.Println("Mode: V21.0 (8x Birsak 2018 supersampling, SSIM-based 3-phase optimization, enhanced face detection)")
+		lines, canvasF := GenerateStringArtV21Supersampled(processed, edgeMap, config)
 
 		// Export SVG
 		fmt.Println("Exporting to SVG...")
