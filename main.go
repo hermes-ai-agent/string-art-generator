@@ -114,6 +114,9 @@ func main() {
 	// v26.0.0 parameters (Birsak 8x improved)
 	useV26Birsak8xImproved := flag.Bool("v26", false, "Use v26.0 Birsak 8x Improved (8x supersampling, local SSIM, enhanced face detection, 2-phase optimization)")
 	
+	// v27.0.0 parameters (Efficient 4x)
+	useV27Efficient := flag.Bool("v27", false, "Use v27.0 Efficient (4x supersampling, fast MSE scoring, heuristic removal, adaptive brightness)")
+	
 	flag.Parse()
 
 	if *inputPath == "" {
@@ -606,6 +609,23 @@ func main() {
 		// V26.0 mode (Birsak 8x improved)
 		fmt.Println("Mode: V26.0 (Birsak 8x improved with local SSIM, enhanced face detection, 2-phase optimization)")
 		lines, canvasF := GenerateStringArtV26Birsak8xImproved(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV27Efficient {
+		// V27.0 mode (Efficient 4x)
+		fmt.Println("Mode: V27.0 (Efficient 4x supersampling, fast MSE scoring, heuristic removal, adaptive brightness)")
+		lines, canvasF := GenerateStringArtV27Efficient(processed, edgeMap, config)
 
 		// Export SVG
 		fmt.Println("Exporting to SVG...")
