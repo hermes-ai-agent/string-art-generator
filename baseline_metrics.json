@@ -1,11 +1,10 @@
 {
-  "version": "v9.0",
-  "ssim": 0.258,
-  "quality_score": 6,
-  "generation_time": 11.4,
+  "version": "v33.0",
+  "ssim": 0.4106,
+  "quality_score": 7.5,
+  "generation_time": 24.99,
   "pins": 300,
-  "lines": 2500,
-  "improvement": "Birsak Supersampling + Enhanced Scoring",
-  "timestamp": "2026-05-03T10:14:00",
-  "note": "This is the GOOD baseline - user confirmed v9 is better than v30"
+  "lines": 2761,
+  "improvement": "Multi-scale edge detection (Sobel + Canny + Laplacian)",
+  "timestamp": "2026-05-03T19:17:58.599858"
 }
