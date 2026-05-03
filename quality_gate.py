@@ -60,26 +60,37 @@ class QualityGate:
         print(f"Quality Change: {quality_improvement:+.1f} points")
         print(f"{'='*60}\n")
         
-        # Decision logic
-        if ssim_improvement >= 2.0 and quality_improvement >= 0:
-            # Clear improvement
-            return (True, f"PASS: SSIM improved by {ssim_improvement:.2f}%, quality maintained or improved", "DEPLOY")
+        # Decision logic - SSIM is PRIMARY metric (objective), quality score is SECONDARY (subjective)
         
-        elif ssim_improvement >= 1.0 and quality_improvement >= 0:
-            # Moderate improvement
-            return (True, f"PASS: SSIM improved by {ssim_improvement:.2f}%, quality stable", "DEPLOY")
+        # CRITICAL: SSIM drop > 5% is ALWAYS FAIL, regardless of quality score
+        if ssim_improvement < -5.0:
+            return (False, f"FAIL: SSIM dropped {ssim_improvement:.2f}% (critical degradation)", "ROLLBACK")
         
-        elif ssim_improvement >= 0 and quality_improvement >= 1:
-            # Quality improved even if SSIM flat
-            return (True, f"PASS: Quality improved by {quality_improvement} points", "DEPLOY")
+        # Clear SSIM improvement
+        if ssim_improvement >= 2.0:
+            return (True, f"PASS: SSIM improved by {ssim_improvement:.2f}%", "DEPLOY")
         
-        elif ssim_improvement >= -1.0 and quality_improvement >= 0:
-            # Slight degradation but acceptable
-            return (True, f"CONDITIONAL PASS: Minor SSIM drop ({ssim_improvement:.2f}%), quality stable", "DEPLOY_WITH_WARNING")
+        # Moderate SSIM improvement
+        elif ssim_improvement >= 1.0:
+            return (True, f"PASS: SSIM improved by {ssim_improvement:.2f}%", "DEPLOY")
         
-        elif ssim_improvement < -1.0 or quality_improvement < 0:
-            # Clear degradation
-            return (False, f"FAIL: SSIM dropped {ssim_improvement:.2f}%, quality dropped {quality_improvement} points", "ROLLBACK")
+        # Slight SSIM improvement or flat
+        elif ssim_improvement >= 0:
+            if quality_improvement >= 0:
+                return (True, f"PASS: SSIM stable ({ssim_improvement:+.2f}%), quality maintained", "DEPLOY")
+            else:
+                return (True, f"CONDITIONAL PASS: SSIM stable but quality score dropped (subjective)", "DEPLOY_WITH_WARNING")
+        
+        # Minor SSIM degradation (-1% to -5%)
+        elif ssim_improvement >= -1.0:
+            if quality_improvement >= 1:
+                return (True, f"CONDITIONAL PASS: Minor SSIM drop ({ssim_improvement:.2f}%) but quality improved", "DEPLOY_WITH_WARNING")
+            else:
+                return (False, f"FAIL: SSIM dropped {ssim_improvement:.2f}%, quality not improved enough", "ROLLBACK")
+        
+        # Moderate SSIM degradation (-1% to -5%)
+        elif ssim_improvement >= -5.0:
+            return (False, f"FAIL: SSIM dropped {ssim_improvement:.2f}% (moderate degradation)", "ROLLBACK")
         
         else:
             # Edge case
