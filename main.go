@@ -68,6 +68,30 @@ func main() {
 
 	// v13.0.0 parameters (Optimized V5 improvements)
 	useV13Optimized := flag.Bool("v13", false, "Use v13.0 Optimized improvements over V5 with better mobile rendering calibration")
+
+	// v14.0.0 parameters (Birsak 2018 supersampled)
+	useV14Birsak := flag.Bool("v14", false, "Use v14.0 Birsak 2018 supersampled rendering (4x supersampling with enhanced optimization)")
+
+	// v14.1.0 parameters (Enhanced focused improvements)
+	useV14Enhanced := flag.Bool("v14e", false, "Use v14.1 Enhanced focused improvements (better face detection, multi-pass removal, calibrated alpha)")
+
+	// v14.2.0 parameters (Fast focused improvements)
+	useV14Fast := flag.Bool("v14f", false, "Use v14.2 Fast focused improvements (optimized face detection, single-pass removal, calibrated alpha)")
+
+	// v14.3.0 parameters (Calibrated improvements)
+	useV14Calibrated := flag.Bool("v14c", false, "Use v14.3 Calibrated improvements (precise mobile SVG calibration, enhanced face detection)")
+
+	// v16.0.0 parameters (Fixed improvements)
+	useV16Fixed := flag.Bool("v16", false, "Use v16.0 Fixed improvements (corrected v15 with proper SSIM scoring and add/remove optimization)")
+
+	// v17.0.0 parameters (Enhanced improvements)
+	useV17Enhanced := flag.Bool("v17", false, "Use v17.0 Enhanced improvements (4x supersampling, MSE-based scoring, enhanced face detection)")
+
+	// v18.0.0 parameters (Birsak 2018 improvements)
+	useV18Birsak := flag.Bool("v18", false, "Use v18.0 Birsak 2018 improvements (8x supersampling, perceptual scoring, calibrated alpha)")
+
+	// v19.0.0 parameters (Focused improvements)
+	useV19Focused := flag.Bool("v19", false, "Use v19.0 Focused improvements (enhanced face detection, SSIM-based add/remove, 3-phase optimization)")
 	
 	flag.Parse()
 
@@ -200,6 +224,74 @@ func main() {
 			log.Fatalf("Failed to render canvas: %v", err)
 		}
 		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV14Calibrated {
+		// V14.3 mode (Calibrated improvements)
+		fmt.Println("Mode: V14.3 (Calibrated improvements with precise mobile SVG calibration, enhanced face detection)")
+		lines, canvasF := GenerateStringArtV14Calibrated(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV14Fast {
+		// V14.2 mode (Fast focused improvements)
+		fmt.Println("Mode: V14.2 (Fast focused improvements with optimized face detection, single-pass removal, calibrated alpha)")
+		lines, canvasF := GenerateStringArtV14Fast(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV14Enhanced {
+		// V14.1 mode (Enhanced focused improvements)
+		fmt.Println("Mode: V14.1 (Enhanced focused improvements with better face detection, multi-pass removal, calibrated alpha)")
+		lines, canvasF := GenerateStringArtV14Enhanced(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV14Birsak {
+		// V14.0 mode (Birsak 2018 supersampled rendering)
+		fmt.Println("Mode: V14.0 (Birsak 2018 supersampled rendering with 8x supersampling and enhanced optimization)")
+		lines, canvasF := GenerateStringArtV14Birsak(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 	} else if *useV13Optimized {
 		// V13.0 mode (Optimized V5 improvements)
 		fmt.Println("Mode: V13.0 (Optimized improvements over V5 with better mobile rendering calibration)")
@@ -306,6 +398,74 @@ func main() {
 		// V7.0 mode (SSIM-optimized)
 		fmt.Println("Mode: V7.0 (SSIM-optimized supersampled rendering)")
 		lines, canvasF := GenerateStringArtV7(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV19Focused {
+		// V19.0 mode (Focused improvements)
+		fmt.Println("Mode: V19.0 (Focused improvements with enhanced face detection, SSIM-based add/remove, 3-phase optimization)")
+		lines, canvasF := GenerateStringArtV19Focused(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV18Birsak {
+		// V18.0 mode (Birsak 2018 improvements)
+		fmt.Println("Mode: V18.0 (Birsak 2018 improvements with 8x supersampling, perceptual scoring, calibrated alpha)")
+		lines, canvasF := GenerateStringArtV18Birsak(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV17Enhanced {
+		// V17.0 mode (Enhanced improvements)
+		fmt.Println("Mode: V17.0 (Enhanced improvements with 4x supersampling, MSE-based scoring, enhanced face detection)")
+		lines, canvasF := GenerateStringArtV17Enhanced(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useV16Fixed {
+		// V16.0 mode (Fixed improvements)
+		fmt.Println("Mode: V16.0 (Fixed improvements with corrected SSIM scoring and add/remove optimization)")
+		lines, canvasF := GenerateStringArtV16Fixed(processed, edgeMap, config)
 
 		// Export SVG
 		fmt.Println("Exporting to SVG...")

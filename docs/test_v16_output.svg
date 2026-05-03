@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="600mm" 
+     height="600mm" 
+     viewBox="0 0 600 600">
+  <title>String Art v5.0</title>
+  <desc>Generated with 300 pins and 0 lines</desc>
+  
+  <!-- Background -->
+  <rect width="600" height="600" fill="white"/>
+  
+  <!-- String lines (0.18mm stroke, fully opaque - physical thread) -->
+  <g id="strings" stroke="black" stroke-width="0.18" stroke-opacity="1.0" fill="none">
+  </g>
+</svg>
