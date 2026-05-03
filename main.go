@@ -49,7 +49,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Auto-generate output path if not provided
+	// Auto-generate output path if not specified
 	if *outputPath == "" {
 		baseName := filepath.Base(*inputPath)
 		ext := filepath.Ext(baseName)
@@ -64,7 +64,7 @@ func main() {
 		log.Fatalf("Failed to create output directory: %v", err)
 	}
 
-	fmt.Printf("String Art Generator v36.0 (Multi-scale Edge Detection)\n")
+	fmt.Printf("String Art Generator v9.0 (Birsak 2018 Supersampled)\n")
 	fmt.Printf("=====================================================\n")
 	fmt.Printf("Input:        %s\n", *inputPath)
 	fmt.Printf("Output:       %s\n", *outputPath)
@@ -93,15 +93,15 @@ func main() {
 		NumPins:        *numPins,
 		NumLines:       *numLines,
 		LineWeight:     *lineWeight,
-		MinDistance:     *minDistance,
-		Workers:        *workers,
-		EdgeWeight:     *edgeWeight,
-		Opacity:        *opacity,
+		MinDistance:    *minDistance,
+		Workers:       *workers,
+		EdgeWeight:    *edgeWeight,
+		Opacity:       *opacity,
 		RandomSampling: *randomSampling,
-		SampleSize:     *sampleSize,
-		AdaptiveStop:   *adaptiveStop,
-		StopThreshold:  *stopThreshold,
-		LookAhead:      *lookAhead,
+		SampleSize:    *sampleSize,
+		AdaptiveStop:  *adaptiveStop,
+		StopThreshold: *stopThreshold,
+		LookAhead:     *lookAhead,
 	}
 
 	if *legacyMode {
@@ -162,14 +162,13 @@ func main() {
 		lines, canvasF := GenerateStringArtV9Birsak(processed, edgeMap, config)
 
 		// Export SVG
-		fmt.Println("Exporting to SVG...")
 		if err := ExportSVG(lines, config, *outputPath); err != nil {
 			log.Fatalf("Failed to export SVG: %v", err)
 		}
 
-		// Render canvas to PNG
+		// Export canvas PNG
 		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
-		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
+		if err := RenderCanvasToImageFloat(canvasF, canvasPngPath); err != nil {
 			log.Fatalf("Failed to render canvas: %v", err)
 		}
 		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
@@ -179,8 +178,8 @@ func main() {
 	fmt.Printf("\nGeneration complete in %.1f seconds\n", elapsed.Seconds())
 	fmt.Printf("SVG output: %s\n", *outputPath)
 
-	// Render SVG to PNG for accurate preview
-	svgPngPath := (*outputPath)[:len(*outputPath)-4] + "_mobile_400px.png"
+	// Render hint
+	mobilePngPath := (*outputPath)[:len(*outputPath)-4] + "_mobile_400px.png"
 	fmt.Printf("\nTo render SVG to PNG preview (accurate mobile view):\n")
-	fmt.Printf("  rsvg-convert -w 400 -h 400 %s -o %s\n", *outputPath, svgPngPath)
+	fmt.Printf("  rsvg-convert -w 400 -h 400 %s -o %s\n", *outputPath, mobilePngPath)
 }

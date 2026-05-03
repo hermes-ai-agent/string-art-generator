@@ -1,11 +1,14 @@
 {
   "version": "v9.0",
-  "ssim": 0.258,
-  "quality_score": 6,
-  "generation_time": 11.4,
+  "ssim": 0.322,
+  "quality_score": 7,
+  "generation_time": 138.8,
   "pins": 300,
   "lines": 2500,
-  "improvement": "Birsak Supersampling + Enhanced Scoring",
-  "timestamp": "2026-05-03T10:14:00",
-  "note": "BASELINE RESET 2026-05-03 22:10 - v9 is user-confirmed GOOD. v36 (SSIM 0.259) is close but needs verification with measure_ssim.py. Next session MUST measure actual SSIM."
+  "improvement": "Birsak 2018 Supersampled (4x) - Original v9",
+  "timestamp": "2026-05-03T22:10:00",
+  "note": "LOCKED BASELINE - v9 original restored from commit e35af50. Self-learning MUST NOT modify generator_v9_birsak.go directly. Any improvement must beat SSIM 0.322.",
+  "svg_quality": "7/10 (good contrast, clear features)",
+  "canvas_quality": "6.5/10 (too light, subtractive model)",
+  "known_issue": "Canvas simulation uses subtractive darkening, SVG uses source-over compositing. Gap ~58 brightness points. SVG is the authoritative output."
 }
