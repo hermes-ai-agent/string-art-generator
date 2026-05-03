@@ -42,6 +42,9 @@ func main() {
 	// v5.0.0 parameters (legacy mode)
 	legacyMode := flag.Bool("legacy", false, "Use legacy v3.x generator instead of v5.0")
 	
+	// v6.0.0 parameters (supersampled rendering)
+	useSupersampled := flag.Bool("v6", false, "Use v6.0 supersampled rendering (Birsak 2018 style)")
+	
 	flag.Parse()
 
 	if *inputPath == "" {
@@ -153,6 +156,23 @@ func main() {
 
 		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
 		if err := RenderCanvasToImage(canvasInt, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
+	} else if *useSupersampled {
+		// V6.0 mode (supersampled rendering)
+		fmt.Println("Mode: V6.0 (supersampled rendering - Birsak 2018 style)")
+		lines, canvasF := GenerateStringArtV6(processed, edgeMap, config)
+
+		// Export SVG
+		fmt.Println("Exporting to SVG...")
+		if err := ExportSVG(lines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		// Render canvas to PNG
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasV5ToImage(canvasF, canvasPngPath); err != nil {
 			log.Fatalf("Failed to render canvas: %v", err)
 		}
 		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
