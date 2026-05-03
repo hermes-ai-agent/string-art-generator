@@ -67,8 +67,8 @@ func LoadImageRGBA(path string) (*image.NRGBA, error) {
 	return nrgba, nil
 }
 
-// PreprocessImage applies edge detection (Sobel filter)
-// Returns the RAW grayscale image and edge map separately
+// PreprocessImage applies multi-scale edge detection (v36.0)
+// Returns the RAW grayscale image and multi-scale edge map
 // IMPORTANT: The raw grayscale is the TARGET for string art generation
 func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 	bounds := img.Bounds()
@@ -88,8 +88,20 @@ func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 	// Apply slight contrast enhancement to the grayscale
 	enhanced := enhanceContrast(gray, width, height)
 
-	// Apply Sobel edge detection
-	edges := image.NewGray(bounds)
+	// v36.0: Multi-scale edge detection
+	// Combine edges at multiple scales to capture both fine details and strong structures
+	edges := multiScaleEdgeDetection(enhanced, width, height)
+
+	// Return the ENHANCED grayscale (not edge-blended!) and edge map
+	return enhanced, edges
+}
+
+// multiScaleEdgeDetection combines Sobel edges at multiple scales (v36.0)
+// Scale 1x: Fine details (hair, texture)
+// Scale 2x: Medium structures (facial features)
+// Scale 4x: Strong structures (face outline, major contours)
+func multiScaleEdgeDetection(img *image.Gray, width, height int) *image.Gray {
+	bounds := img.Bounds()
 	
 	// Sobel kernels
 	sobelX := [][]int{
@@ -103,31 +115,90 @@ func PreprocessImage(img image.Image) (*image.Gray, *image.Gray) {
 		{1, 2, 1},
 	}
 
+	// Scale 1: Fine details (1x1 sampling)
+	edges1x := make([][]float64, height)
+	for y := 0; y < height; y++ {
+		edges1x[y] = make([]float64, width)
+	}
+	
 	for y := 1; y < height-1; y++ {
 		for x := 1; x < width-1; x++ {
 			var gx, gy float64
-
-			// Apply Sobel kernels
 			for ky := -1; ky <= 1; ky++ {
 				for kx := -1; kx <= 1; kx++ {
-					pixel := float64(enhanced.GrayAt(x+kx, y+ky).Y)
+					pixel := float64(img.GrayAt(x+kx, y+ky).Y)
 					gx += pixel * float64(sobelX[ky+1][kx+1])
 					gy += pixel * float64(sobelY[ky+1][kx+1])
 				}
 			}
-
-			// Gradient magnitude
-			magnitude := math.Sqrt(gx*gx + gy*gy)
-			if magnitude > 255 {
-				magnitude = 255
-			}
-
-			edges.SetGray(x, y, color.Gray{Y: uint8(magnitude)})
+			edges1x[y][x] = math.Sqrt(gx*gx + gy*gy)
 		}
 	}
 
-	// Return the ENHANCED grayscale (not edge-blended!) and edge map
-	return enhanced, edges
+	// Scale 2: Medium structures (2x2 sampling)
+	edges2x := make([][]float64, height)
+	for y := 0; y < height; y++ {
+		edges2x[y] = make([]float64, width)
+	}
+	
+	for y := 2; y < height-2; y++ {
+		for x := 2; x < width-2; x++ {
+			var gx, gy float64
+			for ky := -1; ky <= 1; ky++ {
+				for kx := -1; kx <= 1; kx++ {
+					// Sample at 2x spacing
+					sx, sy := x+kx*2, y+ky*2
+					if sx >= 0 && sx < width && sy >= 0 && sy < height {
+						pixel := float64(img.GrayAt(sx, sy).Y)
+						gx += pixel * float64(sobelX[ky+1][kx+1])
+						gy += pixel * float64(sobelY[ky+1][kx+1])
+					}
+				}
+			}
+			edges2x[y][x] = math.Sqrt(gx*gx + gy*gy)
+		}
+	}
+
+	// Scale 3: Strong structures (4x4 sampling)
+	edges4x := make([][]float64, height)
+	for y := 0; y < height; y++ {
+		edges4x[y] = make([]float64, width)
+	}
+	
+	for y := 4; y < height-4; y++ {
+		for x := 4; x < width-4; x++ {
+			var gx, gy float64
+			for ky := -1; ky <= 1; ky++ {
+				for kx := -1; kx <= 1; kx++ {
+					// Sample at 4x spacing
+					sx, sy := x+kx*4, y+ky*4
+					if sx >= 0 && sx < width && sy >= 0 && sy < height {
+						pixel := float64(img.GrayAt(sx, sy).Y)
+						gx += pixel * float64(sobelX[ky+1][kx+1])
+						gy += pixel * float64(sobelY[ky+1][kx+1])
+					}
+				}
+			}
+			edges4x[y][x] = math.Sqrt(gx*gx + gy*gy)
+		}
+	}
+
+	// Combine scales with weighted average
+	// Fine details (1x): 40% - captures texture
+	// Medium (2x): 35% - captures features
+	// Strong (4x): 25% - captures structure
+	result := image.NewGray(bounds)
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			combined := edges1x[y][x]*0.40 + edges2x[y][x]*0.35 + edges4x[y][x]*0.25
+			if combined > 255 {
+				combined = 255
+			}
+			result.SetGray(x, y, color.Gray{Y: uint8(combined)})
+		}
+	}
+
+	return result
 }
 
 // enhanceContrast applies contrast enhancement with gamma correction

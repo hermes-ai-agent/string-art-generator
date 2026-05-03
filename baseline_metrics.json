@@ -1,10 +1,10 @@
 {
-  "version": "v34.0",
-  "ssim": 0.4917,
-  "quality_score": 7.5,
-  "generation_time": 28.46,
+  "version": "v36.0",
+  "ssim": 0.259,
+  "quality_score": 7.0,
+  "generation_time": 12.4,
   "pins": 300,
-  "lines": 2179,
-  "improvement": "Perceptual SSIM-based scoring with local contrast",
-  "timestamp": "2026-05-03T19:40:35.322874"
+  "lines": 2418,
+  "improvement": "Multi-scale edge detection (1x+2x+4x)",
+  "timestamp": "2026-05-03T22:01:48.187203"
 }

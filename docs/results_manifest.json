@@ -1,5 +1,19 @@
 [
   {
+    "version": "v36",
+    "description": "String art generation",
+    "ssim": 0.2,
+    "quality": 6,
+    "time": 30.0,
+    "pins": 300,
+    "lines": 3200,
+    "failed": false,
+    "timestamp": "2026-05-03T22:02:16.956887",
+    "svg": "result_v36_20260503_220216.svg",
+    "png": "result_v36_20260503_220216_canvas.png",
+    "filename": "result_v36_20260503_220216.svg"
+  },
+  {
     "version": "v34",
     "description": "String art generation",
     "ssim": 0.2,
