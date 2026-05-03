@@ -1,0 +1,41 @@
+[
+  {
+    "version": "v31",
+    "description": "Face-aware importance map",
+    "ssim": 0.2079,
+    "quality": 6.5,
+    "time": 30.66,
+    "pins": 300,
+    "lines": 3200,
+    "failed": true,
+    "timestamp": "2026-05-03T18:31:00",
+    "svg": "result_v31_20260503_183100.svg",
+    "png": "result_v31_20260503_183100.png"
+  },
+  {
+    "version": "v30",
+    "description": "Canny Edge Detection + morphological operations",
+    "ssim": 0.2148,
+    "quality": 7,
+    "time": 34.1,
+    "pins": 300,
+    "lines": 3200,
+    "failed": false,
+    "timestamp": "2026-05-03T18:21:00",
+    "svg": "result_v30_20260503_182127.svg",
+    "png": "result_v30_20260503_182127.png"
+  },
+  {
+    "version": "v9",
+    "description": "Birsak Supersampling + Enhanced Scoring",
+    "ssim": 0.258,
+    "quality": 6,
+    "time": 11.4,
+    "pins": 300,
+    "lines": 2500,
+    "failed": false,
+    "timestamp": "2026-05-03T10:14:00",
+    "svg": "test_v9_birsak.svg",
+    "png": "test_v9_birsak_mobile_400px.png"
+  }
+]
