@@ -632,6 +632,67 @@ func calculateWeightedMSE(canvas, target, importance [][]float64, width, height 
 	return 0
 }
 
+// calculateMSEV5 calculates Mean Squared Error between canvas and target image
+func calculateMSEV5(canvas [][]float64, img *image.Gray, width, height int) float64 {
+	mse := 0.0
+	count := 0
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			diff := canvas[y][x] - float64(img.GrayAt(x, y).Y)
+			mse += diff * diff
+			count++
+		}
+	}
+	return mse / float64(count)
+}
+
+// quickSSIMV5 calculates a quick SSIM approximation between canvas and target
+func quickSSIMV5(canvas [][]float64, img *image.Gray, width, height int) float64 {
+	meanCanvas := 0.0
+	meanImg := 0.0
+	count := 0
+
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			meanCanvas += canvas[y][x]
+			meanImg += float64(img.GrayAt(x, y).Y)
+			count++
+		}
+	}
+	meanCanvas /= float64(count)
+	meanImg /= float64(count)
+
+	varCanvas := 0.0
+	varImg := 0.0
+	covar := 0.0
+
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			diffCanvas := canvas[y][x] - meanCanvas
+			diffImg := float64(img.GrayAt(x, y).Y) - meanImg
+			varCanvas += diffCanvas * diffCanvas
+			varImg += diffImg * diffImg
+			covar += diffCanvas * diffImg
+		}
+	}
+
+	varCanvas /= float64(count)
+	varImg /= float64(count)
+	covar /= float64(count)
+
+	c1 := 6.5025  // (0.01*255)^2
+	c2 := 58.5225 // (0.03*255)^2
+
+	numerator := (2*meanCanvas*meanImg + c1) * (2*covar + c2)
+	denominator := (meanCanvas*meanCanvas + meanImg*meanImg + c1) * (varCanvas + varImg + c2)
+
+	if denominator == 0 {
+		return 1.0
+	}
+
+	return numerator / denominator
+}
+
 // ExportSVGV5 exports with float64 canvas
 func ExportSVGV5(lines []Line, config *Config, outputPath string) error {
 	return ExportSVG(lines, config, outputPath)

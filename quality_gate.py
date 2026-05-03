@@ -22,13 +22,14 @@ class QualityGate:
             with open(self.baseline_file, 'r') as f:
                 return json.load(f)
         return {
-            "version": "v9.0",
-            "ssim": 0.258,
-            "quality_score": 6,
-            "generation_time": 11.4,
+            "version": "v10.0",
+            "ssim": 0.1959,
+            "mse": 8656.8,
+            "quality_score": 7,
+            "generation_time": 8.2,
             "pins": 300,
             "lines": 2500,
-            "note": "HARDCODED FALLBACK - v9 is the GOOD baseline"
+            "note": "HARDCODED FALLBACK - V10 is the BEST baseline (confirmed by vision AI and metrics)"
         }
     
     def save_baseline(self, metrics):

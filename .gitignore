@@ -29,5 +29,6 @@ Thumbs.db
 
 # Keep test images for examples
 !test_circle.png
+!docs/v10_best_svgrender_800px.png
 .wrangler/
 string-art

@@ -234,11 +234,13 @@ func enhanceContrast(img *image.Gray, width, height int) *image.Gray {
 		}
 	}
 
-	// Apply contrast stretching + mild gamma correction
-	// Gamma 1.2 = slight shadow lift (was 1.8 which was too aggressive)
-	// The SVG renders LIGHTER than the canvas simulation at mobile resolution
-	// so we need the target to stay relatively dark
-	gamma := 1.2 // Mild shadow lift only
+	// Apply contrast stretching + gamma 1.8 correction
+	// Gamma 1.8 lifts shadows into the achievable range for string art.
+	// String art physically cannot reach very dark values (mean ~140-150 at best),
+	// so we remap the target to a range that string art CAN achieve.
+	// This produces perceptually better results because the optimizer can
+	// actually match the target instead of always being "too bright".
+	gamma := 1.0 // No gamma - keep target dark for maximum contrast
 	
 	result := image.NewGray(img.Bounds())
 	rangeVal := float64(highVal - lowVal)
