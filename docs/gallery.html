@@ -482,10 +482,11 @@
                         </div>
                         
                         <img 
-                            class="result-image lazy" 
-                            data-src="${result.png}" 
+                            class="result-image" 
+                            src="${result.png}" 
                             alt="${result.version}"
                             onclick="openModal('${result.svg}')"
+                            onerror="this.src='${result.svg}'"
                         >
                         
                         <div class="result-actions">
