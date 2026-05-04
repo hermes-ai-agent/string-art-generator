@@ -133,6 +133,7 @@ def main():
     parser.add_argument('--lines', type=int, default=2500, help='Number of lines')
     parser.add_argument('--description', default='Self-learning improvement', help='Description')
     parser.add_argument('--failed', action='store_true', help='Mark as failed quality gate')
+    parser.add_argument('--deploy', action='store_true', help='Auto-deploy to Cloudflare Pages after update')
     
     args = parser.parse_args()
     
@@ -176,6 +177,20 @@ def main():
     
     print(f"\n✅ Gallery updated successfully!")
     print(f"   View at: file://{docs_path}/gallery.html")
+    
+    # Auto-deploy to Cloudflare Pages if requested
+    if args.deploy:
+        print("\n🚀 Deploying to Cloudflare Pages...")
+        deploy_script = project_root / 'deploy_gallery.sh'
+        if deploy_script.exists():
+            try:
+                subprocess.run([str(deploy_script), '--auto'], check=True, cwd=project_root)
+                print("✅ Deployed to Cloudflare Pages")
+            except subprocess.CalledProcessError as e:
+                print(f"⚠️  Deployment failed: {e}")
+                print("   Run manually: ./deploy_gallery.sh")
+        else:
+            print("⚠️  deploy_gallery.sh not found")
     
     return 0
 

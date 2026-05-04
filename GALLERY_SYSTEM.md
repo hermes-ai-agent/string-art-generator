@@ -164,13 +164,23 @@ string-art/
 
 ## Deployment
 
-Gallery is a static site, can be deployed to:
-- GitHub Pages
-- Cloudflare Pages
-- Netlify
-- Any static hosting
+Gallery di-deploy ke **Cloudflare Pages** (private repo friendly).
 
-Just push `docs/` folder to hosting.
+### Quick Deploy
+
+```bash
+# Manual deploy
+./deploy_gallery.sh
+
+# Auto-deploy with gallery update
+./update_gallery.py output/result.svg --version v12 --ssim 0.234 --deploy
+```
+
+### Setup
+
+See [CLOUDFLARE_DEPLOY.md](CLOUDFLARE_DEPLOY.md) for complete setup instructions.
+
+**Production URL:** https://string-art-generator.pages.dev
 
 ## Maintenance
 
