@@ -19,24 +19,50 @@ import random
 
 # Configuration
 BASELINE_FILE = Path("/home/amin/string-art/baseline_params.json")
+BASELINE_METRICS_FILE = Path("/home/amin/string-art/baseline_metrics.json")
 TEST_IMAGE = Path("/home/amin/string-art/docs/examples/cat_photo.jpg")
 OUTPUT_DIR = Path("/home/amin/string-art/output")
 EXPERIMENT_LOG = Path("/home/amin/string-art/experiment_log.json")
 
-# Default baseline if file doesn't exist
+# Default baseline from baseline_metrics.json (v10)
 DEFAULT_BASELINE = {
-    "alpha": 30,
-    "pins": 200,
-    "lines": 3000,
-    "ssim": 0.0,
+    "alpha": 20,      # weight parameter for Go binary
+    "pins": 300,
+    "lines": 2500,
+    "ssim": 0.1959,   # v10 baseline SSIM
     "last_updated": None
 }
 
 def load_baseline():
-    """Load current baseline parameters."""
+    """Load current baseline parameters from baseline_params.json or baseline_metrics.json."""
+    # Try baseline_params.json first
     if BASELINE_FILE.exists():
         with open(BASELINE_FILE, 'r') as f:
-            return json.load(f)
+            params = json.load(f)
+            # Validate SSIM is not zero
+            if params.get('ssim', 0) > 0:
+                return params
+            else:
+                print(f"⚠️  baseline_params.json has invalid SSIM ({params.get('ssim')}), loading from baseline_metrics.json")
+    
+    # Fallback to baseline_metrics.json
+    if BASELINE_METRICS_FILE.exists():
+        with open(BASELINE_METRICS_FILE, 'r') as f:
+            metrics = json.load(f)
+            params = {
+                'alpha': metrics.get('weight', 20),
+                'pins': metrics.get('pins', 300),
+                'lines': metrics.get('lines', 2500),
+                'ssim': metrics.get('ssim', 0.1959),
+                'last_updated': metrics.get('timestamp')
+            }
+            # Save to baseline_params.json for next run
+            save_baseline(params)
+            print(f"✅ Loaded baseline from baseline_metrics.json: SSIM={params['ssim']:.4f}")
+            return params
+    
+    # Last resort: use default
+    print(f"⚠️  No baseline files found, using default: SSIM={DEFAULT_BASELINE['ssim']:.4f}")
     return DEFAULT_BASELINE.copy()
 
 def save_baseline(params):
