@@ -399,7 +399,7 @@
         let results = [];
         let currentFilter = 'all';
         let currentPage = 0;
-        const RESULTS_PER_PAGE = 12;
+        const RESULTS_PER_PAGE = 100; // Show all versions (no pagination)
         
         // Scan docs/ folder for result files
         async function loadResults() {
