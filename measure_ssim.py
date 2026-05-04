@@ -28,17 +28,20 @@ def measure_ssim(generated_path, target_path):
     Returns:
         float: SSIM value (0.0 to 1.0)
     """
-    # Convert SVG to PNG if needed
+    # Convert SVG to PNG if needed using cairosvg or skip SVG support
     if generated_path.endswith('.svg'):
-        png_path = generated_path.replace('.svg', '_ssim_temp.png')
-        subprocess.run([
-            'convert', generated_path, 
-            '-background', 'white', 
-            '-flatten', 
-            '-resize', '600x600',
-            png_path
-        ], check=True)
-        generated_path = png_path
+        try:
+            import cairosvg
+            png_path = generated_path.replace('.svg', '_ssim_temp.png')
+            cairosvg.svg2png(url=generated_path, write_to=png_path, output_width=600, output_height=600)
+            generated_path = png_path
+        except ImportError:
+            # If cairosvg not available, try to find corresponding PNG render
+            png_path = generated_path.replace('_stringart_', '_render_')
+            if Path(png_path).exists():
+                generated_path = png_path
+            else:
+                raise RuntimeError("Cannot convert SVG: cairosvg not installed and no render PNG found")
     
     # Load images
     gen_img = load_image_grayscale(generated_path)
