@@ -577,13 +577,19 @@ def main():
             # Render SVG to PNG if not exists
             if not png_file.exists():
                 try:
-                    subprocess.run([
-                        'rsvg-convert', str(svg_file),
-                        '-o', str(png_file),
-                        '-w', '800'
-                    ], check=True, timeout=30)
-                except:
-                    pass  # If rsvg-convert not available, skip
+                    # Try cairosvg first (Python library)
+                    import cairosvg
+                    cairosvg.svg2png(url=str(svg_file), write_to=str(png_file), output_width=800)
+                except ImportError:
+                    # Fallback to rsvg-convert
+                    try:
+                        subprocess.run([
+                            'rsvg-convert', str(svg_file),
+                            '-o', str(png_file),
+                            '-w', '800'
+                        ], check=True, timeout=30)
+                    except:
+                        pass  # If neither available, skip
             
             if png_file.exists():
                 print(f"IMAGE={png_file}")
@@ -601,13 +607,19 @@ def main():
             
             if not png_file.exists():
                 try:
-                    subprocess.run([
-                        'rsvg-convert', str(svg_file),
-                        '-o', str(png_file),
-                        '-w', '800'
-                    ], check=True, timeout=30)
-                except:
-                    pass
+                    # Try cairosvg first
+                    import cairosvg
+                    cairosvg.svg2png(url=str(svg_file), write_to=str(png_file), output_width=800)
+                except ImportError:
+                    # Fallback to rsvg-convert
+                    try:
+                        subprocess.run([
+                            'rsvg-convert', str(svg_file),
+                            '-o', str(png_file),
+                            '-w', '800'
+                        ], check=True, timeout=30)
+                    except:
+                        pass
             
             if png_file.exists():
                 print(f"IMAGE={png_file}")
