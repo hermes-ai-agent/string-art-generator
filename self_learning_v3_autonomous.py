@@ -97,51 +97,51 @@ def research_phase():
         ]
     })
     
-    # Strategy 2: Image preprocessing - Contrast enhancement (fast)
+    # Strategy 2: Dual-color contrast enhancement
     strategies.append({
-        'name': 'Contrast Enhancement',
-        'description': 'Enhance contrast before generation (CLAHE, histogram equalization)',
-        'rationale': 'Better contrast = clearer features = better string art',
+        'name': 'Dual-Color Contrast',
+        'description': 'Dual-color (black+white) with contrast preprocessing',
+        'rationale': 'Dual-color expands dynamic range - black darkens, white lightens',
         'params': [
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'clahe'},
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'histogram_eq'},
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'adaptive_contrast'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'dual': True},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'dual': True, 'preprocess': 'clahe'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'dual': True, 'preprocess': 'histogram_eq'},
         ]
     })
-    
-    # Strategy 3: Image preprocessing - Edge enhancement (fast)
+
+    # Strategy 3: Dual-color edge enhancement
     strategies.append({
-        'name': 'Edge Enhancement',
-        'description': 'Sharpen edges before generation',
-        'rationale': 'Sharper edges = algorithm can follow features better',
+        'name': 'Dual-Color Edge',
+        'description': 'Dual-color with edge sharpening',
+        'rationale': 'Sharp edges + dual-color = maximum detail',
         'params': [
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'unsharp_mask'},
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'edge_enhance'},
-            {'pins': 300, 'lines': 3000, 'alpha': 18, 'preprocess': 'edge_enhance_more'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'dual': True, 'preprocess': 'unsharp_mask'},
+            {'pins': 360, 'lines': 3000, 'alpha': 18, 'dual': True, 'preprocess': 'unsharp_mask'},
+            {'pins': 300, 'lines': 3000, 'alpha': 15, 'dual': True, 'preprocess': 'edge_enhance'},
         ]
     })
-    
-    # Strategy 4: Image preprocessing - Gamma correction (fast)
+
+    # Strategy 4: Dual-color gamma
     strategies.append({
-        'name': 'Gamma Correction',
-        'description': 'Adjust gamma to lift shadows or darken highlights',
-        'rationale': 'Gamma adjustment can reveal hidden details',
+        'name': 'Dual-Color Gamma',
+        'description': 'Dual-color with gamma correction',
+        'rationale': 'Gamma lifts shadows, dual-color fills them with white threads',
         'params': [
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'gamma_0.8'},
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'gamma_1.2'},
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'gamma_1.5'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'dual': True, 'preprocess': 'gamma_1.2'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'dual': True, 'preprocess': 'gamma_1.5'},
+            {'pins': 360, 'lines': 3000, 'alpha': 18, 'dual': True, 'preprocess': 'gamma_1.2'},
         ]
     })
-    
-    # Strategy 5: Combined preprocessing + optimal params (fast)
+
+    # Strategy 5: Dual-color high density
     strategies.append({
-        'name': 'Preprocessing + Optimal',
-        'description': 'Best preprocessing + best parameters',
-        'rationale': 'Combine image enhancement with optimal generation params',
+        'name': 'Dual-Color High Density',
+        'description': 'Dual-color with maximum pins and lines',
+        'rationale': 'More pins + more lines + dual-color = maximum quality',
         'params': [
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'clahe', 'edge_weight': 3.0},
-            {'pins': 360, 'lines': 3000, 'alpha': 18, 'preprocess': 'unsharp_mask', 'edge_weight': 2.5},
-            {'pins': 300, 'lines': 2000, 'alpha': 25, 'preprocess': 'gamma_1.2', 'edge_weight': 3.5},
+            {'pins': 360, 'lines': 4000, 'alpha': 15, 'dual': True},
+            {'pins': 360, 'lines': 5000, 'alpha': 12, 'dual': True},
+            {'pins': 360, 'lines': 3000, 'alpha': 18, 'dual': True, 'preprocess': 'clahe'},
         ]
     })
     
@@ -306,8 +306,13 @@ def run_experiment(params, experiment_id):
         '--pins', str(params['pins']),
         '--lines', str(params['lines']),
         '--weight', str(params.get('alpha', 20)),
-        '--wu'  # Use Wu anti-aliased
+        '--wu'  # Always use Wu AA
     ]
+    
+    # Dual-color mode
+    if params.get('dual'):
+        cmd.append('--dual-color')
+        print(f"    mode=dual-color (black+white)")
     
     # Add optional params
     if 'edge_weight' in params:

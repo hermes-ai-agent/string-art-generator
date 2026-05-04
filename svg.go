@@ -123,3 +123,62 @@ func ExportSVGDual(blackLines, whiteLines []Line, config *Config, outputPath str
 
 	return nil
 }
+
+// ExportSVGDualFloat exports dual-color string art to SVG (uses float canvas from V12)
+func ExportSVGDualFloat(blackLines, whiteLines []Line, config *Config, outputPath string) error {
+	const svgWidth = 600.0
+	const svgHeight = 600.0
+	const strokeWidth = 0.18  // MANDATORY: 0.18mm
+	const strokeOpacity = 1.0 // MANDATORY: full opaque
+
+	centerX, centerY := svgWidth/2, svgHeight/2
+	radius := (svgWidth / 2) - 10
+	pins := GeneratePins(config.NumPins, radius, centerX, centerY)
+
+	file, err := os.Create(outputPath)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	fmt.Fprintf(file, `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="600mm" 
+     height="600mm" 
+     viewBox="0 0 600 600">
+  <title>Dual-Color String Art v12.0 (Wu AA)</title>
+  <desc>Generated with %d pins, %d black lines, %d white lines</desc>
+  
+  <!-- Background: white canvas for physical construction -->
+  <rect width="600" height="600" fill="white"/>
+  
+  <!-- Black string lines (0.18mm, fully opaque) -->
+  <g id="black-strings" stroke="black" stroke-width="%.2f" stroke-opacity="%.1f" fill="none">
+`, config.NumPins, len(blackLines), len(whiteLines), strokeWidth, strokeOpacity)
+
+	for _, line := range blackLines {
+		from := pins[line.From]
+		to := pins[line.To]
+		fmt.Fprintf(file, `    <line x1="%.2f" y1="%.2f" x2="%.2f" y2="%.2f"/>
+`, from.X, from.Y, to.X, to.Y)
+	}
+
+	fmt.Fprintf(file, `  </g>
+  
+  <!-- White string lines (0.18mm, fully opaque) -->
+  <g id="white-strings" stroke="white" stroke-width="%.2f" stroke-opacity="%.1f" fill="none">
+`, strokeWidth, strokeOpacity)
+
+	for _, line := range whiteLines {
+		from := pins[line.From]
+		to := pins[line.To]
+		fmt.Fprintf(file, `    <line x1="%.2f" y1="%.2f" x2="%.2f" y2="%.2f"/>
+`, from.X, from.Y, to.X, to.Y)
+	}
+
+	fmt.Fprintf(file, `  </g>
+</svg>
+`)
+
+	return nil
+}

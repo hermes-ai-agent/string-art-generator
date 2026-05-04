@@ -160,6 +160,20 @@ func main() {
 			}
 			fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 		}
+	} else if *wuMode && *dualColor {
+		// V12 Dual-Color Wu AA
+		fmt.Println("Mode: V12.0 Dual-Color Wu Anti-Aliased")
+		blackLines, whiteLines, canvasF := GenerateStringArtV12DualWu(processed, edgeMap, config)
+
+		if err := ExportSVGDualFloat(blackLines, whiteLines, config, *outputPath); err != nil {
+			log.Fatalf("Failed to export SVG: %v", err)
+		}
+
+		canvasPngPath := (*outputPath)[:len(*outputPath)-4] + "_canvas.png"
+		if err := RenderCanvasToImageFloat(canvasF, canvasPngPath); err != nil {
+			log.Fatalf("Failed to render canvas: %v", err)
+		}
+		fmt.Printf("Canvas render saved to: %s\n", canvasPngPath)
 	} else if *wuMode {
 		// V11 Wu Anti-Aliased (better SVG match)
 		fmt.Println("Mode: V11.0 Wu Anti-Aliased (better SVG match)")
