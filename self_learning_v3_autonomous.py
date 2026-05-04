@@ -81,19 +81,9 @@ def research_phase():
     print()
     
     print("🔍 Researching latest string art algorithms...")
+    print("🎨 Image preprocessing NOW ALLOWED!")
+    print("   (Preprocessing before generation, but SSIM measured vs original)")
     print()
-    
-    # Research topics
-    research_queries = [
-        "string art optimization algorithms 2024",
-        "line art generation techniques computer graphics",
-        "greedy vs simulated annealing optimization",
-        "multi-resolution image reconstruction algorithms",
-        "perceptual quality metrics SSIM alternatives"
-    ]
-    
-    # Simulate research (in real implementation, use web_search tool)
-    # For now, generate strategies based on known techniques
     
     strategies = []
     
@@ -109,7 +99,43 @@ def research_phase():
         ]
     })
     
-    # Strategy 2: Sparse high-quality
+    # Strategy 2: Image preprocessing - Contrast enhancement
+    strategies.append({
+        'name': 'Contrast Enhancement',
+        'description': 'Enhance contrast before generation (CLAHE, histogram equalization)',
+        'rationale': 'Better contrast = clearer features = better string art',
+        'params': [
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'clahe'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'histogram_eq'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'adaptive_contrast'},
+        ]
+    })
+    
+    # Strategy 3: Image preprocessing - Edge enhancement
+    strategies.append({
+        'name': 'Edge Enhancement',
+        'description': 'Sharpen edges before generation',
+        'rationale': 'Sharper edges = algorithm can follow features better',
+        'params': [
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'unsharp_mask'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'edge_enhance'},
+            {'pins': 300, 'lines': 3000, 'alpha': 18, 'preprocess': 'edge_enhance_more'},
+        ]
+    })
+    
+    # Strategy 4: Image preprocessing - Gamma correction
+    strategies.append({
+        'name': 'Gamma Correction',
+        'description': 'Adjust gamma to lift shadows or darken highlights',
+        'rationale': 'Gamma adjustment can reveal hidden details',
+        'params': [
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'gamma_0.8'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'gamma_1.2'},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'gamma_1.5'},
+        ]
+    })
+    
+    # Strategy 5: Sparse high-quality
     strategies.append({
         'name': 'Sparse High-Quality',
         'description': 'Fewer lines (1000-1500) with perfect placement',
@@ -121,7 +147,7 @@ def research_phase():
         ]
     })
     
-    # Strategy 3: High pin density
+    # Strategy 6: High pin density
     strategies.append({
         'name': 'Maximum Pin Density',
         'description': 'Use maximum 360 pins with optimal spacing',
@@ -133,19 +159,19 @@ def research_phase():
         ]
     })
     
-    # Strategy 4: Edge-weight optimization
+    # Strategy 7: Combined preprocessing + optimal params
     strategies.append({
-        'name': 'Edge-Weight Tuning',
-        'description': 'Vary edge detection weight (1.0-5.0)',
-        'rationale': 'v9 might have suboptimal edge weighting',
+        'name': 'Preprocessing + Optimal',
+        'description': 'Best preprocessing + best parameters',
+        'rationale': 'Combine image enhancement with optimal generation params',
         'params': [
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'edge_weight': 1.0},
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'edge_weight': 2.5},
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'edge_weight': 5.0},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'preprocess': 'clahe', 'edge_weight': 3.0},
+            {'pins': 360, 'lines': 3000, 'alpha': 18, 'preprocess': 'unsharp_mask', 'edge_weight': 2.5},
+            {'pins': 300, 'lines': 2000, 'alpha': 25, 'preprocess': 'gamma_1.2', 'edge_weight': 3.5},
         ]
     })
     
-    # Strategy 5: Replicate v9 exactly
+    # Strategy 8: v9 Replication
     strategies.append({
         'name': 'v9 Replication',
         'description': 'Exact v9 parameters to verify baseline',
@@ -155,7 +181,7 @@ def research_phase():
         ]
     })
     
-    # Strategy 6: Random exploration
+    # Strategy 9: Random exploration
     strategies.append({
         'name': 'Random Exploration',
         'description': 'Random parameter combinations',
@@ -183,6 +209,74 @@ def research_phase():
     
     return strategies
 
+def preprocess_image(input_image, preprocess_type):
+    """
+    Preprocess image before string art generation.
+    
+    Returns: path to preprocessed image
+    """
+    if not preprocess_type or preprocess_type == 'none':
+        return input_image
+    
+    try:
+        from PIL import Image, ImageEnhance, ImageFilter
+        import numpy as np
+        import cv2
+        
+        # Load image
+        img = Image.open(input_image).convert('L')  # Grayscale
+        img_array = np.array(img)
+        
+        # Apply preprocessing
+        if preprocess_type == 'clahe':
+            # CLAHE (Contrast Limited Adaptive Histogram Equalization)
+            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+            img_array = clahe.apply(img_array)
+        
+        elif preprocess_type == 'histogram_eq':
+            # Histogram equalization
+            img_array = cv2.equalizeHist(img_array)
+        
+        elif preprocess_type == 'adaptive_contrast':
+            # Adaptive contrast enhancement
+            img = ImageEnhance.Contrast(img).enhance(1.5)
+            img_array = np.array(img)
+        
+        elif preprocess_type == 'unsharp_mask':
+            # Unsharp mask (edge sharpening)
+            img = img.filter(ImageFilter.UnsharpMask(radius=2, percent=150, threshold=3))
+            img_array = np.array(img)
+        
+        elif preprocess_type == 'edge_enhance':
+            # Edge enhancement
+            img = img.filter(ImageFilter.EDGE_ENHANCE)
+            img_array = np.array(img)
+        
+        elif preprocess_type == 'edge_enhance_more':
+            # Strong edge enhancement
+            img = img.filter(ImageFilter.EDGE_ENHANCE_MORE)
+            img_array = np.array(img)
+        
+        elif preprocess_type.startswith('gamma_'):
+            # Gamma correction
+            gamma = float(preprocess_type.split('_')[1])
+            img_array = np.power(img_array / 255.0, gamma) * 255.0
+            img_array = img_array.astype(np.uint8)
+        
+        else:
+            print(f"    Unknown preprocessing: {preprocess_type}, skipping")
+            return input_image
+        
+        # Save preprocessed image
+        output_path = OUTPUT_DIR / f"preprocessed_{preprocess_type}.jpg"
+        Image.fromarray(img_array).save(output_path, quality=95)
+        
+        return output_path
+        
+    except Exception as e:
+        print(f"    Preprocessing failed: {e}, using original")
+        return input_image
+
 def run_experiment(params, experiment_id):
     """
     Run single experiment with given parameters.
@@ -195,11 +289,19 @@ def run_experiment(params, experiment_id):
         print(f"    edge_weight={params['edge_weight']}")
     if 'min_dist' in params:
         print(f"    min_dist={params['min_dist']}")
+    if 'preprocess' in params:
+        print(f"    preprocessing={params['preprocess']}")
+    
+    # Preprocess image if specified
+    input_image = TEST_IMAGE
+    if 'preprocess' in params:
+        input_image = preprocess_image(TEST_IMAGE, params['preprocess'])
+        print(f"    preprocessed image: {input_image}")
     
     # Build command
     cmd = [
         '/home/amin/string-art/string-art-gen',
-        '--input', str(TEST_IMAGE),
+        '--input', str(input_image),
         '--output', str(OUTPUT_DIR / f'experiment_{experiment_id}.svg'),
         '--pins', str(params['pins']),
         '--lines', str(params['lines']),
@@ -231,6 +333,7 @@ def run_experiment(params, experiment_id):
             return None, 0.0, generation_time, 0
         
         # Measure SSIM (from SVG render, NOT canvas PNG)
+        # CRITICAL: Compare to ORIGINAL image, not preprocessed!
         ssim = measure_ssim_from_svg(output_file)
         
         # Visual validation with vision AI
