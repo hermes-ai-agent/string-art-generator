@@ -1,0 +1,22 @@
+STRING ART CONSTRUCTION INSTRUCTIONS
+==================================================
+
+Version: 3.7.0 (3-opt + k-NN Selection + Warm Restart)
+Total pins: 200
+Total strings: 0
+Minimum pin distance: 20
+Line opacity: 1.0
+Anti-aliased rendering: Xiaolin Wu algorithm
+Squared difference: True
+Simulated annealing: False
+Warm restart interval: 500
+Auto-importance map: True
+3-opt optimization: True
+k-NN selection: True
+Beam width: 3
+Parallel processing: True
+Look-ahead optimization: False
+Adaptive stopping: True
+
+SEQUENCE (pin-to-pin):
+--------------------------------------------------

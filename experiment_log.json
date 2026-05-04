@@ -1,0 +1,72 @@
+[
+  {
+    "timestamp": "2026-05-04T10:40:47.234180",
+    "params": {
+      "alpha": 27,
+      "pins": 180,
+      "lines": 2500
+    },
+    "ssim": 0.0,
+    "improved": false
+  },
+  {
+    "timestamp": "2026-05-04T10:41:59.343441",
+    "params": {
+      "alpha": 33,
+      "pins": 180,
+      "lines": 3000
+    },
+    "ssim": 0.0,
+    "improved": false
+  },
+  {
+    "timestamp": "2026-05-04T10:43:29.687814",
+    "params": {
+      "alpha": 25,
+      "pins": 220,
+      "lines": 3000
+    },
+    "ssim": 0.0,
+    "improved": false
+  },
+  {
+    "timestamp": "2026-05-04T10:43:50.298477",
+    "params": {
+      "alpha": 25,
+      "pins": 180,
+      "lines": 3000
+    },
+    "ssim": 0.0,
+    "improved": false
+  },
+  {
+    "timestamp": "2026-05-04T10:44:42.020160",
+    "params": {
+      "alpha": 25,
+      "pins": 200,
+      "lines": 2700
+    },
+    "ssim": 0.0,
+    "improved": false
+  },
+  {
+    "timestamp": "2026-05-04T10:45:28.652331",
+    "params": {
+      "alpha": 27,
+      "pins": 180,
+      "lines": 2500
+    },
+    "ssim": 0.0,
+    "improved": false
+  },
+  {
+    "timestamp": "2026-05-04T10:46:20.565659",
+    "params": {
+      "alpha": 30,
+      "pins": 180,
+      "lines": 3000
+    },
+    "ssim": 0.001616,
+    "improved": true
+  }
+]
