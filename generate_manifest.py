@@ -106,6 +106,11 @@ def generate_manifest():
             print(f"  Skipping {svg_file.name} (no version found)")
             continue
         
+        # Only process v1-v11 (baseline v10, latest v11)
+        if version_num > 11:
+            print(f"  Skipping {svg_file.name} (version > v11)")
+            continue
+        
         version = f"v{version_num}"
         
         # Store ALL files for this version
@@ -150,19 +155,24 @@ def generate_manifest():
             metrics['quality'] = 6
             metrics['time'] = 11.4
             metrics['lines'] = 2500
-        elif version == 'v11' and 'wu' in svg_file.name.lower():
-            metrics['ssim'] = 0.224  # +14.4% over v10
-            metrics['quality'] = 8
-            metrics['description'] = 'Wu Anti-Aliased (+14.4% SSIM)'
-        elif version == 'v30':
-            metrics['ssim'] = 0.2148
-            metrics['quality'] = 7
-            metrics['time'] = 34.1
-        elif version == 'v31':
-            metrics['ssim'] = 0.2079
-            metrics['quality'] = 6.5
-            metrics['time'] = 30.66
-            metrics['failed'] = True
+        elif version == 'v11':
+            # v11 is the BEST version (Wu Anti-Aliased)
+            if 'best' in svg_file.name.lower() or 'wu' in svg_file.name.lower():
+                metrics['ssim'] = 0.224  # +14.4% over v10
+                metrics['quality'] = 8
+                metrics['time'] = 160.0
+                metrics['pins'] = 350
+                metrics['lines'] = 5685
+                metrics['description'] = 'Wu Anti-Aliased Compositing (BEST)'
+        elif version == 'v10':
+            # v10 is the previous best (Bresenham)
+            if 'best' in svg_file.name.lower():
+                metrics['ssim'] = 0.196
+                metrics['quality'] = 7
+                metrics['time'] = 6.6
+                metrics['pins'] = 300
+                metrics['lines'] = 3489
+                metrics['description'] = 'Source-Over Compositing (Previous Best)'
         
         results_by_version[version].append(metrics)
         print(f"  Added {version}: {svg_file.name} (SSIM: {metrics['ssim']:.4f})")
@@ -170,10 +180,13 @@ def generate_manifest():
     # Flatten: take the BEST file for each version (prefer result_ > test_ > baseline_)
     results_list = []
     for version, files in results_by_version.items():
-        # Sort by priority: result_ > test_ > baseline_ > others
+        # Sort by priority: v{N}_best > result_ > test_birsak > test_ > baseline_ > others
         def priority(f):
             name = f['filename']
-            if name.startswith('result_'):
+            # Highest priority: v{N}_best.svg (official best versions)
+            if name.startswith(f'{version}_best'):
+                return -1
+            elif name.startswith('result_'):
                 return 0
             elif name.startswith('test_') and 'birsak' in name:
                 return 1
