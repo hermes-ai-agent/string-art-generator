@@ -559,7 +559,7 @@ def main():
     print(f"Improved: {'YES 🎉' if improved else 'NO 📊'}")
     print()
     
-    # Output for cron job
+    # Output for cron job (with image!)
     if improved and best_result:
         improvement_pct = ((best_result['ssim'] / baseline['ssim'] - 1) * 100)
         print(f"STATUS=improved")
@@ -567,12 +567,50 @@ def main():
         print(f"NEW_SSIM={best_result['ssim']:.4f}")
         print(f"IMPROVEMENT={improvement_pct:.1f}")
         print(f"STRATEGY={best_result['strategy']}")
+        
+        # Include image path for Telegram delivery
+        if best_result.get('output_file'):
+            # Convert SVG to PNG for preview
+            svg_file = Path(best_result['output_file'])
+            png_file = svg_file.with_suffix('.png')
+            
+            # Render SVG to PNG if not exists
+            if not png_file.exists():
+                try:
+                    subprocess.run([
+                        'rsvg-convert', str(svg_file),
+                        '-o', str(png_file),
+                        '-w', '800'
+                    ], check=True, timeout=30)
+                except:
+                    pass  # If rsvg-convert not available, skip
+            
+            if png_file.exists():
+                print(f"IMAGE={png_file}")
     else:
         print(f"STATUS=no_improvement")
         if best_result:
             print(f"BEST_SSIM={best_result['ssim']:.4f}")
         print(f"BASELINE={baseline['ssim']:.4f}")
         print(f"INSIGHTS={insights}")
+        
+        # Still send best result image even if not improved
+        if best_result and best_result.get('output_file'):
+            svg_file = Path(best_result['output_file'])
+            png_file = svg_file.with_suffix('.png')
+            
+            if not png_file.exists():
+                try:
+                    subprocess.run([
+                        'rsvg-convert', str(svg_file),
+                        '-o', str(png_file),
+                        '-w', '800'
+                    ], check=True, timeout=30)
+                except:
+                    pass
+            
+            if png_file.exists():
+                print(f"IMAGE={png_file}")
 
 if __name__ == "__main__":
     main()
