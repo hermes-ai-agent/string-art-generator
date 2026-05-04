@@ -8,20 +8,23 @@ PROJECT_NAME="string-art-generator"
 ACCOUNT_ID="ed771e694c6365ea42180a5c54aadf6a"
 DOCS_DIR="docs"
 
+# Cloudflare API token (from memory or environment)
+CF_TOKEN="${CLOUDFLARE_API_TOKEN:-cfat_wmXpQTiIXOkr3vzJlhVfYi4fN08PfrwiuvosiaXQ8eb093d4}"
+
 echo "🚀 Deploying String Art Gallery to Cloudflare Pages"
 echo ""
 
-# Check if wrangler is installed
+# Add wrangler to PATH
+export PATH="$HOME/.hermes/node/bin:$PATH"
+
+# Check if wrangler is available
 if ! command -v wrangler &> /dev/null; then
-    echo "⚠️  Wrangler not found. Installing..."
+    echo "❌ Wrangler not found. Installing..."
     npm install -g wrangler
 fi
 
-# Check if logged in
-if ! wrangler whoami &> /dev/null; then
-    echo "🔐 Please login to Cloudflare:"
-    wrangler login
-fi
+# Set token for wrangler
+export CLOUDFLARE_API_TOKEN="$CF_TOKEN"
 
 # Regenerate manifest before deploy
 echo "📊 Regenerating manifest..."

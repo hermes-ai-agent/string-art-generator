@@ -269,7 +269,8 @@ def main():
             '--quality', str(min(10, int(ssim * 40))),  # Quality score based on SSIM
             '--pins', str(params['pins']),
             '--lines', str(params['lines']),
-            '--description', f"Self-learning: alpha={params['alpha']}, +{improvement:.1f}% SSIM"
+            '--description', f"Self-learning: alpha={params['alpha']}, +{improvement:.1f}% SSIM",
+            '--deploy'  # Auto-deploy to Cloudflare Pages
         ]
         try:
             subprocess.run(update_cmd, check=True)
@@ -305,7 +306,8 @@ def main():
             '--pins', str(params['pins']),
             '--lines', str(params['lines']),
             '--description', f"Self-learning: alpha={params['alpha']}, no improvement",
-            '--failed'
+            '--failed',
+            '--deploy'  # Auto-deploy even for failed experiments
         ]
         try:
             subprocess.run(update_cmd, check=True)
