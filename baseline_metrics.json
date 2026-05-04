@@ -1,16 +1,16 @@
 {
-  "version": "v10",
-  "ssim": 0.196,
-  "mse": 8657,
-  "quality_score": 7,
-  "generation_time": 6.6,
+  "version": "v9",
+  "ssim": 0.258,
+  "mse": 7200,
+  "quality_score": 6,
+  "generation_time": 11.4,
   "pins": 300,
-  "lines": 3489,
+  "lines": 2500,
   "weight": 20,
-  "alpha": 0.15,
-  "improvement": "Source-Over Compositing (Bresenham)",
-  "timestamp": "2026-05-04T11:52:00.000000",
-  "note": "Baseline version - Previous best before v11",
+  "alpha": 0.2,
+  "improvement": "Birsak Supersampling - Best SSIM ever achieved",
+  "timestamp": "2026-05-04T13:15:00",
+  "note": "NEW BASELINE - V9 Birsak has highest SSIM (0.258). Self-learning must beat this to be considered improvement.",
   "measurement_method": "scikit-image SSIM, target=cat_photo.jpg resized to 800x800, output=SVG rendered at 800x800 via cairosvg",
-  "CRITICAL": "SSIM values for string art are inherently low (0.15-0.25) because string art cannot perfectly reproduce photos. Do NOT compare to SSIM thresholds designed for photo compression (0.9+). A 5% improvement in SSIM (e.g. 0.196 -> 0.206) is SIGNIFICANT for string art."
+  "CRITICAL": "SSIM values for string art are inherently low (0.15-0.25) because string art cannot perfectly reproduce photos. V9 at 0.258 is exceptional. A 5% improvement (0.258 -> 0.271) would be SIGNIFICANT."
 }
