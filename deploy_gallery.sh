@@ -4,7 +4,7 @@
 
 set -e
 
-PROJECT_NAME="string-art-generator"
+PROJECT_NAME="string-art-gallery"
 ACCOUNT_ID="ed771e694c6365ea42180a5c54aadf6a"
 DOCS_DIR="docs"
 

@@ -1,6 +1,6 @@
-name = "string-art-generator"
+name = "string-art-gallery"
 compatibility_date = "2024-01-01"
 pages_build_output_dir = "docs"
 
 # Cloudflare Pages configuration
-# Deploy command: wrangler pages deploy docs --project-name=string-art-generator
+# Deploy command: wrangler pages deploy docs --project-name=string-art-gallery
