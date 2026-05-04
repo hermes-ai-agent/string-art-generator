@@ -87,19 +87,17 @@ def research_phase():
     
     strategies = []
     
-    # Strategy 1: Extreme parameter exploration
+    # Strategy 1: v9 Replication (fast, verify baseline first)
     strategies.append({
-        'name': 'Extreme Parameters',
-        'description': 'Test extreme values: 360 pins, 5000-10000 lines, alpha 10-50',
-        'rationale': 'v9 uses 300 pins/2500 lines. Maybe more is better?',
+        'name': 'v9 Replication',
+        'description': 'Exact v9 parameters to verify baseline',
+        'rationale': 'Verify we can reproduce v9 SSIM 0.258',
         'params': [
-            {'pins': 360, 'lines': 5000, 'alpha': 10, 'min_dist': 10},
-            {'pins': 360, 'lines': 7500, 'alpha': 15, 'min_dist': 12},
-            {'pins': 360, 'lines': 10000, 'alpha': 20, 'min_dist': 15},
+            {'pins': 300, 'lines': 2500, 'alpha': 20, 'edge_weight': 3.0, 'min_dist': 15},
         ]
     })
     
-    # Strategy 2: Image preprocessing - Contrast enhancement
+    # Strategy 2: Image preprocessing - Contrast enhancement (fast)
     strategies.append({
         'name': 'Contrast Enhancement',
         'description': 'Enhance contrast before generation (CLAHE, histogram equalization)',
@@ -111,7 +109,7 @@ def research_phase():
         ]
     })
     
-    # Strategy 3: Image preprocessing - Edge enhancement
+    # Strategy 3: Image preprocessing - Edge enhancement (fast)
     strategies.append({
         'name': 'Edge Enhancement',
         'description': 'Sharpen edges before generation',
@@ -123,7 +121,7 @@ def research_phase():
         ]
     })
     
-    # Strategy 4: Image preprocessing - Gamma correction
+    # Strategy 4: Image preprocessing - Gamma correction (fast)
     strategies.append({
         'name': 'Gamma Correction',
         'description': 'Adjust gamma to lift shadows or darken highlights',
@@ -135,31 +133,7 @@ def research_phase():
         ]
     })
     
-    # Strategy 5: Sparse high-quality
-    strategies.append({
-        'name': 'Sparse High-Quality',
-        'description': 'Fewer lines (1000-1500) with perfect placement',
-        'rationale': 'Maybe v9 is over-saturated. Try minimal lines with high alpha.',
-        'params': [
-            {'pins': 300, 'lines': 1000, 'alpha': 40, 'min_dist': 20},
-            {'pins': 300, 'lines': 1500, 'alpha': 35, 'min_dist': 18},
-            {'pins': 360, 'lines': 1200, 'alpha': 38, 'min_dist': 20},
-        ]
-    })
-    
-    # Strategy 6: High pin density
-    strategies.append({
-        'name': 'Maximum Pin Density',
-        'description': 'Use maximum 360 pins with optimal spacing',
-        'rationale': 'More pins = finer detail capability',
-        'params': [
-            {'pins': 360, 'lines': 3000, 'alpha': 18, 'min_dist': 12},
-            {'pins': 360, 'lines': 4000, 'alpha': 15, 'min_dist': 10},
-            {'pins': 360, 'lines': 2500, 'alpha': 22, 'min_dist': 15},
-        ]
-    })
-    
-    # Strategy 7: Combined preprocessing + optimal params
+    # Strategy 5: Combined preprocessing + optimal params (fast)
     strategies.append({
         'name': 'Preprocessing + Optimal',
         'description': 'Best preprocessing + best parameters',
@@ -171,25 +145,51 @@ def research_phase():
         ]
     })
     
-    # Strategy 8: v9 Replication
+    # Strategy 6: Sparse high-quality (medium)
     strategies.append({
-        'name': 'v9 Replication',
-        'description': 'Exact v9 parameters to verify baseline',
-        'rationale': 'Verify we can reproduce v9 SSIM 0.258',
+        'name': 'Sparse High-Quality',
+        'description': 'Fewer lines (1000-1500) with perfect placement',
+        'rationale': 'Maybe v9 is over-saturated. Try minimal lines with high alpha.',
         'params': [
-            {'pins': 300, 'lines': 2500, 'alpha': 20, 'edge_weight': 3.0, 'min_dist': 15},
+            {'pins': 300, 'lines': 1000, 'alpha': 40, 'min_dist': 20},
+            {'pins': 300, 'lines': 1500, 'alpha': 35, 'min_dist': 18},
+            {'pins': 360, 'lines': 1200, 'alpha': 38, 'min_dist': 20},
         ]
     })
     
-    # Strategy 9: Random exploration
+    # Strategy 7: High pin density (medium)
+    strategies.append({
+        'name': 'Maximum Pin Density',
+        'description': 'Use maximum 360 pins with optimal spacing',
+        'rationale': 'More pins = finer detail capability',
+        'params': [
+            {'pins': 360, 'lines': 3000, 'alpha': 18, 'min_dist': 12},
+            {'pins': 360, 'lines': 4000, 'alpha': 15, 'min_dist': 10},
+            {'pins': 360, 'lines': 2500, 'alpha': 22, 'min_dist': 15},
+        ]
+    })
+    
+    # Strategy 8: Random exploration (medium)
     strategies.append({
         'name': 'Random Exploration',
         'description': 'Random parameter combinations',
         'rationale': 'Explore parameter space randomly to find unexpected optima',
         'params': [
-            {'pins': random.randint(250, 360), 'lines': random.randint(2000, 5000), 
+            {'pins': random.randint(250, 360), 'lines': random.randint(2000, 4000),
              'alpha': random.randint(12, 35), 'min_dist': random.randint(10, 20)}
             for _ in range(3)
+        ]
+    })
+    
+    # Strategy 9: Extreme parameters (slow - last!)
+    strategies.append({
+        'name': 'Extreme Parameters',
+        'description': 'Test extreme values: 360 pins, 5000-10000 lines',
+        'rationale': 'Push limits - may find better quality at cost of time',
+        'params': [
+            {'pins': 360, 'lines': 5000, 'alpha': 10, 'min_dist': 10},
+            {'pins': 360, 'lines': 7500, 'alpha': 15, 'min_dist': 12},
+            {'pins': 360, 'lines': 10000, 'alpha': 20, 'min_dist': 15},
         ]
     })
     
