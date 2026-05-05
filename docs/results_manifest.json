@@ -1,5 +1,17 @@
 [
   {
+    "version": "v13",
+    "description": "Kitchen Sink (Birsak + Dual Color + SA + Look-Ahead + Random)",
+    "ssim": 0.2316,
+    "quality": 7,
+    "time": 308.7,
+    "pins": 360,
+    "lines": 5000,
+    "image": "v13_kitchen_sink_mobile.png",
+    "svg": "v13_kitchen_sink.svg",
+    "failed": false
+  },
+  {
     "version": "v11",
     "description": "Wu Anti-Aliased Compositing (BEST)",
     "ssim": 0.224,
@@ -29,7 +41,7 @@
   },
   {
     "version": "v9",
-    "description": "Birsak Supersampling",
+    "description": "Birsak Supersampling - Best SSIM ever achieved",
     "ssim": 0.258,
     "quality": 6,
     "time": 11.4,
