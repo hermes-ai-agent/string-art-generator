@@ -1,16 +1,23 @@
 {
-  "version": "v9",
-  "ssim": 0.258,
-  "mse": 7200,
-  "quality_score": 6,
-  "generation_time": 11.4,
-  "pins": 300,
-  "lines": 2500,
-  "weight": 20,
-  "alpha": 0.2,
-  "improvement": "Birsak Supersampling - Best SSIM ever achieved",
-  "timestamp": "2026-05-04T13:15:00",
-  "note": "NEW BASELINE - V9 Birsak has highest SSIM (0.258). Self-learning must beat this to be considered improvement.",
+  "version": "v13",
+  "ssim": 0.231578,
+  "mse": 7500,
+  "quality_score": 7,
+  "generation_time": 308.7143335342407,
+  "pins": 360,
+  "lines": 5000,
+  "weight": 18,
+  "alpha": 18,
+  "edge_weight": 4.0,
+  "improvement": "Birsak + Dual Color + ALL (SA + Look-Ahead + Random)",
+  "timestamp": "2026-05-05T14:35:52.365048",
+  "note": "V13 - Best result from self-learning run #95. Kitchen Sink: Birsak + Dual Color + SA + Look-Ahead + Random Sampling.",
   "measurement_method": "scikit-image SSIM, target=cat_photo.jpg resized to 800x800, output=SVG rendered at 800x800 via cairosvg",
-  "CRITICAL": "SSIM values for string art are inherently low (0.15-0.25) because string art cannot perfectly reproduce photos. V9 at 0.258 is exceptional. A 5% improvement (0.258 -> 0.271) would be SIGNIFICANT."
+  "techniques": {
+    "birsak": true,
+    "dual_color": true,
+    "sa": true,
+    "look_ahead": true,
+    "random_sampling": true
+  }
 }

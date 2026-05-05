@@ -1,0 +1,29 @@
+{
+  "versions": [
+    {
+      "version": "v13",
+      "name": "Kitchen Sink (Birsak + Dual Color + SA + Look-Ahead + Random)",
+      "ssim": 0.2316,
+      "quality": 7,
+      "generation_time": 308.7,
+      "params": {
+        "pins": 360,
+        "lines": 5000,
+        "alpha": 18,
+        "edge_weight": 4.0,
+        "min_dist": 10
+      },
+      "techniques": [
+        "Birsak Supersampling 4x",
+        "Dual Color",
+        "Simulated Annealing",
+        "Look-Ahead",
+        "Random Sampling"
+      ],
+      "image": "v13_kitchen_sink_mobile.png",
+      "svg": "v13_kitchen_sink.svg",
+      "timestamp": "2026-05-05T19:42:00",
+      "description": "Best result from 97 self-learning runs. Combines all optimization techniques: Birsak supersampling, dual-color threads, simulated annealing, look-ahead optimization, and random sampling."
+    }
+  ]
+}
