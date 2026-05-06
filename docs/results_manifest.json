@@ -1,5 +1,19 @@
 [
   {
+    "version": "v14",
+    "description": "V5 Self-Learning Breakthrough (Birsak + SA + Random)",
+    "ssim": 0.2594,
+    "quality": 10,
+    "time": 364.5,
+    "pins": 300,
+    "lines": 5102,
+    "weight": 11,
+    "image": "v14_breakthrough_mobile.png",
+    "svg": "v14_breakthrough.svg",
+    "failed": false,
+    "notes": "Evolved from research technique. +14.5% vs v13. New baseline."
+  },
+  {
     "version": "v13",
     "description": "Kitchen Sink (Birsak + Dual Color + SA + Look-Ahead + Random)",
     "ssim": 0.2316,

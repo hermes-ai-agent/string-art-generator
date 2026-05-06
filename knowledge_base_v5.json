@@ -1,0 +1,3336 @@
+{
+  "successful_techniques": [
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 300,
+          "lines": 5102,
+          "alpha": 17,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "ssim": 0.2247296411865667,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T09:23:24.821958",
+      "run_number": 57
+    },
+    {
+      "technique": {
+        "name": "evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "research_9c1971b8",
+        "parent_ssim": 0.2247296411865667,
+        "params": {
+          "pins": 300,
+          "lines": 5102,
+          "alpha": 11,
+          "flags": [
+            "birsak",
+            "sa",
+            "random-sampling"
+          ]
+        },
+        "hash": "55bc1b210c849187406a32fc58982bc5"
+      },
+      "ssim": 0.2593850803773756,
+      "svg_path": "/home/amin/string-art/output/evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T10:05:28.339068",
+      "run_number": 72
+    },
+    {
+      "technique": {
+        "name": "evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "research_9c1971b8",
+        "parent_ssim": 0.2247296411865667,
+        "params": {
+          "pins": 300,
+          "lines": 5102,
+          "alpha": 17,
+          "flags": [
+            "birsak",
+            "high-contrast"
+          ]
+        },
+        "hash": "f905dcfe43262c7c844032bf7c34dfda"
+      },
+      "ssim": 0.2247296411865667,
+      "svg_path": "/home/amin/string-art/output/evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T10:55:15.284425",
+      "run_number": 75
+    },
+    {
+      "technique": {
+        "name": "evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "research_9c1971b8",
+        "parent_ssim": 0.2247296411865667,
+        "params": {
+          "pins": 313,
+          "lines": 5081,
+          "alpha": 17,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "055c57a24467391bb0d4984303f5935f"
+      },
+      "ssim": 0.22653141728512255,
+      "svg_path": "/home/amin/string-art/output/evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:05:15.015200",
+      "run_number": 76
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_research_9c1971b8",
+        "parent_ssim": 0.22653141728512255,
+        "params": {
+          "pins": 313,
+          "lines": 5081,
+          "alpha": 17,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "055c57a24467391bb0d4984303f5935f"
+      },
+      "ssim": 0.22653141728512255,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:17:55.645158",
+      "run_number": 79
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_evolved_research_9c1971b8",
+        "parent_ssim": 0.22653141728512255,
+        "params": {
+          "pins": 339,
+          "lines": 4927,
+          "alpha": 17,
+          "flags": [
+            "birsak",
+            "dual-color"
+          ]
+        },
+        "hash": "8ef62e239263b1ead339dcbf9779cdeb"
+      },
+      "ssim": 0.2279844718720997,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:22:26.684704",
+      "run_number": 80
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_evolved_evolved_research_9c1971b8",
+        "parent_ssim": 0.2279844718720997,
+        "params": {
+          "pins": 360,
+          "lines": 4927,
+          "alpha": 17,
+          "flags": [
+            "birsak",
+            "dual-color"
+          ]
+        },
+        "hash": "37947d0090183e852f119d6a9399a15a"
+      },
+      "ssim": 0.22981185646755833,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:34:48.943040",
+      "run_number": 86
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_evolved_evolved_research_9c1971b8",
+        "parent_ssim": 0.2279844718720997,
+        "params": {
+          "pins": 298,
+          "lines": 4927,
+          "alpha": 17,
+          "flags": [
+            "birsak",
+            "dual-color"
+          ]
+        },
+        "hash": "cadb2f1656217a78556828f9819d97e6"
+      },
+      "ssim": 0.22489765278780807,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:39:47.130283",
+      "run_number": 87
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_evolved_research_9c1971b8",
+        "parent_ssim": 0.22653141728512255,
+        "params": {
+          "pins": 313,
+          "lines": 5081,
+          "alpha": 16,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "86f86c8743e8d653d6ce605e4ac28729"
+      },
+      "ssim": 0.2293617413812467,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:46:09.261129",
+      "run_number": 88
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_evolved_evolved_research_9c1971b8",
+        "parent_ssim": 0.2293617413812467,
+        "params": {
+          "pins": 313,
+          "lines": 5081,
+          "alpha": 16,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "86f86c8743e8d653d6ce605e4ac28729"
+      },
+      "ssim": 0.2293617413812467,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:49:38.083821",
+      "run_number": 89
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_evolved_evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_evolved_evolved_evolved_research_9c1971b8",
+        "parent_ssim": 0.2293617413812467,
+        "params": {
+          "pins": 322,
+          "lines": 5081,
+          "alpha": 14,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "51c46aefdfe6a801043e32296f875f8f"
+      },
+      "ssim": 0.23914840676012117,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_evolved_evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:58:31.679148",
+      "run_number": 96
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_research_9c1971b8",
+        "parent_ssim": 0.2593850803773756,
+        "params": {
+          "pins": 337,
+          "lines": 5102,
+          "alpha": 11,
+          "flags": [
+            "birsak",
+            "sa",
+            "random-sampling"
+          ],
+          "edge_weight": 2.966600245745883
+        },
+        "hash": "406b95497eaccf129db49b1031af20a5"
+      },
+      "ssim": 0.2617548242379846,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T12:10:38.227259",
+      "run_number": 99
+    },
+    {
+      "technique": {
+        "name": "evolved_evolved_evolved_evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "evolved_evolved_evolved_research_9c1971b8",
+        "parent_ssim": 0.2293617413812467,
+        "params": {
+          "pins": 279,
+          "lines": 5081,
+          "alpha": 16,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "343975fcf5cf38c7f5079eb257539597"
+      },
+      "ssim": 0.22796695997024474,
+      "svg_path": "/home/amin/string-art/output/evolved_evolved_evolved_evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T12:18:32.106183",
+      "run_number": 101
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 360,
+          "lines": 4330,
+          "alpha": 12,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "ssim": 0.25898323549644003,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T12:23:59.742677",
+      "run_number": 102
+    }
+  ],
+  "failed_techniques": [
+    {
+      "technique": {
+        "name": "creative_dual-color_random-sampling_sa",
+        "source": "creative",
+        "params": {
+          "pins": 280,
+          "lines": 3121,
+          "alpha": 22,
+          "flags": [
+            "dual-color",
+            "sa",
+            "random-sampling"
+          ]
+        },
+        "hash": "7cf625283b5b8804341cd39f3deab792"
+      },
+      "ssim": 0.18699890523868995,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_random-sampling_sa.svg",
+      "timestamp": "2026-05-06T05:37:29.010891",
+      "run_number": 1
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 300,
+          "lines": 3858,
+          "alpha": 33,
+          "flags": []
+        }
+      },
+      "ssim": 0.1922848125584579,
+      "svg_path": "/home/amin/string-art/output/research_82a1587b.svg",
+      "timestamp": "2026-05-06T05:39:48.714573",
+      "run_number": 2
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 320,
+          "lines": 3720,
+          "alpha": 38,
+          "flags": [
+            "dual-color",
+            "random-sampling",
+            "enhanced",
+            "high-contrast"
+          ],
+          "edge_weight": 1.6162707109892185
+        },
+        "hash": "1cc9c56d083fc5b3746d5321a5d91774"
+      },
+      "ssim": 0.19384291544844606,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_random-sampling.svg",
+      "timestamp": "2026-05-06T05:59:51.333413",
+      "run_number": 3
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 300,
+          "lines": 3349,
+          "alpha": 34,
+          "flags": []
+        }
+      },
+      "ssim": 0.19023170026010122,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T06:06:15.938381",
+      "run_number": 4
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 3568,
+          "alpha": 26,
+          "flags": [
+            "dual-color",
+            "random-sampling",
+            "enhanced"
+          ],
+          "min_dist": 6
+        },
+        "hash": "908a45b40f9ea692e469d741b256998e"
+      },
+      "ssim": 0.19221658126228208,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_random-sampling.svg",
+      "timestamp": "2026-05-06T06:08:26.486514",
+      "run_number": 5
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_random-sampling_sa",
+        "source": "creative",
+        "params": {
+          "pins": 320,
+          "lines": 5139,
+          "alpha": 21,
+          "flags": [
+            "dual-color",
+            "enhanced",
+            "sa",
+            "high-contrast",
+            "random-sampling"
+          ],
+          "edge_weight": 2.0535224520508506,
+          "min_dist": 10
+        },
+        "hash": "36d4c6f9e089efb33cd6dc823ab2f03c"
+      },
+      "ssim": 0.19378251725653914,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_random-sampling_sa.svg",
+      "timestamp": "2026-05-06T06:37:53.934381",
+      "run_number": 6
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_high-contrast_random-sampling_sa",
+        "source": "creative",
+        "params": {
+          "pins": 280,
+          "lines": 3951,
+          "alpha": 24,
+          "flags": [
+            "random-sampling",
+            "sa",
+            "dual-color",
+            "high-contrast"
+          ],
+          "edge_weight": 2.7131739297688453,
+          "min_dist": 7
+        },
+        "hash": "2569e29003d860752d581e74776656b8"
+      },
+      "ssim": 0.191402360583848,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_high-contrast_random-sampling_sa.svg",
+      "timestamp": "2026-05-06T06:44:11.854513",
+      "run_number": 7
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 6738,
+          "alpha": 10,
+          "flags": [
+            "dual-color",
+            "enhanced",
+            "look-ahead",
+            "random-sampling",
+            "high-contrast"
+          ],
+          "edge_weight": 3.0841742624788333,
+          "min_dist": 10
+        },
+        "hash": "d6dca86159c70b13a720e10263bedb8c"
+      },
+      "ssim": 0.19592613205480858,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T06:52:48.897998",
+      "run_number": 8
+    },
+    {
+      "technique": {
+        "name": "extreme_7993",
+        "source": "extreme",
+        "params": {
+          "pins": 200,
+          "lines": 1568,
+          "alpha": 73,
+          "flags": [
+            "look-ahead",
+            "high-contrast",
+            "dual-color"
+          ],
+          "edge_weight": 4.630677999345115,
+          "min_dist": 18
+        }
+      },
+      "ssim": 0.17168091177356878,
+      "svg_path": "/home/amin/string-art/output/extreme_7993.svg",
+      "timestamp": "2026-05-06T06:54:32.390223",
+      "run_number": 9
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_look-ahead",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 2825,
+          "alpha": 12,
+          "flags": [
+            "look-ahead",
+            "dual-color"
+          ]
+        },
+        "hash": "e90cca6f43f7b604a350f64388d9d4dc"
+      },
+      "ssim": 0.18452391232876372,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_look-ahead.svg",
+      "timestamp": "2026-05-06T06:58:11.679956",
+      "run_number": 10
+    },
+    {
+      "technique": {
+        "name": "creative_enhanced_look-ahead",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 4153,
+          "alpha": 33,
+          "flags": [
+            "look-ahead",
+            "enhanced"
+          ],
+          "min_dist": 9
+        },
+        "hash": "4a43388aefdaa5056d227b7a59e5a66e"
+      },
+      "ssim": 0.195547646093166,
+      "svg_path": "/home/amin/string-art/output/creative_enhanced_look-ahead.svg",
+      "timestamp": "2026-05-06T07:05:02.845327",
+      "run_number": 11
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 5880,
+          "alpha": 24,
+          "flags": [
+            "look-ahead",
+            "high-contrast",
+            "dual-color",
+            "enhanced",
+            "random-sampling"
+          ],
+          "edge_weight": 1.3308688748610649
+        },
+        "hash": "2ac3d70d848d1c7544fe853dc373d14f"
+      },
+      "ssim": 0.19482152034959913,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T07:07:16.521595",
+      "run_number": 12
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 340,
+          "lines": 3572,
+          "alpha": 32,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "ssim": 0.20238866323486604,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T07:10:18.605838",
+      "run_number": 13
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_high-contrast_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 6775,
+          "alpha": 21,
+          "flags": [
+            "dual-color",
+            "high-contrast",
+            "random-sampling"
+          ],
+          "edge_weight": 2.8006084421778867
+        },
+        "hash": "ddc401495f5ddf33d1a3151c96fa4aea"
+      },
+      "ssim": 0.1922848125584579,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_high-contrast_random-sampling.svg",
+      "timestamp": "2026-05-06T07:10:30.734579",
+      "run_number": 14
+    },
+    {
+      "technique": {
+        "name": "creative_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 6041,
+          "alpha": 42,
+          "flags": [
+            "look-ahead",
+            "random-sampling",
+            "high-contrast"
+          ],
+          "edge_weight": 2.467528468279384
+        },
+        "hash": "bfeeb24ea2c291ab7ff271168376226e"
+      },
+      "ssim": 0.1922848125584579,
+      "svg_path": "/home/amin/string-art/output/creative_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T07:10:43.318936",
+      "run_number": 15
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 2629,
+          "alpha": 28,
+          "flags": [
+            "look-ahead",
+            "random-sampling",
+            "enhanced",
+            "dual-color"
+          ]
+        },
+        "hash": "6effbb0008936f2949590435de9e2cf0"
+      },
+      "ssim": 0.1864014096646471,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T07:15:59.282900",
+      "run_number": 16
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 360,
+          "lines": 5503,
+          "alpha": 31,
+          "flags": []
+        }
+      },
+      "ssim": 0.19570023466856196,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T07:16:11.673856",
+      "run_number": 17
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 4813,
+          "alpha": 33,
+          "flags": [
+            "random-sampling",
+            "dual-color",
+            "enhanced",
+            "high-contrast",
+            "look-ahead"
+          ],
+          "edge_weight": 1.4193939350170202,
+          "min_dist": 3
+        },
+        "hash": "8a3df132eb66e05ab903bcf350e0f319"
+      },
+      "ssim": 0.1944729221589431,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T07:18:42.174487",
+      "run_number": 18
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 6430,
+          "alpha": 46,
+          "flags": [
+            "enhanced",
+            "look-ahead",
+            "random-sampling",
+            "dual-color",
+            "high-contrast"
+          ],
+          "edge_weight": 2.655697330631061,
+          "min_dist": 3
+        },
+        "hash": "3724f08f4b51727e7f105f61ba49d884"
+      },
+      "ssim": 0.19464751266855435,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T07:20:46.570167",
+      "run_number": 19
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 280,
+          "lines": 5511,
+          "alpha": 14,
+          "flags": []
+        }
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T07:20:54.324122",
+      "run_number": 20
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 6807,
+          "alpha": 49,
+          "flags": [
+            "dual-color",
+            "enhanced"
+          ],
+          "min_dist": 10
+        },
+        "hash": "355de37b984e92742302ed26c667cd7e"
+      },
+      "ssim": 0.19537503171748644,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced.svg",
+      "timestamp": "2026-05-06T07:23:16.867943",
+      "run_number": 21
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 4121,
+          "alpha": 15,
+          "flags": [
+            "dual-color",
+            "high-contrast",
+            "random-sampling",
+            "enhanced"
+          ],
+          "edge_weight": 1.6126534125849321,
+          "min_dist": 7
+        },
+        "hash": "4efc1aa3e323ac42df3c787392596d89"
+      },
+      "ssim": 0.1961377541816894,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_random-sampling.svg",
+      "timestamp": "2026-05-06T07:25:20.245822",
+      "run_number": 22
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 300,
+          "lines": 4574,
+          "alpha": 32,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "ssim": 0.1922848125584579,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T07:25:30.208737",
+      "run_number": 23
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_high-contrast",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 4986,
+          "alpha": 50,
+          "flags": [
+            "dual-color",
+            "high-contrast"
+          ],
+          "edge_weight": 3.290529170614292,
+          "min_dist": 10
+        },
+        "hash": "a15638335056d7f768d53cbcad21833f"
+      },
+      "ssim": 0.1960527179627228,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_high-contrast.svg",
+      "timestamp": "2026-05-06T07:25:41.332200",
+      "run_number": 24
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 5051,
+          "alpha": 31,
+          "flags": [
+            "random-sampling",
+            "dual-color",
+            "look-ahead",
+            "enhanced",
+            "high-contrast"
+          ],
+          "edge_weight": 2.2982161387314175,
+          "min_dist": 11
+        },
+        "hash": "2214030d3a05949928edf4f8930f2de7"
+      },
+      "ssim": 0.19241923745042314,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T07:27:51.133433",
+      "run_number": 25
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 360,
+          "lines": 5867,
+          "alpha": 16,
+          "flags": []
+        }
+      },
+      "ssim": 0.19570023466856196,
+      "svg_path": "/home/amin/string-art/output/research_82a1587b.svg",
+      "timestamp": "2026-05-06T07:50:26.450539",
+      "run_number": 26
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 340,
+          "lines": 4977,
+          "alpha": 29,
+          "flags": [
+            "sa",
+            "dual-color",
+            "birsak"
+          ]
+        }
+      },
+      "ssim": 0.21170691886998322,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T07:54:57.724578",
+      "run_number": 27
+    },
+    {
+      "technique": {
+        "name": "extreme_6447",
+        "source": "extreme",
+        "params": {
+          "pins": 360,
+          "lines": 2496,
+          "alpha": 17,
+          "flags": [
+            "random-sampling",
+            "sa",
+            "high-contrast",
+            "enhanced",
+            "dual-color"
+          ],
+          "edge_weight": 1.7813523814099215,
+          "min_dist": 17
+        }
+      },
+      "ssim": 0.18438259921859534,
+      "svg_path": "/home/amin/string-art/output/extreme_6447.svg",
+      "timestamp": "2026-05-06T07:56:40.201779",
+      "run_number": 28
+    },
+    {
+      "technique": {
+        "name": "creative_enhanced_high-contrast_look-ahead",
+        "source": "creative",
+        "params": {
+          "pins": 320,
+          "lines": 2828,
+          "alpha": 34,
+          "flags": [
+            "high-contrast",
+            "look-ahead",
+            "enhanced"
+          ],
+          "edge_weight": 2.1475870932964574
+        },
+        "hash": "2c76790511c6bf770b3cf40e4aa769ef"
+      },
+      "ssim": 0.1876344090397853,
+      "svg_path": "/home/amin/string-art/output/creative_enhanced_high-contrast_look-ahead.svg",
+      "timestamp": "2026-05-06T07:58:06.272617",
+      "run_number": 29
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 280,
+          "lines": 3733,
+          "alpha": 33,
+          "flags": []
+        }
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/research_82a1587b.svg",
+      "timestamp": "2026-05-06T07:58:13.035064",
+      "run_number": 30
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 4736,
+          "alpha": 18,
+          "flags": [
+            "enhanced",
+            "dual-color"
+          ],
+          "min_dist": 7
+        },
+        "hash": "8f364b6e1f9569b8ab460c6065f18932"
+      },
+      "ssim": 0.19414367518350417,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced.svg",
+      "timestamp": "2026-05-06T08:05:52.098665",
+      "run_number": 31
+    },
+    {
+      "technique": {
+        "name": "creative_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 4163,
+          "alpha": 29,
+          "flags": [
+            "high-contrast",
+            "look-ahead",
+            "random-sampling",
+            "enhanced"
+          ],
+          "edge_weight": 3.3572036014316557,
+          "min_dist": 6
+        },
+        "hash": "f6e28859b8ba95ebcc11fedadd46f129"
+      },
+      "ssim": 0.19521787152125974,
+      "svg_path": "/home/amin/string-art/output/creative_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T08:08:07.514526",
+      "run_number": 32
+    },
+    {
+      "technique": {
+        "name": "creative_high-contrast_look-ahead",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 6389,
+          "alpha": 18,
+          "flags": [
+            "high-contrast",
+            "look-ahead"
+          ],
+          "edge_weight": 2.7298846606907343
+        },
+        "hash": "182fc337f00fe55aaef7a854d3078515"
+      },
+      "ssim": 0.19548428613123386,
+      "svg_path": "/home/amin/string-art/output/creative_high-contrast_look-ahead.svg",
+      "timestamp": "2026-05-06T08:08:17.336378",
+      "run_number": 33
+    },
+    {
+      "technique": {
+        "name": "creative_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 280,
+          "lines": 3669,
+          "alpha": 38,
+          "flags": [
+            "look-ahead",
+            "random-sampling"
+          ]
+        },
+        "hash": "87ea9a8ffb6d7abcfc602fd8e6b6ff88"
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/creative_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T08:08:24.121367",
+      "run_number": 34
+    },
+    {
+      "technique": {
+        "name": "extreme_6717",
+        "source": "extreme",
+        "params": {
+          "pins": 200,
+          "lines": 7034,
+          "alpha": 66,
+          "flags": [
+            "dual-color",
+            "high-contrast",
+            "sa",
+            "enhanced",
+            "look-ahead",
+            "random-sampling"
+          ],
+          "edge_weight": 4.232186801581431,
+          "min_dist": 5
+        }
+      },
+      "ssim": 0.18325001459160167,
+      "svg_path": "/home/amin/string-art/output/extreme_6717.svg",
+      "timestamp": "2026-05-06T08:09:37.888400",
+      "run_number": 35
+    },
+    {
+      "technique": {
+        "name": "creative_high-contrast_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 320,
+          "lines": 3804,
+          "alpha": 43,
+          "flags": [
+            "random-sampling",
+            "high-contrast"
+          ],
+          "edge_weight": 2.545219570392627
+        },
+        "hash": "1b407447f1ec6ea79c2afee7eaef2c1b"
+      },
+      "ssim": 0.19323579114847753,
+      "svg_path": "/home/amin/string-art/output/creative_high-contrast_random-sampling.svg",
+      "timestamp": "2026-05-06T08:09:44.829754",
+      "run_number": 36
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 4333,
+          "alpha": 39,
+          "flags": [
+            "enhanced",
+            "look-ahead",
+            "dual-color",
+            "high-contrast",
+            "random-sampling"
+          ],
+          "edge_weight": 2.0488031999571996
+        },
+        "hash": "407b5a757084be6eee43ae914f3d5a99"
+      },
+      "ssim": 0.1923877279950049,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T08:11:38.020034",
+      "run_number": 37
+    },
+    {
+      "technique": {
+        "name": "extreme_2296",
+        "source": "extreme",
+        "params": {
+          "pins": 350,
+          "lines": 9727,
+          "alpha": 45,
+          "flags": [
+            "random-sampling",
+            "high-contrast",
+            "dual-color",
+            "sa"
+          ],
+          "edge_weight": 0.9040840800907586,
+          "min_dist": 3
+        }
+      },
+      "ssim": 0.1954337992541381,
+      "svg_path": "/home/amin/string-art/output/extreme_2296.svg",
+      "timestamp": "2026-05-06T08:11:49.623198",
+      "run_number": 38
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 3721,
+          "alpha": 17,
+          "flags": [
+            "high-contrast",
+            "look-ahead",
+            "enhanced",
+            "dual-color"
+          ],
+          "edge_weight": 1.7008555891503956
+        },
+        "hash": "9ce9a240c5a76af607d4d7fd70d4c3ab"
+      },
+      "ssim": 0.1923877279950049,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead.svg",
+      "timestamp": "2026-05-06T08:13:28.535188",
+      "run_number": 39
+    },
+    {
+      "technique": {
+        "name": "creative_enhanced_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 3734,
+          "alpha": 19,
+          "flags": [
+            "enhanced",
+            "random-sampling"
+          ],
+          "min_dist": 9
+        },
+        "hash": "426f3c3aeb14ebbaa911c149febb307a"
+      },
+      "ssim": 0.195547646093166,
+      "svg_path": "/home/amin/string-art/output/creative_enhanced_random-sampling.svg",
+      "timestamp": "2026-05-06T08:15:30.027522",
+      "run_number": 40
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 320,
+          "lines": 3041,
+          "alpha": 20,
+          "flags": [
+            "enhanced",
+            "look-ahead",
+            "high-contrast",
+            "dual-color",
+            "random-sampling"
+          ],
+          "edge_weight": 1.6452805347419954
+        },
+        "hash": "f4ee336f176c7734e214ef641a599aa4"
+      },
+      "ssim": 0.18989708734596863,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T08:36:05.695251",
+      "run_number": 41
+    },
+    {
+      "technique": {
+        "name": "creative_enhanced_sa",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 6500,
+          "alpha": 38,
+          "flags": [
+            "sa",
+            "enhanced"
+          ]
+        },
+        "hash": "2b1820432568f37b4ad9f9a3eaf2c891"
+      },
+      "ssim": 0.19482152034959913,
+      "svg_path": "/home/amin/string-art/output/creative_enhanced_sa.svg",
+      "timestamp": "2026-05-06T08:44:42.347668",
+      "run_number": 42
+    },
+    {
+      "technique": {
+        "name": "creative_enhanced_high-contrast_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 5394,
+          "alpha": 12,
+          "flags": [
+            "random-sampling",
+            "high-contrast",
+            "enhanced"
+          ],
+          "edge_weight": 1.2953496866033203
+        },
+        "hash": "cb3c24871b1b6d297030427f37c24135"
+      },
+      "ssim": 0.19482152034959913,
+      "svg_path": "/home/amin/string-art/output/creative_enhanced_high-contrast_random-sampling.svg",
+      "timestamp": "2026-05-06T09:00:52.560329",
+      "run_number": 43
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_high-contrast",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 4722,
+          "alpha": 14,
+          "flags": [
+            "dual-color",
+            "high-contrast"
+          ],
+          "edge_weight": 1.417641386990012
+        },
+        "hash": "5fc6740577c2a743cb2870af03f75a02"
+      },
+      "ssim": 0.19570023466856196,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_high-contrast.svg",
+      "timestamp": "2026-05-06T09:01:25.496422",
+      "run_number": 44
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 280,
+          "lines": 6785,
+          "alpha": 39,
+          "flags": [
+            "high-contrast",
+            "look-ahead",
+            "enhanced",
+            "random-sampling",
+            "dual-color"
+          ],
+          "edge_weight": 1.4898177065877243,
+          "min_dist": 11
+        },
+        "hash": "5f5ce106bf85b31281efcac0cff5470f"
+      },
+      "ssim": 0.19115661323899585,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T09:03:21.633447",
+      "run_number": 45
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 4412,
+          "alpha": 20,
+          "flags": [
+            "high-contrast",
+            "look-ahead",
+            "dual-color",
+            "random-sampling"
+          ],
+          "edge_weight": 3.0844804792803204
+        },
+        "hash": "eaed0b89a597106da1905a01a0558aba"
+      },
+      "ssim": 0.1922848125584579,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T09:03:35.063041",
+      "run_number": 46
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 5054,
+          "alpha": 37,
+          "flags": [
+            "dual-color",
+            "look-ahead",
+            "enhanced",
+            "high-contrast",
+            "random-sampling"
+          ],
+          "edge_weight": 3.0190339656848657
+        },
+        "hash": "e093e7f45648b2fe3ab90796e6cc9821"
+      },
+      "ssim": 0.1955795659121416,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T09:05:33.515132",
+      "run_number": 47
+    },
+    {
+      "technique": {
+        "name": "creative_enhanced_high-contrast_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 4315,
+          "alpha": 49,
+          "flags": [
+            "enhanced",
+            "random-sampling",
+            "high-contrast"
+          ],
+          "edge_weight": 2.287644562040655,
+          "min_dist": 6
+        },
+        "hash": "eb2d3267e072651bc1047379abe38e46"
+      },
+      "ssim": 0.19521787152125974,
+      "svg_path": "/home/amin/string-art/output/creative_enhanced_high-contrast_random-sampling.svg",
+      "timestamp": "2026-05-06T09:07:46.420916",
+      "run_number": 48
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 300,
+          "lines": 4083,
+          "alpha": 27,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "ssim": 0.20631514062895218,
+      "svg_path": "/home/amin/string-art/output/research_82a1587b.svg",
+      "timestamp": "2026-05-06T09:10:39.418508",
+      "run_number": 49
+    },
+    {
+      "technique": {
+        "name": "extreme_9976",
+        "source": "extreme",
+        "params": {
+          "pins": 200,
+          "lines": 5729,
+          "alpha": 44,
+          "flags": [
+            "random-sampling",
+            "sa",
+            "dual-color",
+            "high-contrast",
+            "look-ahead",
+            "enhanced"
+          ],
+          "edge_weight": 4.183977284788806,
+          "min_dist": 15
+        }
+      },
+      "ssim": 0.18351496439831697,
+      "svg_path": "/home/amin/string-art/output/extreme_9976.svg",
+      "timestamp": "2026-05-06T09:12:18.887243",
+      "run_number": 50
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 4022,
+          "alpha": 40,
+          "flags": [
+            "dual-color",
+            "high-contrast",
+            "look-ahead",
+            "random-sampling"
+          ],
+          "edge_weight": 2.798753704756989
+        },
+        "hash": "cff4acfdd68447aef734bf48a3899072"
+      },
+      "ssim": 0.19548428613123386,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T09:12:26.863987",
+      "run_number": 51
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 280,
+          "lines": 3885,
+          "alpha": 20,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T09:12:33.913939",
+      "run_number": 52
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 320,
+          "lines": 5948,
+          "alpha": 16,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "ssim": 0.19323579114847753,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T09:12:58.300924",
+      "run_number": 53
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 320,
+          "lines": 4228,
+          "alpha": 23,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "ssim": 0.21187467579603492,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T09:17:12.194402",
+      "run_number": 54
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 320,
+          "lines": 6604,
+          "alpha": 13,
+          "flags": [
+            "enhanced",
+            "dual-color",
+            "high-contrast",
+            "random-sampling"
+          ],
+          "edge_weight": 2.0179596305641967,
+          "min_dist": 7
+        },
+        "hash": "2fbd4c172b4696d06d0c08196af4f2f1"
+      },
+      "ssim": 0.19420401868118575,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_random-sampling.svg",
+      "timestamp": "2026-05-06T09:19:31.090957",
+      "run_number": 55
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 320,
+          "lines": 3963,
+          "alpha": 40,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "ssim": 0.19323579114847753,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T09:19:40.463463",
+      "run_number": 56
+    },
+    {
+      "technique": {
+        "name": "creative_enhanced_high-contrast_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 6558,
+          "alpha": 23,
+          "flags": [
+            "enhanced",
+            "random-sampling",
+            "high-contrast"
+          ],
+          "edge_weight": 1.944686353844264
+        },
+        "hash": "0d78d102c390f34b71aff4bc316511ca"
+      },
+      "ssim": 0.1955795659121416,
+      "svg_path": "/home/amin/string-art/output/creative_enhanced_high-contrast_random-sampling.svg",
+      "timestamp": "2026-05-06T09:25:30.753160",
+      "run_number": 58
+    },
+    {
+      "technique": {
+        "name": "creative_high-contrast_look-ahead_random-sampling_sa",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 4088,
+          "alpha": 43,
+          "flags": [
+            "sa",
+            "high-contrast",
+            "random-sampling",
+            "look-ahead"
+          ],
+          "edge_weight": 2.9380765644108258
+        },
+        "hash": "7a6817d73b72a2b1e1a263013b83e1c3"
+      },
+      "ssim": 0.1922848125584579,
+      "svg_path": "/home/amin/string-art/output/creative_high-contrast_look-ahead_random-sampling_sa.svg",
+      "timestamp": "2026-05-06T09:25:41.317215",
+      "run_number": 59
+    },
+    {
+      "technique": {
+        "name": "evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "research_9c1971b8",
+        "parent_ssim": 0.2247296411865667,
+        "params": {
+          "pins": 300,
+          "lines": 5102,
+          "alpha": 27,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "e02bbd8d42d53eaeb69d84508d28f8fa"
+      },
+      "ssim": 0.21087564455792818,
+      "svg_path": "/home/amin/string-art/output/evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T09:29:13.641872",
+      "run_number": 60
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 360,
+          "lines": 3090,
+          "alpha": 19,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "ssim": 0.18982270239431737,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T09:29:23.577392",
+      "run_number": 61
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 300,
+          "lines": 4730,
+          "alpha": 20,
+          "flags": []
+        }
+      },
+      "ssim": 0.1922848125584579,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T09:29:31.921023",
+      "run_number": 62
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 280,
+          "lines": 4754,
+          "alpha": 11,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T09:29:38.629644",
+      "run_number": 63
+    },
+    {
+      "technique": {
+        "name": "extreme_6972",
+        "source": "extreme",
+        "params": {
+          "pins": 200,
+          "lines": 2960,
+          "alpha": 20,
+          "flags": [
+            "sa",
+            "enhanced",
+            "dual-color",
+            "random-sampling",
+            "high-contrast",
+            "look-ahead"
+          ],
+          "edge_weight": 2.6514227224317666,
+          "min_dist": 6
+        }
+      },
+      "ssim": 0.1797384885560805,
+      "svg_path": "/home/amin/string-art/output/extreme_6972.svg",
+      "timestamp": "2026-05-06T09:30:51.232472",
+      "run_number": 64
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 280,
+          "lines": 4493,
+          "alpha": 14,
+          "flags": []
+        }
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T09:30:59.382653",
+      "run_number": 65
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 340,
+          "lines": 5355,
+          "alpha": 45,
+          "flags": [
+            "look-ahead",
+            "high-contrast",
+            "random-sampling",
+            "dual-color"
+          ],
+          "edge_weight": 1.644085368040732
+        },
+        "hash": "ba66f7c3a04e5d1f6c394b9ba5645cf9"
+      },
+      "ssim": 0.19548428613123386,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T09:31:11.262070",
+      "run_number": 66
+    },
+    {
+      "technique": {
+        "name": "extreme_4096",
+        "source": "extreme",
+        "params": {
+          "pins": 200,
+          "lines": 4145,
+          "alpha": 18,
+          "flags": [
+            "dual-color",
+            "sa",
+            "look-ahead",
+            "high-contrast",
+            "random-sampling",
+            "enhanced"
+          ],
+          "edge_weight": 3.7493025504919744,
+          "min_dist": 4
+        }
+      },
+      "ssim": 0.18322073412191447,
+      "svg_path": "/home/amin/string-art/output/extreme_4096.svg",
+      "timestamp": "2026-05-06T09:32:33.032424",
+      "run_number": 67
+    },
+    {
+      "technique": {
+        "name": "evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "research_9c1971b8",
+        "parent_ssim": 0.2247296411865667,
+        "params": {
+          "pins": 300,
+          "lines": 5102,
+          "alpha": 26,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "9a99867f81f94c811c9dfa2f1a9c9bc2"
+      },
+      "ssim": 0.21057967829679716,
+      "svg_path": "/home/amin/string-art/output/evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T09:39:07.265678",
+      "run_number": 68
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 300,
+          "lines": 3589,
+          "alpha": 40,
+          "flags": []
+        }
+      },
+      "ssim": 0.1922848125584579,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T09:39:15.562256",
+      "run_number": 69
+    },
+    {
+      "technique": {
+        "name": "evolved_research_9c1971b8",
+        "source": "evolution",
+        "parent": "research_9c1971b8",
+        "parent_ssim": 0.2247296411865667,
+        "params": {
+          "pins": 300,
+          "lines": 5102,
+          "alpha": 26,
+          "flags": [
+            "birsak"
+          ]
+        },
+        "hash": "9a99867f81f94c811c9dfa2f1a9c9bc2"
+      },
+      "ssim": 0.21057967829679716,
+      "svg_path": "/home/amin/string-art/output/evolved_research_9c1971b8.svg",
+      "timestamp": "2026-05-06T09:43:12.338579",
+      "run_number": 70
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 280,
+          "lines": 4706,
+          "alpha": 20,
+          "flags": []
+        }
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/research_82a1587b.svg",
+      "timestamp": "2026-05-06T09:55:47.286367",
+      "run_number": 71
+    },
+    {
+      "technique": {
+        "name": "extreme_1372",
+        "source": "extreme",
+        "params": {
+          "pins": 350,
+          "lines": 5009,
+          "alpha": 48,
+          "flags": [
+            "random-sampling",
+            "sa",
+            "high-contrast",
+            "enhanced",
+            "look-ahead",
+            "dual-color"
+          ],
+          "edge_weight": 1.941113195845292,
+          "min_dist": 4
+        }
+      },
+      "ssim": 0.1947739231510323,
+      "svg_path": "/home/amin/string-art/output/extreme_1372.svg",
+      "timestamp": "2026-05-06T10:22:57.949877",
+      "run_number": 73
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 340,
+          "lines": 3374,
+          "alpha": 12,
+          "flags": []
+        }
+      },
+      "ssim": 0.1930605932830411,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T10:37:59.713469",
+      "run_number": 74
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 320,
+          "lines": 5302,
+          "alpha": 28,
+          "flags": [
+            "high-contrast",
+            "dual-color",
+            "random-sampling",
+            "look-ahead"
+          ],
+          "edge_weight": 2.6803482373757177
+        },
+        "hash": "d93f445cf870e1b0ad251c48db011354"
+      },
+      "ssim": 0.19323579114847753,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T11:13:12.972777",
+      "run_number": 77
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 280,
+          "lines": 5901,
+          "alpha": 19,
+          "flags": [
+            "dual-color",
+            "random-sampling"
+          ]
+        },
+        "hash": "aea9e25d0b223132a509396f567fd905"
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_random-sampling.svg",
+      "timestamp": "2026-05-06T11:13:31.854227",
+      "run_number": 78
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 320,
+          "lines": 4325,
+          "alpha": 40,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "ssim": 0.19323579114847753,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T11:23:38.395656",
+      "run_number": 81
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 3876,
+          "alpha": 48,
+          "flags": [
+            "high-contrast",
+            "random-sampling",
+            "dual-color",
+            "look-ahead",
+            "enhanced"
+          ],
+          "edge_weight": 1.919625029975541,
+          "min_dist": 7
+        },
+        "hash": "87e0849833cbd6e82577d3192ab441ea"
+      },
+      "ssim": 0.1928813721231377,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T11:25:30.378853",
+      "run_number": 82
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 300,
+          "lines": 3188,
+          "alpha": 26,
+          "flags": []
+        }
+      },
+      "ssim": 0.18845325097678947,
+      "svg_path": "/home/amin/string-art/output/research_82a1587b.svg",
+      "timestamp": "2026-05-06T11:27:13.316770",
+      "run_number": 83
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 4434,
+          "alpha": 35,
+          "flags": [
+            "dual-color",
+            "enhanced",
+            "look-ahead",
+            "random-sampling"
+          ]
+        },
+        "hash": "44ab18c1e78dc81b1d33c9bdb1dcff09"
+      },
+      "ssim": 0.1955795659121416,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T11:29:07.404382",
+      "run_number": 84
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 280,
+          "lines": 6760,
+          "alpha": 23,
+          "flags": [
+            "high-contrast",
+            "enhanced",
+            "random-sampling",
+            "look-ahead",
+            "dual-color"
+          ],
+          "edge_weight": 3.033017447121386
+        },
+        "hash": "75c4746e2f295afb40bbfb8c49c6c92e"
+      },
+      "ssim": 0.19070188334570876,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T11:30:51.540707",
+      "run_number": 85
+    },
+    {
+      "technique": {
+        "name": "extreme_9723",
+        "source": "extreme",
+        "params": {
+          "pins": 350,
+          "lines": 7096,
+          "alpha": 29,
+          "flags": [
+            "sa",
+            "look-ahead",
+            "dual-color",
+            "high-contrast",
+            "random-sampling",
+            "enhanced"
+          ],
+          "edge_weight": 3.7113608815293277,
+          "min_dist": 15
+        }
+      },
+      "ssim": 0.19526908198851708,
+      "svg_path": "/home/amin/string-art/output/extreme_9723.svg",
+      "timestamp": "2026-05-06T11:52:07.089583",
+      "run_number": 90
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 280,
+          "lines": 5223,
+          "alpha": 10,
+          "flags": []
+        }
+      },
+      "ssim": 0.1911344876592692,
+      "svg_path": "/home/amin/string-art/output/research_82a1587b.svg",
+      "timestamp": "2026-05-06T11:52:14.795412",
+      "run_number": 91
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 360,
+          "lines": 3366,
+          "alpha": 29,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "ssim": 0.1932376806453138,
+      "svg_path": "/home/amin/string-art/output/research_3fe000f3.svg",
+      "timestamp": "2026-05-06T11:52:23.543362",
+      "run_number": 92
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 320,
+          "lines": 5856,
+          "alpha": 22,
+          "flags": []
+        }
+      },
+      "ssim": 0.19323579114847753,
+      "svg_path": "/home/amin/string-art/output/research_9c1971b8.svg",
+      "timestamp": "2026-05-06T11:52:31.515420",
+      "run_number": 93
+    },
+    {
+      "technique": {
+        "name": "creative_high-contrast_look-ahead_random-sampling_sa",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 6634,
+          "alpha": 33,
+          "flags": [
+            "look-ahead",
+            "high-contrast",
+            "random-sampling",
+            "sa"
+          ],
+          "edge_weight": 3.0914768614292005,
+          "min_dist": 6
+        },
+        "hash": "f19265355df9a70259b370d2cc7bed11"
+      },
+      "ssim": 0.19572709026855697,
+      "svg_path": "/home/amin/string-art/output/creative_high-contrast_look-ahead_random-sampling_sa.svg",
+      "timestamp": "2026-05-06T11:52:40.979359",
+      "run_number": 94
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead",
+        "source": "creative",
+        "params": {
+          "pins": 360,
+          "lines": 6845,
+          "alpha": 14,
+          "flags": [
+            "dual-color",
+            "look-ahead",
+            "enhanced",
+            "high-contrast"
+          ],
+          "edge_weight": 2.999629875175736
+        },
+        "hash": "bf4aab530bbef555a4b6f79a2efb5b2f"
+      },
+      "ssim": 0.1955795659121416,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead.svg",
+      "timestamp": "2026-05-06T11:54:36.046865",
+      "run_number": 95
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+        "source": "creative",
+        "params": {
+          "pins": 320,
+          "lines": 3803,
+          "alpha": 23,
+          "flags": [
+            "high-contrast",
+            "look-ahead",
+            "dual-color",
+            "random-sampling",
+            "enhanced"
+          ],
+          "edge_weight": 3.102715400337236,
+          "min_dist": 10
+        },
+        "hash": "51fe64b320a44388d93cc66a349302f3"
+      },
+      "ssim": 0.19378251725653914,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling.svg",
+      "timestamp": "2026-05-06T12:00:27.460994",
+      "run_number": 97
+    },
+    {
+      "technique": {
+        "name": "extreme_8511",
+        "source": "extreme",
+        "params": {
+          "pins": 300,
+          "lines": 4531,
+          "alpha": 34,
+          "flags": [
+            "enhanced",
+            "look-ahead"
+          ],
+          "edge_weight": 2.761464209790764,
+          "min_dist": 9
+        }
+      },
+      "ssim": 0.19319332878085482,
+      "svg_path": "/home/amin/string-art/output/extreme_8511.svg",
+      "timestamp": "2026-05-06T12:04:36.732850",
+      "run_number": 98
+    },
+    {
+      "technique": {
+        "name": "creative_dual-color_enhanced_high-contrast_look-ahead",
+        "source": "creative",
+        "params": {
+          "pins": 300,
+          "lines": 4722,
+          "alpha": 11,
+          "flags": [
+            "look-ahead",
+            "dual-color",
+            "high-contrast",
+            "enhanced"
+          ],
+          "edge_weight": 2.8030622907346077
+        },
+        "hash": "372fcba2e75c99ced1b5f4ab3dab538f"
+      },
+      "ssim": 0.1923877279950049,
+      "svg_path": "/home/amin/string-art/output/creative_dual-color_enhanced_high-contrast_look-ahead.svg",
+      "timestamp": "2026-05-06T12:13:17.270985",
+      "run_number": 100
+    }
+  ],
+  "research_insights": [
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 300,
+          "lines": 5353,
+          "alpha": 25,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Particle swarm optimization for pin placement",
+      "timestamp": "2026-05-06T05:37:45.926040"
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 300,
+          "lines": 3858,
+          "alpha": 33,
+          "flags": []
+        }
+      },
+      "insight": "Particle swarm optimization for pin placement",
+      "timestamp": "2026-05-06T05:39:08.433558"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 300,
+          "lines": 3349,
+          "alpha": 34,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T06:06:07.084025"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 340,
+          "lines": 3572,
+          "alpha": 32,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T07:07:16.681306"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 360,
+          "lines": 5503,
+          "alpha": 31,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T07:15:59.442115"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 280,
+          "lines": 5511,
+          "alpha": 14,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T07:20:46.697970"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 300,
+          "lines": 4574,
+          "alpha": 32,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T07:25:20.390333"
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 360,
+          "lines": 5867,
+          "alpha": 16,
+          "flags": []
+        }
+      },
+      "insight": "Particle swarm optimization for pin placement",
+      "timestamp": "2026-05-06T07:50:12.685786"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 340,
+          "lines": 4977,
+          "alpha": 29,
+          "flags": [
+            "sa",
+            "dual-color",
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T07:51:14.651272"
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 280,
+          "lines": 3733,
+          "alpha": 33,
+          "flags": []
+        }
+      },
+      "insight": "Particle swarm optimization for pin placement",
+      "timestamp": "2026-05-06T07:58:06.369591"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 320,
+          "lines": 4871,
+          "alpha": 35,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T07:58:13.135133"
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 300,
+          "lines": 4083,
+          "alpha": 27,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Particle swarm optimization for pin placement",
+      "timestamp": "2026-05-06T09:07:46.549252"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 280,
+          "lines": 3885,
+          "alpha": 20,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T09:12:26.970947"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 340,
+          "lines": 3409,
+          "alpha": 14,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T09:12:34.055698"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 360,
+          "lines": 3102,
+          "alpha": 17,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T09:12:41.692302"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 320,
+          "lines": 5948,
+          "alpha": 16,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T09:12:47.460127"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 320,
+          "lines": 4228,
+          "alpha": 23,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T09:12:58.485095"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 320,
+          "lines": 3963,
+          "alpha": 40,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T09:19:31.191359"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 300,
+          "lines": 5102,
+          "alpha": 17,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T09:19:40.573938"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 360,
+          "lines": 3090,
+          "alpha": 19,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T09:29:13.770626"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 300,
+          "lines": 4730,
+          "alpha": 20,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T09:29:23.692677"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 280,
+          "lines": 4754,
+          "alpha": 11,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T09:29:32.019528"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 280,
+          "lines": 4493,
+          "alpha": 14,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T09:30:51.351322"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 300,
+          "lines": 3589,
+          "alpha": 40,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T09:39:07.378449"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 340,
+          "lines": 4590,
+          "alpha": 19,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T09:43:12.455230"
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 280,
+          "lines": 4706,
+          "alpha": 20,
+          "flags": []
+        }
+      },
+      "insight": "Particle swarm optimization for pin placement",
+      "timestamp": "2026-05-06T09:55:38.178486"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 340,
+          "lines": 3374,
+          "alpha": 12,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T10:37:51.163847"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 320,
+          "lines": 4325,
+          "alpha": 40,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T11:23:29.803890"
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 300,
+          "lines": 3188,
+          "alpha": 26,
+          "flags": []
+        }
+      },
+      "insight": "Particle swarm optimization for pin placement",
+      "timestamp": "2026-05-06T11:27:06.584957"
+    },
+    {
+      "technique": {
+        "name": "research_82a1587b",
+        "source": "research",
+        "insight": "Particle swarm optimization for pin placement",
+        "params": {
+          "pins": 280,
+          "lines": 5223,
+          "alpha": 10,
+          "flags": []
+        }
+      },
+      "insight": "Particle swarm optimization for pin placement",
+      "timestamp": "2026-05-06T11:52:07.222042"
+    },
+    {
+      "technique": {
+        "name": "research_3fe000f3",
+        "source": "research",
+        "insight": "Multi-start simulated annealing with temperature scheduling",
+        "params": {
+          "pins": 360,
+          "lines": 3366,
+          "alpha": 29,
+          "flags": [
+            "sa",
+            "dual-color"
+          ]
+        }
+      },
+      "insight": "Multi-start simulated annealing with temperature scheduling",
+      "timestamp": "2026-05-06T11:52:14.917334"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 320,
+          "lines": 5856,
+          "alpha": 22,
+          "flags": []
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T11:52:23.674857"
+    },
+    {
+      "technique": {
+        "name": "research_9c1971b8",
+        "source": "research",
+        "insight": "Genetic algorithms with crossover and mutation",
+        "params": {
+          "pins": 360,
+          "lines": 4330,
+          "alpha": 12,
+          "flags": [
+            "birsak"
+          ]
+        }
+      },
+      "insight": "Genetic algorithms with crossover and mutation",
+      "timestamp": "2026-05-06T12:18:32.435315"
+    }
+  ],
+  "creative_combos": [
+    {
+      "name": "creative_birsak_dual-color_sa",
+      "source": "creative",
+      "params": {
+        "pins": 360,
+        "lines": 2656,
+        "alpha": 38,
+        "flags": [
+          "sa",
+          "birsak",
+          "dual-color"
+        ]
+      },
+      "hash": "cff5df7b8fad2d6e7e4bf595570c88dc",
+      "timestamp": "2026-05-06T05:32:57.289013"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 320,
+        "lines": 4749,
+        "alpha": 39,
+        "flags": [
+          "dual-color",
+          "look-ahead",
+          "high-contrast",
+          "enhanced",
+          "random-sampling"
+        ],
+        "edge_weight": 1.6885590615473358
+      },
+      "hash": "49de1f884a8c9956abd78ea22e2d8509",
+      "timestamp": "2026-05-06T05:52:30.466961"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 320,
+        "lines": 3720,
+        "alpha": 38,
+        "flags": [
+          "dual-color",
+          "random-sampling",
+          "enhanced",
+          "high-contrast"
+        ],
+        "edge_weight": 1.6162707109892185
+      },
+      "hash": "1cc9c56d083fc5b3746d5321a5d91774",
+      "timestamp": "2026-05-06T05:56:34.527304"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 280,
+        "lines": 5167,
+        "alpha": 19,
+        "flags": [
+          "random-sampling",
+          "enhanced",
+          "dual-color",
+          "high-contrast"
+        ],
+        "edge_weight": 3.4020870838638073
+      },
+      "hash": "b0375ef8a18441b02ef6c1fe53816f3e",
+      "timestamp": "2026-05-06T06:53:05.824905"
+    },
+    {
+      "name": "creative_dual-color_high-contrast_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 300,
+        "lines": 6775,
+        "alpha": 21,
+        "flags": [
+          "dual-color",
+          "high-contrast",
+          "random-sampling"
+        ],
+        "edge_weight": 2.8006084421778867
+      },
+      "hash": "ddc401495f5ddf33d1a3151c96fa4aea",
+      "timestamp": "2026-05-06T07:10:18.733558"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 340,
+        "lines": 6430,
+        "alpha": 46,
+        "flags": [
+          "enhanced",
+          "look-ahead",
+          "random-sampling",
+          "dual-color",
+          "high-contrast"
+        ],
+        "edge_weight": 2.655697330631061,
+        "min_dist": 3
+      },
+      "hash": "3724f08f4b51727e7f105f61ba49d884",
+      "timestamp": "2026-05-06T07:18:42.282627"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 360,
+        "lines": 4121,
+        "alpha": 15,
+        "flags": [
+          "dual-color",
+          "high-contrast",
+          "random-sampling",
+          "enhanced"
+        ],
+        "edge_weight": 1.6126534125849321,
+        "min_dist": 7
+      },
+      "hash": "4efc1aa3e323ac42df3c787392596d89",
+      "timestamp": "2026-05-06T07:23:16.984091"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 300,
+        "lines": 5051,
+        "alpha": 31,
+        "flags": [
+          "random-sampling",
+          "dual-color",
+          "look-ahead",
+          "enhanced",
+          "high-contrast"
+        ],
+        "edge_weight": 2.2982161387314175,
+        "min_dist": 11
+      },
+      "hash": "2214030d3a05949928edf4f8930f2de7",
+      "timestamp": "2026-05-06T07:25:41.441206"
+    },
+    {
+      "name": "creative_enhanced_high-contrast_look-ahead",
+      "source": "creative",
+      "params": {
+        "pins": 320,
+        "lines": 2828,
+        "alpha": 34,
+        "flags": [
+          "high-contrast",
+          "look-ahead",
+          "enhanced"
+        ],
+        "edge_weight": 2.1475870932964574
+      },
+      "hash": "2c76790511c6bf770b3cf40e4aa769ef",
+      "timestamp": "2026-05-06T07:56:40.315008"
+    },
+    {
+      "name": "creative_dual-color_enhanced",
+      "source": "creative",
+      "params": {
+        "pins": 340,
+        "lines": 4736,
+        "alpha": 18,
+        "flags": [
+          "enhanced",
+          "dual-color"
+        ],
+        "min_dist": 7
+      },
+      "hash": "8f364b6e1f9569b8ab460c6065f18932",
+      "timestamp": "2026-05-06T08:03:47.984636"
+    },
+    {
+      "name": "creative_high-contrast_look-ahead",
+      "source": "creative",
+      "params": {
+        "pins": 340,
+        "lines": 6389,
+        "alpha": 18,
+        "flags": [
+          "high-contrast",
+          "look-ahead"
+        ],
+        "edge_weight": 2.7298846606907343
+      },
+      "hash": "182fc337f00fe55aaef7a854d3078515",
+      "timestamp": "2026-05-06T08:08:07.629360"
+    },
+    {
+      "name": "creative_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 280,
+        "lines": 3669,
+        "alpha": 38,
+        "flags": [
+          "look-ahead",
+          "random-sampling"
+        ]
+      },
+      "hash": "87ea9a8ffb6d7abcfc602fd8e6b6ff88",
+      "timestamp": "2026-05-06T08:08:17.441669"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead",
+      "source": "creative",
+      "params": {
+        "pins": 300,
+        "lines": 3721,
+        "alpha": 17,
+        "flags": [
+          "high-contrast",
+          "look-ahead",
+          "enhanced",
+          "dual-color"
+        ],
+        "edge_weight": 1.7008555891503956
+      },
+      "hash": "9ce9a240c5a76af607d4d7fd70d4c3ab",
+      "timestamp": "2026-05-06T08:11:49.733594"
+    },
+    {
+      "name": "creative_enhanced_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 320,
+        "lines": 4629,
+        "alpha": 10,
+        "flags": [
+          "random-sampling",
+          "enhanced",
+          "look-ahead"
+        ],
+        "min_dist": 3
+      },
+      "hash": "31a204ec9c11ae12dcbd228968ce5759",
+      "timestamp": "2026-05-06T08:15:30.226954"
+    },
+    {
+      "name": "creative_enhanced_sa",
+      "source": "creative",
+      "params": {
+        "pins": 340,
+        "lines": 6500,
+        "alpha": 38,
+        "flags": [
+          "sa",
+          "enhanced"
+        ]
+      },
+      "hash": "2b1820432568f37b4ad9f9a3eaf2c891",
+      "timestamp": "2026-05-06T08:42:54.896085"
+    },
+    {
+      "name": "creative_enhanced_high-contrast_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 340,
+        "lines": 5394,
+        "alpha": 12,
+        "flags": [
+          "random-sampling",
+          "high-contrast",
+          "enhanced"
+        ],
+        "edge_weight": 1.2953496866033203
+      },
+      "hash": "cb3c24871b1b6d297030427f37c24135",
+      "timestamp": "2026-05-06T08:58:55.477138"
+    },
+    {
+      "name": "creative_dual-color_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 300,
+        "lines": 4412,
+        "alpha": 20,
+        "flags": [
+          "high-contrast",
+          "look-ahead",
+          "dual-color",
+          "random-sampling"
+        ],
+        "edge_weight": 3.0844804792803204
+      },
+      "hash": "eaed0b89a597106da1905a01a0558aba",
+      "timestamp": "2026-05-06T09:03:21.766836"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 360,
+        "lines": 5054,
+        "alpha": 37,
+        "flags": [
+          "dual-color",
+          "look-ahead",
+          "enhanced",
+          "high-contrast",
+          "random-sampling"
+        ],
+        "edge_weight": 3.0190339656848657
+      },
+      "hash": "e093e7f45648b2fe3ab90796e6cc9821",
+      "timestamp": "2026-05-06T09:03:35.311440"
+    },
+    {
+      "name": "creative_dual-color_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 340,
+        "lines": 4022,
+        "alpha": 40,
+        "flags": [
+          "dual-color",
+          "high-contrast",
+          "look-ahead",
+          "random-sampling"
+        ],
+        "edge_weight": 2.798753704756989
+      },
+      "hash": "cff4acfdd68447aef734bf48a3899072",
+      "timestamp": "2026-05-06T09:12:19.000044"
+    },
+    {
+      "name": "creative_enhanced_high-contrast_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 360,
+        "lines": 6558,
+        "alpha": 23,
+        "flags": [
+          "enhanced",
+          "random-sampling",
+          "high-contrast"
+        ],
+        "edge_weight": 1.944686353844264
+      },
+      "hash": "0d78d102c390f34b71aff4bc316511ca",
+      "timestamp": "2026-05-06T09:23:24.925003"
+    },
+    {
+      "name": "creative_high-contrast_look-ahead_random-sampling_sa",
+      "source": "creative",
+      "params": {
+        "pins": 300,
+        "lines": 4088,
+        "alpha": 43,
+        "flags": [
+          "sa",
+          "high-contrast",
+          "random-sampling",
+          "look-ahead"
+        ],
+        "edge_weight": 2.9380765644108258
+      },
+      "hash": "7a6817d73b72a2b1e1a263013b83e1c3",
+      "timestamp": "2026-05-06T09:25:30.883462"
+    },
+    {
+      "name": "creative_dual-color_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 340,
+        "lines": 5355,
+        "alpha": 45,
+        "flags": [
+          "look-ahead",
+          "high-contrast",
+          "random-sampling",
+          "dual-color"
+        ],
+        "edge_weight": 1.644085368040732
+      },
+      "hash": "ba66f7c3a04e5d1f6c394b9ba5645cf9",
+      "timestamp": "2026-05-06T09:30:59.507557"
+    },
+    {
+      "name": "creative_dual-color_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 320,
+        "lines": 5302,
+        "alpha": 28,
+        "flags": [
+          "high-contrast",
+          "dual-color",
+          "random-sampling",
+          "look-ahead"
+        ],
+        "edge_weight": 2.6803482373757177
+      },
+      "hash": "d93f445cf870e1b0ad251c48db011354",
+      "timestamp": "2026-05-06T11:13:05.008136"
+    },
+    {
+      "name": "creative_dual-color_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 280,
+        "lines": 5901,
+        "alpha": 19,
+        "flags": [
+          "dual-color",
+          "random-sampling"
+        ]
+      },
+      "hash": "aea9e25d0b223132a509396f567fd905",
+      "timestamp": "2026-05-06T11:13:25.039154"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 300,
+        "lines": 3876,
+        "alpha": 48,
+        "flags": [
+          "high-contrast",
+          "random-sampling",
+          "dual-color",
+          "look-ahead",
+          "enhanced"
+        ],
+        "edge_weight": 1.919625029975541,
+        "min_dist": 7
+      },
+      "hash": "87e0849833cbd6e82577d3192ab441ea",
+      "timestamp": "2026-05-06T11:23:44.195333"
+    },
+    {
+      "name": "creative_dual-color_enhanced_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 360,
+        "lines": 4434,
+        "alpha": 35,
+        "flags": [
+          "dual-color",
+          "enhanced",
+          "look-ahead",
+          "random-sampling"
+        ]
+      },
+      "hash": "44ab18c1e78dc81b1d33c9bdb1dcff09",
+      "timestamp": "2026-05-06T11:27:13.459765"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 280,
+        "lines": 6760,
+        "alpha": 23,
+        "flags": [
+          "high-contrast",
+          "enhanced",
+          "random-sampling",
+          "look-ahead",
+          "dual-color"
+        ],
+        "edge_weight": 3.033017447121386
+      },
+      "hash": "75c4746e2f295afb40bbfb8c49c6c92e",
+      "timestamp": "2026-05-06T11:29:07.521333"
+    },
+    {
+      "name": "creative_high-contrast_look-ahead_random-sampling_sa",
+      "source": "creative",
+      "params": {
+        "pins": 360,
+        "lines": 6634,
+        "alpha": 33,
+        "flags": [
+          "look-ahead",
+          "high-contrast",
+          "random-sampling",
+          "sa"
+        ],
+        "edge_weight": 3.0914768614292005,
+        "min_dist": 6
+      },
+      "hash": "f19265355df9a70259b370d2cc7bed11",
+      "timestamp": "2026-05-06T11:52:31.660909"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead",
+      "source": "creative",
+      "params": {
+        "pins": 360,
+        "lines": 6845,
+        "alpha": 14,
+        "flags": [
+          "dual-color",
+          "look-ahead",
+          "enhanced",
+          "high-contrast"
+        ],
+        "edge_weight": 2.999629875175736
+      },
+      "hash": "bf4aab530bbef555a4b6f79a2efb5b2f",
+      "timestamp": "2026-05-06T11:52:41.096690"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 320,
+        "lines": 3803,
+        "alpha": 23,
+        "flags": [
+          "high-contrast",
+          "look-ahead",
+          "dual-color",
+          "random-sampling",
+          "enhanced"
+        ],
+        "edge_weight": 3.102715400337236,
+        "min_dist": 10
+      },
+      "hash": "51fe64b320a44388d93cc66a349302f3",
+      "timestamp": "2026-05-06T11:58:31.848267"
+    },
+    {
+      "name": "creative_dual-color_enhanced_high-contrast_look-ahead",
+      "source": "creative",
+      "params": {
+        "pins": 300,
+        "lines": 4722,
+        "alpha": 11,
+        "flags": [
+          "look-ahead",
+          "dual-color",
+          "high-contrast",
+          "enhanced"
+        ],
+        "edge_weight": 2.8030622907346077
+      },
+      "hash": "372fcba2e75c99ced1b5f4ab3dab538f",
+      "timestamp": "2026-05-06T12:10:38.438656"
+    },
+    {
+      "name": "creative_enhanced_look-ahead_random-sampling",
+      "source": "creative",
+      "params": {
+        "pins": 340,
+        "lines": 6312,
+        "alpha": 11,
+        "flags": [
+          "look-ahead",
+          "enhanced",
+          "random-sampling"
+        ]
+      },
+      "hash": "ee4fa3630ff2c28f09fff63ba1ac0317",
+      "timestamp": "2026-05-06T12:23:59.896473"
+    }
+  ],
+  "best_result": {
+    "ssim": 0.2617548242379846,
+    "version": "evolved_evolved_research_9c1971b8",
+    "params": {
+      "name": "evolved_evolved_research_9c1971b8",
+      "source": "evolution",
+      "parent": "evolved_research_9c1971b8",
+      "parent_ssim": 0.2593850803773756,
+      "params": {
+        "pins": 337,
+        "lines": 5102,
+        "alpha": 11,
+        "flags": [
+          "birsak",
+          "sa",
+          "random-sampling"
+        ],
+        "edge_weight": 2.966600245745883
+      },
+      "hash": "406b95497eaccf129db49b1031af20a5"
+    }
+  },
+  "run_count": 102,
+  "last_updated": "2026-05-06T12:23:59.896499"
+}
