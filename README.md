@@ -1,3 +1,21 @@
+## Multi-Color String Art (CMYK Subtractive Engine)
+
+A 4-color subtractive CMYK string art generator utilizing physical thread mixing (Yellow, Magenta, Cyan, Black):
+- **Bresenham ray integration** with precomputed chord lookups
+- **Strict negative space penalty (3.5x)** preventing cobweb artifacts in highlights
+- **Micro-highlight preservation** (tangent envelope exclusion zones)
+- **Multi-layer SVG and preview PNG generation**
+
+### Showcase
+- **Johannes Vermeer's *Girl with a Pearl Earring***: 320 pins, 6,218 lines (`docs/examples/vermeer_master_cmyk.png`)
+- **Leonardo da Vinci's *Mona Lisa***: 320 pins, 5,853 lines (`docs/examples/mona_lisa_cmyk.png`)
+
+```bash
+python3 cmyk_engine.py --input /path/to/image.png --output output/result --pins 320 --size 600
+```
+
+---
+
 # String Art Generator
 
 Advanced string art generator with state-of-the-art optimization algorithms.
