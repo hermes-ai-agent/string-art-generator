@@ -21,6 +21,7 @@ import math
 import argparse
 import numpy as np
 from PIL import Image
+import cv2
 
 def precompute_chords(n_pins, size, radius, min_dist=25, exclusion_masks=None):
     """
@@ -98,7 +99,27 @@ def generate_cmyk_string_art(
     y0 = max(0, min(h - side, cy - side // 2))
     img_cropped = img.crop((x0, y0, x0 + side, y0 + side)).resize((size, size), Image.Resampling.LANCZOS)
     
-    arr = np.array(img_cropped, dtype=float) / 255.0
+    # Bilateral filter to smooth texture while preserving structural edges
+    raw_np = np.array(img_cropped)
+    denoised = cv2.bilateralFilter(raw_np, d=7, sigmaColor=35, sigmaSpace=35)
+    
+    # CLAHE on L-channel of LAB color space
+    lab = cv2.cvtColor(denoised, cv2.COLOR_RGB2LAB)
+    clahe = cv2.createCLAHE(clipLimit=2.2, tileGridSize=(8, 8))
+    lab[:, :, 0] = clahe.apply(lab[:, :, 0])
+    clahe_rgb = cv2.cvtColor(lab, cv2.COLOR_LAB2RGB)
+    
+    # Unsharp Mask for razor-sharp edge contrast
+    blurred = cv2.GaussianBlur(clahe_rgb, (0, 0), 1.5)
+    sharp_rgb = cv2.addWeighted(clahe_rgb, 1.6, blurred, -0.6, 0)
+    arr = np.clip(sharp_rgb, 0, 255).astype(float) / 255.0
+    
+    # Sobel Edge Map for edge-guided line prioritization
+    gray = cv2.cvtColor(clahe_rgb, cv2.COLOR_RGB2GRAY)
+    gx = cv2.Sobel(gray, cv2.CV_32F, 1, 0, ksize=3)
+    gy = cv2.Sobel(gray, cv2.CV_32F, 0, 1, ksize=3)
+    edge_mag = cv2.magnitude(gx, gy)
+    edge_norm = cv2.normalize(edge_mag, None, 0.0, 1.0, cv2.NORM_MINMAX)
     radius = size / 2.0 - 2.0
     yy, xx = np.ogrid[:size, :size]
     circ_mask = (xx - size / 2.0)**2 + (yy - size / 2.0)**2 <= radius**2
@@ -111,17 +132,21 @@ def generate_cmyk_string_art(
         ex_mask = ((xx - ex_x)**2 + (yy - ex_y)**2 <= exclusion_radius**2)
         exclusion_masks['specular'] = ex_mask
         
-    # Subtractive CMYK channel decomposition
+    # Subtractive CMYK channel decomposition with high-contrast K separation
     c_raw = 1.0 - arr[:, :, 0]
     m_raw = 1.0 - arr[:, :, 1]
     y_raw = 1.0 - arr[:, :, 2]
-    k_raw = np.minimum(np.minimum(c_raw, m_raw), y_raw)
+    k_min = np.minimum(np.minimum(c_raw, m_raw), y_raw)
     
-    ucr = 0.75  # Under Color Removal factor
+    # Razor-sharp K curve
+    k_raw = np.where(k_min > 0.12, (k_min - 0.12) / 0.88, 0.0)
+    k_raw = np.power(np.clip(k_raw, 0, 1), 1.25)
+    
+    ucr = 0.70  # Under Color Removal factor
     c_target = np.clip((c_raw - k_raw * ucr) * 1.45, 0, 1) * circ_mask
     m_target = np.clip((m_raw - k_raw * ucr) * 1.35, 0, 1) * circ_mask
     y_target = np.clip((y_raw - k_raw * ucr) * 1.50, 0, 1) * circ_mask
-    k_target = np.clip(k_raw * 1.25, 0, 1) * circ_mask
+    k_target = np.clip(k_raw * 1.35, 0, 1) * circ_mask
     
     if 'specular' in exclusion_masks:
         k_target[exclusion_masks['specular']] = 0.0
@@ -136,11 +161,16 @@ def generate_cmyk_string_art(
     )
     print(f"Precomputed {len(chords)} chords in {time.time() - t0:.2f}s")
     
+    # Finer line weight and stronger negative penalty for high sharpness
+    line_weight = 0.052
+    line_weight_black = 0.048
+    negative_penalty = 4.2
+    
     layers_spec = [
-        ('yellow', y_target, (245, 205, 0), '#f5cd00', max_lines_per_color, line_weight, negative_penalty),
-        ('magenta', m_target, (220, 25, 65), '#dc1941', max_lines_per_color, line_weight, negative_penalty),
-        ('cyan', c_target, (0, 135, 225), '#0087e1', max_lines_per_color, line_weight, negative_penalty),
-        ('black', k_target, (15, 15, 20), '#0f0f14', max_lines_black, line_weight_black, negative_penalty * 1.15)
+        ('yellow', y_target, (245, 205, 0), '#f5cd00', int(max_lines_per_color * 1.25), line_weight * 1.1, negative_penalty),
+        ('magenta', m_target, (220, 25, 65), '#dc1941', int(max_lines_per_color * 1.25), line_weight, negative_penalty),
+        ('cyan', c_target, (0, 135, 225), '#0087e1', int(max_lines_per_color * 1.25), line_weight, negative_penalty),
+        ('black', k_target, (15, 15, 20), '#0f0f14', int(max_lines_black * 1.25), line_weight_black, negative_penalty * 1.25)
     ]
     
     canvas = np.ones((size, size, 3), dtype=float)
@@ -172,10 +202,13 @@ def generate_cmyk_string_art(
                         continue
                         
                 r_pts, c_pts = chords[pair]
-                vals = curr_density[r_pts, c_pts]
-                pos = vals[vals > 0]
-                neg = vals[vals <= 0]
-                score = np.sum(pos) + neg_pen * np.sum(neg)
+                curr_vals = curr_density[r_pts, c_pts]
+                edges = edge_norm[r_pts, c_pts]
+                
+                # Rigorous Birsak L2 reduction: Delta E = 2*alpha*(Target - Current) - alpha^2
+                # Enhanced with edge-tangent alignment boost
+                delta_l2 = 2.0 * weight * curr_vals - (weight ** 2)
+                score = np.sum(delta_l2 * (1.0 + 1.2 * edges))
                 
                 if score > best_score:
                     best_score = score
@@ -207,18 +240,27 @@ def generate_cmyk_string_art(
     out_png = f"{output_prefix}.png"
     Image.fromarray(canvas_uint8).save(out_png)
     
-    # 2. Save Layered Physical Vector SVG
+    # 2. Save Layered Physical Vector SVG with Interleaving
     out_svg = f"{output_prefix}.svg"
     with open(out_svg, 'w') as f:
         f.write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">\n')
         f.write(f'  <rect width="{size}" height="{size}" fill="#ffffff"/>\n')
         f.write(f'  <circle cx="{size/2}" cy="{size/2}" r="{radius}" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>\n')
-        for color_name, (hex_code, lines) in svg_layers.items():
-            f.write(f'  <!-- Layer: {color_name.upper()} ({len(lines)} lines) -->\n')
-            f.write(f'  <g id="strings-{color_name}" stroke="{hex_code}" stroke-width="0.20" stroke-opacity="0.92" fill="none">\n')
-            for p1, p2 in lines:
-                f.write(f'    <line x1="{pin_x[p1]:.2f}" y1="{pin_y[p1]:.2f}" x2="{pin_x[p2]:.2f}" y2="{pin_y[p2]:.2f}"/>\n')
-            f.write('  </g>\n')
+        
+        passes = 3
+        for p_idx in range(passes):
+            f.write(f'  <!-- Interleaved Group Pass {p_idx+1}/{passes} -->\n')
+            for color_name, (hex_code, lines) in svg_layers.items():
+                chunk_size = math.ceil(len(lines) / passes)
+                start_i = p_idx * chunk_size
+                end_i = min(len(lines), (p_idx + 1) * chunk_size)
+                pass_lines = lines[start_i:end_i]
+                if not pass_lines:
+                    continue
+                f.write(f'  <g id="strings-{color_name}-p{p_idx+1}" stroke="{hex_code}" stroke-width="0.18" stroke-opacity="1.0" fill="none">\n')
+                for p1, p2 in pass_lines:
+                    f.write(f'    <line x1="{pin_x[p1]:.2f}" y1="{pin_y[p1]:.2f}" x2="{pin_x[p2]:.2f}" y2="{pin_y[p2]:.2f}"/>\n')
+                f.write('  </g>\n')
         f.write('</svg>\n')
         
     # 3. Save Side-by-Side Comparison
