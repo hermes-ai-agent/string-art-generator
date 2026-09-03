@@ -500,8 +500,12 @@ func evaluateLineV9Birsak(key [2]int, superCanvas [][]float64, superImg *image.G
 			totalScore += improvement * imp * pixel.Weight
 			improvingPixels++
 		} else if improvement < 0 {
-			// Mild over-darkening penalty
-			totalScore += improvement * imp * 1.1 * pixel.Weight
+			// Severe over-darkening penalty to keep highlights (forehead, nose, cheeks) pristine
+			penaltyFactor := 3.5
+			if targetVal > 180 {
+				penaltyFactor = 6.0 // Extreme penalty for high-luminance highlights
+			}
+			totalScore += improvement * imp * penaltyFactor * pixel.Weight
 			worseningPixels++
 		}
 		totalWeight += imp * pixel.Weight
